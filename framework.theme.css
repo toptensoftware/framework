@@ -1,0 +1,35 @@
+/*
+primary
+secondary
+success
+info
+warning
+danger
+*/
+:root {
+  --sv-backcolor: #222;
+  --sv-forecolor: white;
+  --sv-primary: #375a7f;
+  --sv-secondary: #444;
+  --sv-success: #00bc8c;
+  --sv-info: #3498db;
+  --sv-warning: #f39c12;
+  --sv-danger: #e74c3c;
+  --sv-button-forecolor: white;
+  --sv-link-color: #00bc8c;
+  --sv-light: #adb5bd;
+  --sv-dark: #303030;
+  --sv-backcolor-rgb: 34, 34, 34;
+  --sv-forecolor-rgb: 255, 255, 255;
+  --sv-primary-rgb: 55, 90, 127;
+  --sv-secondary-rgb: 68, 68, 68;
+  --sv-success-rgb: 0, 188, 140;
+  --sv-info-rgb: 52, 152, 219;
+  --sv-warning-rgb: 243, 156, 18;
+  --sv-danger-rgb: 231, 76, 60;
+  --sv-button-forecolor-rgb: 255, 255, 255;
+  --sv-link-color-rgb: 0, 188, 140;
+  --sv-light-rgb: 173, 181, 189;
+  --sv-dark-rgb: 48, 48, 48;
+  --sv-font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}

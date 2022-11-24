@@ -1,0 +1,49 @@
+body
+{
+    background-color: var(--sv-backcolor);
+    color: var(--sv-forecolor);
+    font-family: var(--sv-font-family);
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}   
+
+button
+{
+    color: var(--sv-button-forecolor);
+    padding: .575rem .75rem;
+    border-width: 1px;
+    border-radius: 5px;
+    border-style: solid;
+    font-size: 1rem;
+    background-color: var(--sv-btn-background-color);
+    border-color: var(--sv-btn-background-color);
+
+    &.primary { background-color: var(--sv-primary); border-color: var(--sv-primary); }
+    &.secondary { background-color: var(--sv-secondary); border-color: var(--sv-secondary); }
+    &.success { background-color: var(--sv-success); border-color: var(--sv-success); }
+    &.info { background-color: var(--sv-info); border-color: var(--sv-info); }
+    &.warning { background-color: var(--sv-warning); border-color: var(--sv-warning); }
+    &.danger { background-color: var(--sv-danger); border-color: var(--sv-danger); }
+    &.light { background-color: var(--sv-light); border-color: var(--sv-light); }
+    &.dark { background-color: var(--sv-dark); border-color: var(--sv-dark); }
+    &.link 
+    { 
+        background-color: rgba(0,0,0,0); 
+        border-color: rgba(0,0,0,0); 
+        color: var(--sv-link-color); 
+        text-decoration: underline;
+    }
+
+    &:disabled
+    {
+        opacity: 0.5;
+    }
+
+    &.outline
+    {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+

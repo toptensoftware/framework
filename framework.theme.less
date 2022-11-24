@@ -1,0 +1,59 @@
+@sv-backcolor: #222;
+@sv-forecolor: white;
+@sv-primary: #375a7f;
+@sv-secondary: #444;
+@sv-success: #00bc8c;
+@sv-info: #3498db;
+@sv-warning: #f39c12;
+@sv-danger: #e74c3c;
+@sv-light: #adb5bd;
+@sv-dark: #303030;
+@sv-button-forecolor: white;
+@sv-link-color: #00bc8c;
+
+/*
+primary
+secondary
+success
+info
+warning
+danger
+*/
+
+:root {
+    --sv-backcolor: @sv-backcolor;
+    --sv-forecolor: @sv-forecolor;
+    --sv-primary: @sv-primary;
+    --sv-secondary: @sv-secondary;
+    --sv-success: @sv-success;
+    --sv-info: @sv-info;
+    --sv-warning: @sv-warning;
+    --sv-danger: @sv-danger;
+    --sv-button-forecolor: @sv-button-forecolor;
+    --sv-link-color: @sv-link-color;
+    --sv-light: @sv-light;
+    --sv-dark: @sv-dark;
+
+    --sv-backcolor-rgb: .rgb(@sv-backcolor)[@rgb];
+    --sv-forecolor-rgb: .rgb(@sv-forecolor)[@rgb];
+    --sv-primary-rgb: .rgb(@sv-primary)[@rgb];
+    --sv-secondary-rgb: .rgb(@sv-secondary)[@rgb];
+    --sv-success-rgb: .rgb(@sv-success)[@rgb];
+    --sv-info-rgb: .rgb(@sv-info)[@rgb];
+    --sv-warning-rgb: .rgb(@sv-warning)[@rgb];
+    --sv-danger-rgb: .rgb(@sv-danger)[@rgb];
+    --sv-button-forecolor-rgb: .rgb(@sv-button-forecolor)[@rgb];
+    --sv-link-color-rgb: .rgb(@sv-link-color)[@rgb];
+    --sv-light-rgb: .rgb(@sv-light)[@rgb];
+    --sv-dark-rgb: .rgb(@sv-dark)[@rgb];
+    
+    --sv-font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+
+// Mixin helper to generate r, g, b values
+.rgb(@x) 
+{
+    @rgb: red(@x), green(@x), blue(@x);
+}
+

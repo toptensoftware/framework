@@ -1,0 +1,63 @@
+body {
+  background-color: var(--sv-backcolor);
+  color: var(--sv-forecolor);
+  font-family: var(--sv-font-family);
+  font-size: 1rem;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+button {
+  color: var(--sv-button-forecolor);
+  padding: 0.575rem 0.75rem;
+  border-width: 1px;
+  border-radius: 5px;
+  border-style: solid;
+  font-size: 1rem;
+  background-color: var(--sv-btn-background-color);
+  border-color: var(--sv-btn-background-color);
+}
+button.primary {
+  background-color: var(--sv-primary);
+  border-color: var(--sv-primary);
+}
+button.secondary {
+  background-color: var(--sv-secondary);
+  border-color: var(--sv-secondary);
+}
+button.success {
+  background-color: var(--sv-success);
+  border-color: var(--sv-success);
+}
+button.info {
+  background-color: var(--sv-info);
+  border-color: var(--sv-info);
+}
+button.warning {
+  background-color: var(--sv-warning);
+  border-color: var(--sv-warning);
+}
+button.danger {
+  background-color: var(--sv-danger);
+  border-color: var(--sv-danger);
+}
+button.light {
+  background-color: var(--sv-light);
+  border-color: var(--sv-light);
+}
+button.dark {
+  background-color: var(--sv-dark);
+  border-color: var(--sv-dark);
+}
+button.link {
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgba(0, 0, 0, 0);
+  color: var(--sv-link-color);
+  text-decoration: underline;
+}
+button:disabled {
+  opacity: 0.5;
+}
+button.outline {
+  background-color: rgba(0, 0, 0, 0);
+}
