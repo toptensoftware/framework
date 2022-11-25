@@ -5,9 +5,11 @@ Interactions determine what actions close the pop
 
 - hover - mouseleave
 - anchor - close when click on original anchor
-- outside - close when click anywhere outside anchor
+- outside - close when click anywhere outside popover
 - anywhere - close where click inside or outside
 */
+
+let popoverStack = [];
 
 function sv_popover(target, interaction)
 {
@@ -42,8 +44,20 @@ function sv_popover(target, interaction)
     if (!popover)
         return;
 
+    // Helper to get popover data attribute from either the popup itself, or
+    // the popup's anchor
+    function getPopoverAttribute(name)
+    {
+        let val = popover.getAttribute(name);
+        if (val === undefined || val === null)
+        {
+            val = target.getAttribute(name);
+        }
+        return val;
+    }
+
     // Exclusive?
-    let exclusiveGroup = target.getAttribute('data-sv-popover-group') || 'default';
+    let exclusiveGroup = getPopoverAttribute('data-sv-popover-group') || 'default';
     if (exclusiveGroup)
     {
         if (cancelExclusivePopover[exclusiveGroup])
@@ -58,8 +72,9 @@ function sv_popover(target, interaction)
     target.classList.add('popover-shown');
 
     // Create popper
+    let place = getPopoverAttribute('data-sv-popover-placement') || 'bottom';
     let popper = Popper.createPopper(target, popover, {
-        placement: target.getAttribute('data-popper-placement') || 'bottom',
+        placement: place,
         modifiers: [
             { name: 'offset', options: { offset: [0, 4] }},
         ]
@@ -74,12 +89,14 @@ function sv_popover(target, interaction)
         popover.classList.remove('show');
         target.classList.remove('popover-shown');
         popper.destroy();
+        cancelExclusivePopover[exclusiveGroup] = null;
+        popoverStack = popoverStack.filter(x => x.popover != popover);
     }
 
     let close;
 
     // Work out actual interaction
-    interaction = target.getAttribute('data-sv-popover-interaction') || interaction;
+    interaction = getPopoverAttribute('data-sv-popover-interaction') || interaction;
 
     if (interaction == 'hover')
     {
@@ -121,17 +138,22 @@ function sv_popover(target, interaction)
     {
         close = function(event) 
         {
+            if (event && (popover == event.target || popover.contains(event.target)))
+                return true;
+
             close_helper();
             document.body.removeEventListener('click', close);
             return false;
         }
         
-        document.body.addEventListener('click', function(event) {
-            if (popover == event.target || popover.contains(event.target))
-                return true;
-            close();
-        });
+        document.body.addEventListener('click', close);
     }
+
+    popoverStack.push({
+        anchor: target,
+        popover: popover,
+        close: close,
+    });
 
     if (exclusiveGroup)
         cancelExclusivePopover[exclusiveGroup] = close;
@@ -150,16 +172,7 @@ document.body.addEventListener('click', function(event) {
             dismissable.remove();
     }
 
-    // Explicit hover interaction
-    let interaction = event.target.getAttribute('data-sv-popover-interaction');
-    if (interaction)
-    {
-        if (interaction != 'hover')
-            return sv_popover(event.target, 'anywhere');
-        return;
-    }
-
-    // Implicit hover interaction for popovers
+    // Click on something with a popover?
     if (event.target.getAttribute('data-sv-popover'))
         return sv_popover(event.target, 'anywhere');
 });
@@ -178,5 +191,20 @@ document.body.addEventListener('mouseenter', function(event) {
     // Implicit hover interaction for tool tips
     if (event.target.getAttribute('data-sv-tooltip'))
         return sv_popover(event.target, 'hover');
+
+}, true);
+
+document.body.addEventListener('keydown', function(event) {
+
+    if (event.key === "Escape") {
+        let popoverEntry = popoverStack.pop();
+        if (popoverEntry)
+        {
+            popoverEntry.close();
+            event.cancelBubble();
+            event.preventDefault();
+            return false;
+        }
+    };
 
 }, true);
