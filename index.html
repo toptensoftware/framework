@@ -120,8 +120,24 @@
 </div>
 
 <p>
-    <button id="button" data-popper-placement="bottom" data-sv-tooltip="Hi, I'm a tooltip">Button with a tooltip</button>
+    <button data-sv-tooltip="Hi, I'm a tooltip">Button with a tooltip</button>
+    <button data-sv-popover="#my-popover">Button with a popover</button>
+    <button data-sv-popover="#my-popover2" data-sv-popover-interaction='outside'>Button with a popover</button>
 </p>
+
+<div class="popover" id="my-popover">
+    <header>Popover Title</header>
+    <section>
+        <p>Hi there! How goes?</p> 
+    </section>
+</div>
+
+<div class="popover container-warning"  id="my-popover2">
+    <header>Are you sure?</header>
+    <section>
+        <p>This is your final warning.  This can't be undone</p> 
+    </section>
+</div>
 
 
 <p>

@@ -216,18 +216,6 @@ form input.switch[type="checkbox"]:checked {
 form input.switch[type="checkbox"]:disabled {
   background-image: none;
 }
-.close-button-top-right {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 1em;
-  height: 1em;
-  z-index: 100;
-  padding: 1.6em;
-  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center / 1em auto no-repeat;
-  cursor: pointer;
-  border: none;
-}
 div.alert {
   background-color: var(--sv-class-backcolor);
   color: var(--sv-class-forecolor);
@@ -295,6 +283,74 @@ div.modal footer {
   padding: 0.5rem 1rem;
   text-align: right;
   border-top: 1px solid var(--sv-modal-inner-bordercolor);
+}
+div.popover {
+  --sv-popover-backcolor: var(--sv-dark);
+  --sv-popover-forecolor: var(--sv-forecolor);
+  --sv-class-containercolor: var(--sv-secondary);
+  --sv-popover-bordercolor: var(--sv-class-containercolor);
+  --sv-popover-titlecolor: var(--sv-secondary);
+  background-color: var(--sv-popover-backcolor);
+  color: var(--sv-popover-forecolor);
+  border-radius: 7px;
+  border: 1px solid var(--sv-popover-bordercolor);
+  position: relative;
+  max-width: 300px;
+  display: none;
+}
+div.popover header {
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: var(--sv-popover-titlecolor);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+div.popover section {
+  padding: 0 1rem;
+}
+div.popover::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+}
+div.popover[data-popper-placement^='top']::after {
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 99%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid var(--sv-popover-bordercolor);
+}
+div.popover[data-popper-placement^='bottom']::after {
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -99%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 7px solid var(--sv-popover-bordercolor);
+}
+div.popover[data-popper-placement^='right']::after {
+  top: 50%;
+  left: 0;
+  transform: translate(-99%, -50%);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 7px solid var(--sv-popover-bordercolor);
+}
+div.popover[data-popper-placement^='left']::after {
+  top: 50%;
+  right: 0;
+  transform: translate(99%, -50%);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid var(--sv-popover-bordercolor);
+}
+div.popover.show,
+div.tooltip.show {
+  display: block;
+  z-index: 200;
 }
 div.container-primary {
   --sv-class-containercolor: var(--sv-primary);
@@ -396,7 +452,6 @@ p.dark {
 .tooltip {
   background: var(--sv-popup-backcolor);
   color: var(--sv-popup-forecolor);
-  font-weight: bold;
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   border: 1px solid var(--sv-popup-bordercolor);
@@ -404,6 +459,7 @@ p.dark {
   position: relative;
   max-width: 200px;
   text-align: center;
+  display: none;
 }
 .tooltip::after {
   position: absolute;

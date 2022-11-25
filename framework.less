@@ -249,7 +249,7 @@ form
     }
 }
 
-.close-button-top-right
+.close-button-top-right()
 {
     position: absolute;
     top: 0;
@@ -274,7 +274,7 @@ div.alert
 
     button.close
     {
-        .close-button-top-right
+        .close-button-top-right()
     }
 }
 
@@ -317,7 +317,7 @@ div.modal
 
         button.close
         {
-            .close-button-top-right
+            .close-button-top-right()
         }
     }
 
@@ -333,6 +333,99 @@ div.modal
         border-top: 1px solid var(--sv-modal-inner-bordercolor);
     }
 }
+
+.popup-arrow(@color)
+{
+    &::after
+    {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+    }
+
+    &[data-popper-placement^='top']::after
+    {
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, 99%);
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 7px solid @color;
+    }
+
+    &[data-popper-placement^='bottom']::after
+    {
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -99%);
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 7px solid @color;
+    }
+
+    &[data-popper-placement^='right']::after
+    {
+        top: 50%;
+        left: 0;
+        transform: translate(-99%, -50%);
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-right: 7px solid @color;
+    }
+    &[data-popper-placement^='left']::after
+    {
+        top: 50%;
+        right: 0;
+        transform: translate(99%, -50%);
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 7px solid @color;
+    }
+}
+
+// Popovers
+div.popover
+{
+    --sv-popover-backcolor: var(--sv-dark);
+    --sv-popover-forecolor: var(--sv-forecolor);
+    --sv-class-containercolor: var(--sv-secondary);
+    --sv-popover-bordercolor: var(--sv-class-containercolor);
+    --sv-popover-titlecolor: var(--sv-secondary);
+
+    background-color: var(--sv-popover-backcolor);
+    color: var(--sv-popover-forecolor);
+    border-radius: 7px;
+    border: 1px solid var(--sv-popover-bordercolor);
+    position: relative;
+    max-width: 300px;
+    display:none;
+    header
+    {
+        padding: 0.5rem 1rem;
+        font-size: 1.1rem;
+        font-weight: bold;
+        background: var(--sv-popover-titlecolor);
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+    }
+
+    section
+    {
+        padding: 0 1rem;
+    }
+
+
+    .popup-arrow(var(--sv-popover-bordercolor))
+}
+
+div.popover.show,
+div.tooltip.show
+{
+    display:block;
+    z-index: 200;
+}
+
 
 div.container-primary { --sv-class-containercolor: var(--sv-primary); --sv-class-containercolor-rgb: var(--sv-primary-rgb); }
 div.container-secondary { --sv-class-containercolor: var(--sv-secondary); --sv-class-containercolor-rgb: var(--sv-secondary-rgb); }
@@ -381,7 +474,6 @@ span.dark:not(.pill), p.dark { color: var(--sv-dark); }
 {
     background: var(--sv-popup-backcolor);
     color: var(--sv-popup-forecolor);
-    font-weight: bold;
     padding: .2rem 0.4rem;
     border-radius: 4px;
     border: 1px solid var(--sv-popup-bordercolor);
@@ -389,52 +481,8 @@ span.dark:not(.pill), p.dark { color: var(--sv-dark); }
     position: relative;
     max-width: 200px;
     text-align: center;
+    display:none;
 
-    &::after
-    {
-        position: absolute;
-        content: "";
-        width: 0;
-        height: 0;
-    }
-
-    &[data-popper-placement^='top']::after
-    {
-        left: 50%;
-        bottom: 0;
-        transform: translate(-50%, 99%);
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 7px solid var(--sv-popup-backcolor);
-    }
-
-    &[data-popper-placement^='bottom']::after
-    {
-        left: 50%;
-        top: 0;
-        transform: translate(-50%, -99%);
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-bottom: 7px solid var(--sv-popup-backcolor);
-    }
-
-    &[data-popper-placement^='right']::after
-    {
-        top: 50%;
-        left: 0;
-        transform: translate(-99%, -50%);
-        border-top: 5px solid transparent;
-        border-bottom: 5px solid transparent;
-        border-right: 7px solid var(--sv-popup-backcolor);
-    }
-    &[data-popper-placement^='left']::after
-    {
-        top: 50%;
-        right: 0;
-        transform: translate(99%, -50%);
-        border-top: 5px solid transparent;
-        border-bottom: 5px solid transparent;
-        border-left: 7px solid var(--sv-popup-backcolor);
-    }
+    .popup-arrow(var(--sv-popup-backcolor))
 }
 
