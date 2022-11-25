@@ -15,10 +15,13 @@ danger
   --sv-info: #3498db;
   --sv-warning: #f39c12;
   --sv-danger: #e74c3c;
-  --sv-button-forecolor: white;
+  --sv-class-forecolor: white;
   --sv-link-color: #00bc8c;
   --sv-light: #adb5bd;
   --sv-dark: #303030;
+  --sv-disabled-color: #808080;
+  --sv-popup-backcolor: black;
+  --sv-popup-forecolor: #fff;
   --sv-backcolor-rgb: 34, 34, 34;
   --sv-forecolor-rgb: 255, 255, 255;
   --sv-primary-rgb: 55, 90, 127;
@@ -27,9 +30,12 @@ danger
   --sv-info-rgb: 52, 152, 219;
   --sv-warning-rgb: 243, 156, 18;
   --sv-danger-rgb: 231, 76, 60;
-  --sv-button-forecolor-rgb: 255, 255, 255;
+  --sv-class-forecolor-rgb: 255, 255, 255;
   --sv-link-color-rgb: 0, 188, 140;
   --sv-light-rgb: 173, 181, 189;
   --sv-dark-rgb: 48, 48, 48;
+  --sv-disabled-color-rgb: 128, 128, 128;
+  --sv-popup-backcolor-rgb: 0, 0, 0;
+  --sv-popup-forecolor-rgb: 255, 255, 255;
   --sv-font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
