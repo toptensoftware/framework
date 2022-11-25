@@ -1,4 +1,15 @@
+
+
+let popoverStack = [];
 let cancelExclusivePopover = {};
+
+function sv_popover_close_all()
+{
+    for (let i=popoverStack.length-1; i>=0; i--)
+    {
+        popoverStack[i].close();
+    }
+}
 
 /*
 Interactions determine what actions close the pop
@@ -8,10 +19,7 @@ Interactions determine what actions close the pop
 - outside - close when click anywhere outside popover
 - anywhere - close where click inside or outside
 */
-
-let popoverStack = [];
-
-function sv_popover(target, interaction)
+function sv_popover_show(target, interaction)
 {
     let popover;
     let didCreatePopover;
@@ -38,6 +46,14 @@ function sv_popover(target, interaction)
     if (popoverEl)
     {
         popover = document.querySelector(popoverEl);
+    }
+
+    // Look for inline popover
+    if (!popover)
+    {
+        // Must be a direct child of a button or anchor
+        if (target.tagName == 'BUTTON' || target.tagName == 'A')
+            popover = target.querySelector('.popover');
     }
 
     // Quit if no popover
@@ -93,11 +109,11 @@ function sv_popover(target, interaction)
         popoverStack = popoverStack.filter(x => x.popover != popover);
     }
 
-    let close;
-
+    
     // Work out actual interaction
     interaction = getPopoverAttribute('data-sv-popover-interaction') || interaction;
-
+    
+    let close;
     if (interaction == 'hover')
     {
         close = function(event) 
@@ -159,22 +175,61 @@ function sv_popover(target, interaction)
         cancelExclusivePopover[exclusiveGroup] = close;
 }
 
-// close on click inside
-// close on click outside
-// click on anchor always closes
+document.body.addEventListener('click', function(event) 
+{
+    let target = event.target;
 
-document.body.addEventListener('click', function(event) {
-    // Close button
-    if (event.target.classList.contains('close'))
+    while (target && !handle_click(target))
     {
-        let dismissable = event.target.closest(".dismissable");
-        if (dismissable)
-            dismissable.remove();
+        target = target.parentElement;
+        if (!target)
+            break;
+
+        if (target.classList.contains('popover') 
+            || target.classList.contains('modal-frame')
+            || target.classList.contains('dialog'))
+        {
+            break;
+        }
     }
 
-    // Click on something with a popover?
-    if (event.target.getAttribute('data-sv-popover'))
-        return sv_popover(event.target, 'anywhere');
+    function handle_click()
+    {
+        // Close button
+        if (target.classList.contains('close'))
+        {
+            // Close modal?
+            let modal = target.closest('.modal-frame');
+            if (modal && _currentModal)
+            {
+                sv_modal_close();
+                event.preventDefault();
+                return true;
+            }
+
+            let dismissable = target.closest(".dismissable");
+            if (dismissable)
+                dismissable.remove();
+            return true;
+        }
+
+        // Click on something with a popover?
+        if (target.getAttribute('data-sv-popover') || target.querySelector(':scope > .popover'))
+        {
+            sv_popover_show(target, 'anywhere');
+            return true;
+        }
+
+        // Click on modal?
+        let modal = target.getAttribute('data-sv-modal');
+        if (modal)
+        {
+            sv_modal_show(modal);
+            return true;
+        }
+
+        return false;
+    }
 });
 
 document.body.addEventListener('mouseenter', function(event) {
@@ -184,27 +239,109 @@ document.body.addEventListener('mouseenter', function(event) {
     if (interaction)
     {
         if (interaction == 'hover')
-            return sv_popover(event.target, 'hover');
+            return sv_popover_show(event.target, 'hover');
         return;
     }
 
     // Implicit hover interaction for tool tips
     if (event.target.getAttribute('data-sv-tooltip'))
-        return sv_popover(event.target, 'hover');
+        return sv_popover_show(event.target, 'hover');
 
 }, true);
 
 document.body.addEventListener('keydown', function(event) {
 
-    if (event.key === "Escape") {
+    if (event.key === "Escape") 
+    {
+        // Cancel popover
         let popoverEntry = popoverStack.pop();
         if (popoverEntry)
         {
             popoverEntry.close();
-            event.cancelBubble();
+            event.stopPropagation();
+            event.preventDefault();
+            return false;
+        }
+
+        // Cancel modal
+        if (_currentModal)
+        {
+            sv_modal_close();
+            event.stopPropagation();
             event.preventDefault();
             return false;
         }
     };
 
 }, true);
+
+
+let _currentModal;
+let _focusTrap;
+
+function sv_modal_show(elOrSel)
+{
+    // Get the modal HTML element
+    let modal;
+    if (typeof(elOrSel) == 'string')
+        modal = document.querySelector(elOrSel);
+    else
+        modal = elOrSel
+
+    // Check have element
+    if (!(modal instanceof HTMLElement))
+        return;
+
+    // Cancel other interactive states
+    sv_popover_close_all();
+    sv_modal_close();
+
+    // Show modal
+    document.body.classList.add('modal-active');
+    modal.classList.add('modal-active');
+
+    // Add backdrop
+    let backdrop = document.createElement("div");
+    backdrop.classList.add('modal-backdrop');
+    document.body.appendChild(backdrop);
+
+    // Trap focus (if 'focus-trap' script loaded)
+    // See: https://github.com/focus-trap/focus-trap
+    if (focusTrap)
+    {
+        _focusTrap = focusTrap.createFocusTrap(modal, {
+            escapeDeactivates: false,   
+            clickOutsideDeactivates: false,
+            allowOutsideClick: false,
+            returnFocusOnDeactivate: true,
+            preventScroll: true,
+        });
+        _focusTrap.activate();
+    }
+
+    _currentModal = modal;
+}
+
+function sv_modal_close()
+{
+    if (_focusTrap)
+    {
+        _focusTrap.deactivate();
+        _focusTrap = null;
+    }
+
+    if (_currentModal)
+    {
+        // Remove backdrop
+        let backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop)
+            backdrop.remove();
+    
+        // Hide
+        document.body.classList.remove('modal-active');
+        _currentModal.classList.remove('modal-active');
+    
+        // Clean up
+        _currentModal = null;
+    }
+}

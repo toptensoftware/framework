@@ -4,10 +4,13 @@
     <link rel="stylesheet" href="framework.theme.css">
     <link rel="stylesheet" href="framework.css">
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
-</head>
+    <script src="https://unpkg.com/tabbable/dist/index.umd.js"></script>
+    <script src="https://unpkg.com/focus-trap/dist/focus-trap.umd.js"></script></head>
 <body>
+<section>
 <h1>Framework!</h1>
 
+<h4>Buttons</h4>
 <p>
     <button class="primary">Primary</button>
     <button class="secondary">Secondary</button>
@@ -44,6 +47,7 @@
     <button class="outline link">Link</button>
 </p>
 
+<h4>Sized Buttons</h4>
 <p>
     <button class="small primary">Small</button>
     <button class="primary">Medium</button>
@@ -54,15 +58,18 @@
 </p>
 
 
+<h4>Dropdown Buttons</h4>
 <p>
-    <button class="dropdown small primary">Small</button>
     <button class="small primary">Small</button>
-    <button class="dropdown primary">Medium</button>
+    <button class="dropdown small primary">Small</button>
     <button class="primary">Medium</button>
-    <button class="dropdown large primary">Large</button>
+    <button class="dropdown primary">Medium</button>
     <button class="large primary">Large</button>
+    <button class="dropdown large primary">Large</button>
 </p>
 
+
+<h4>Button Groups</h4>
 <div class="button-group">
     <button>Left</button>
     <button>Middle</button>
@@ -75,6 +82,7 @@
     <button class="secondary">Right</button>
 </div>
 
+<h4>Radio Button Group</h4>
 <p>
 <div class="button-group">
     <input name="radio" type="radio" id="radio1" checked><label class="outline button" for="radio1">Radio 1</label>
@@ -83,6 +91,7 @@
 </div>
 </p>
 
+<h4>Checkbox Button Group</h4>
 <p>
 <div class="button-group">
     <input name="checkbox" type="checkbox" id="checkbox1"><label class="outline button" for="checkbox1">Check 1</label>
@@ -91,65 +100,122 @@
 </div>
 </p>
 
+<h4>Form Controls</h4>
+
 <form>
 <p>
-    Radio Buttons:
     <input name="radio" type="radio" id="radio4"><label for="radio4">Radio 1</label>
     <input name="radio" type="radio" id="radio5"><label for="radio5">Radio 2</label>
     <input name="radio" type="radio" id="radio6" disabled><label for="radio6">Radio 3</label>
 </p>
 
 <p>
-    Checkboxes:
     <input name="checkbox" type="checkbox" id="checkbox4"><label for="checkbox4">Check 1</label>
     <input name="checkbox" type="checkbox" id="checkbox5"><label for="checkbox5">Check 2</label>
     <input name="checkbox" type="checkbox" id="checkbox6" disabled><label for="checkbox6">Check 3</label>
 </p>
 
 <p>
-    Switches:
-    <input class="switch" name="checkbox" type="checkbox" id="checkbox7"><label for="checkbox7">Check 1</label>
-    <input class="switch" name="checkbox" type="checkbox" id="checkbox8"><label for="checkbox8" >Check 2</label>
-    <input class="switch" name="checkbox" type="checkbox" id="checkbox9" disabled><label for="checkbox9">Check 3</label>
+    <input class="switch" name="checkbox" type="checkbox" id="checkbox7"><label for="checkbox7">Switch 1</label>
+    <input class="switch" name="checkbox" type="checkbox" id="checkbox8"><label for="checkbox8" >Switch 2</label>
+    <input class="switch" name="checkbox" type="checkbox" id="checkbox9" disabled><label for="checkbox9">Switch 3</label>
 </p>
 </form>
 
+<h4>Alert Style Box</h4>
 <div class="alert warning dismissable">
     <button class="close"></button>
     <p>Oh snap! Something went wrong, please try again</p>
 </div>
 
+<h4>Popovers</h4>
 <p>
-    <button data-sv-tooltip="Hi, I'm a tooltip">Button with a tooltip</button>
-    <button data-sv-popover="#my-popover1" data-sv-popover-placement="top">
-        Non-sticky Popover
+    <button data-sv-tooltip="Hi, I'm a tooltip"><span>Button with a tooltip</span></button>
+    <button class='dropdown' data-sv-popover="#my-popover1">Non-sticky Popover</button>
+    <button class='dropdown' data-sv-popover="#my-popover2">Sticky Popover</button>
+    <button class='dropdown' data-sv-popover="#my-popover3">Anchor Popover</button>
+    <button class='dropdown'>
+        <span>Inline Popover</span>
+        <div class="popover  container-warning">
+            <header>Inline Popover</header>
+            <section>
+                <p>This popover is just a child element of the button, making the markup simpler.</p> 
+                <p>Also, note the warning border. Oh no!</p>
+            </section>
+        </div>
     </button>
-    <button data-sv-popover="#my-popover2">Sticky Popover</button>
-    <button data-sv-popover="#my-popover3">Anchor Popover</button>
 </p>
 
-<div class="popover container-warning" id="my-popover1" data-sv-popover-interaction='anywhere'>
+
+<div class="popover" id="my-popover1" data-sv-popover-interaction='anywhere'>
     <header>Non-sticky Popover</header>
     <section>
-        <p>The popover will close on any click anywhere</p> 
+        <p>The popover will close on any click anywhere</p>
     </section>
 </div>
 
 <div class="popover" id="my-popover2" data-sv-popover-interaction='outside' data-sv-popover-placement="top">
     <header>Sticky Popover</header>
     <section>
-        <p>This popover won't close when clicked inside</p> 
+        <form>
+            <p>This popover won't close when clicked inside</p> 
+            <p>
+                <input class="switch" name="checkbox" type="checkbox" id="checkbox21" checked><label for="checkbox21">A handy dandy switch</label>
+            </p>
+            <p>
+                <input class="switch" name="checkbox" type="checkbox" id="checkbox22"><label for="checkbox22">And another one!</label>
+            </p>
+            <p>Also it's been placed 'top'.</p>
+        </form>
     </section>    
 </div>    
 
 <div class="popover"  id="my-popover3" data-sv-popover-interaction='anchor'>
     <header>Anchor Popover</header>
     <section>
-        <p>The popover will only close when clicking on the button that opened it</p> 
+        <p>The popover will only close when clicking on the button that opened it, or by any action that shows another popup from the same group</p> 
     </section>
 </div>
 
+<h4>Modal</h4>
 
+<button data-sv-modal="#my-modal">Show Modal Dialog</button>
+
+<div class="modal-frame" id="my-modal">
+    <div class="dialog">
+        <header>
+            <h1>Dialog</h1>
+            <button class="close"></button>
+        </header>
+        <section>
+            <p>This is the body of the dialog.</p>
+            <form>
+                <p>
+                    <input class="switch" name="checkbox" type="checkbox" id="checkbox11" checked><label for="checkbox11">A handy dandy switch</label>
+                </p>
+                <p>
+                    <input class="switch" name="checkbox" type="checkbox" id="checkbox12"><label for="checkbox12">And another one!</label>
+                </p>
+            </form>
+            
+            <button class="dropdown">
+                <span>Popover in a Modal</span>
+                <div class="popover">
+                    <header>Popover in a Modal</header>
+                    <section>
+                        <p>Testing that popovers work inside modal dialogs</p> 
+                    </section>
+                </div>
+            </button>
+        </section>
+        <footer>
+            <button>Save</button>
+            <button class="close secondary">Cancel</button>
+        </footer>
+    </div>
+</div>
+
+<h4>Pills</h4>
 <p>
     <span class="pill primary">Primary</span>
     <span class="pill secondary">Secondary</span>
@@ -161,28 +227,16 @@
     <span class="pill dark">Dark</span>
 </p>
 
-<div class="modal">
-    <header>
-        <h1>Modal Title</h1>
-        <button class="close"></button>
-    </header>
-    <section>
-        <p>This is the body of the modal dialog</p>
-    </section>
-    <footer>
-        <button>Save</button>
-        <button class="secondary">Cancel</button>
-    </footer>
-</div>
 
 
+<hr />
 
 <h1>Heading 1</h1>
-<h2>Heading 2</h1>
-<h3>Heading 3</h1>
-<h4>Heading 4</h1>
-<h5>Heading 5</h1>
-<h6>Heading 6</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6>
 
     
   
@@ -190,6 +244,9 @@
 <p>This is a paragraph with <span class="muted">some muted text</span>.</p>
 <p>This is a paragraph with <span class="small muted">(some small muted text)</span>.</p>
 <p>This is a paragraph with <span class="warning">warning text</span> and <span class="large danger">large danger text</span>.</p>
+
+
+</section>
 
 <script src="framework.js"></script>
 

@@ -48,35 +48,26 @@ button {
   background-color: var(--sv-class-backcolor);
   color: var(--sv-class-forecolor);
   padding: 0.575rem 0.75rem;
-  border-width: 1px;
+  border-width: 0;
   border-radius: 5px;
   border-style: solid;
   font-size: 1rem;
-  border-color: var(--sv-class-backcolor);
-  background-clip: padding-box;
   line-height: 1rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 .button.link,
 button.link {
   background-color: rgba(0, 0, 0, 0);
-  border-color: rgba(0, 0, 0, 0);
   color: var(--sv-link-color);
   text-decoration: underline;
-}
-.button.link:hover,
-button.link:hover {
-  border-color: rgba(0, 0, 0, 0);
 }
 .button:hover:not(:disabled),
 button:hover:not(:disabled) {
   background-color: rgba(var(--sv-class-backcolor-rgb), 0.8);
-  border-color: rgba(var(--sv-class-backcolor-rgb), 0.8);
 }
 .button:active:not(:disabled),
 button:active:not(:disabled) {
   background-color: rgba(var(--sv-class-backcolor-rgb), 0.6);
-  border-color: rgba(var(--sv-class-backcolor-rgb), 0.6);
 }
 .button:focus-visible:not(:disabled),
 button:focus-visible:not(:disabled) {
@@ -91,6 +82,12 @@ button:disabled {
 button.outline {
   color: var(--sv-class-backcolor);
   background-color: rgba(0, 0, 0, 0);
+  border-width: 1px;
+  border-color: var(--sv-class-backcolor);
+  padding-top: calc(0.575rem - 1px);
+  padding-bottom: calc(0.575rem - 1px);
+  padding-left: calc(0.75rem - 1px);
+  padding-right: calc(0.75rem - 1px);
 }
 .button.outline:hover:not(:disabled),
 button.outline:hover:not(:disabled) {
@@ -100,7 +97,6 @@ button.outline:hover:not(:disabled) {
 .button.outline:active:not(:disabled),
 button.outline:active:not(:disabled) {
   background-color: rgba(var(--sv-class-backcolor-rgb), 0.6);
-  border-color: rgba(var(--sv-class-backcolor-rgb), 0.6);
 }
 .button.small,
 button.small {
@@ -229,8 +225,7 @@ div.alert button.close {
   right: 0;
   width: 1em;
   height: 1em;
-  z-index: 100;
-  padding: 1.6em;
+  padding: 1.7em;
   background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center / 1em auto no-repeat;
   cursor: pointer;
   border: none;
@@ -244,45 +239,77 @@ span.pill {
   font-size: 0.75em;
   font-weight: 700;
 }
-div.modal {
-  --sv-modal-backcolor: var(--sv-dark);
-  --sv-modal-forecolor: var(--sv-forecolor);
+section {
+  padding: 1rem;
+}
+section > :first-child {
+  margin-top: 0;
+}
+section > :last-child {
+  margin-bottom: 0;
+}
+div.dialog {
+  --sv-dialog-backcolor: var(--sv-dark);
+  --sv-dialog-forecolor: var(--sv-forecolor);
   --sv-class-containercolor: var(--sv-secondary);
-  --sv-modal-outer-bordercolor: var(--sv-class-containercolor);
-  --sv-modal-inner-bordercolor: var(--sv-secondary);
-  background-color: var(--sv-modal-backcolor);
-  color: var(--sv-modal-forecolor);
+  --sv-dialog-outer-bordercolor: var(--sv-class-containercolor);
+  --sv-dialog-inner-bordercolor: var(--sv-secondary);
+  max-width: 640px;
+  margin: 0 auto;
+  background-color: var(--sv-dialog-backcolor);
+  color: var(--sv-dialog-forecolor);
   border-radius: 10px;
-  border: 1px solid var(--sv-modal-outer-bordercolor);
-  margin: 2rem;
+  border: 1px solid var(--sv-dialog-outer-bordercolor);
   position: relative;
 }
-div.modal header {
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid var(--sv-modal-inner-bordercolor);
+div.dialog header {
+  padding: 0.14rem 1rem;
+  border-bottom: 1px solid var(--sv-dialog-inner-bordercolor);
 }
-div.modal header h1 {
-  font-size: 1.1rem;
+div.dialog header h1 {
+  font-size: 1.2rem;
 }
-div.modal header button.close {
+div.dialog header button.close {
   position: absolute;
   top: 0;
   right: 0;
   width: 1em;
   height: 1em;
-  z-index: 100;
-  padding: 1.6em;
+  padding: 1.7em;
   background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center / 1em auto no-repeat;
   cursor: pointer;
   border: none;
 }
-div.modal section {
-  padding: 0 1rem;
-}
-div.modal footer {
+div.dialog footer {
   padding: 0.5rem 1rem;
   text-align: right;
-  border-top: 1px solid var(--sv-modal-inner-bordercolor);
+  border-top: 1px solid var(--sv-dialog-inner-bordercolor);
+}
+body.modal-active {
+  overflow: hidden;
+}
+div.modal-frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(100vw - 4rem);
+  height: 100vh;
+  display: none;
+  padding: 2rem;
+  z-index: 50;
+}
+div.modal-frame.modal-active {
+  display: block;
+}
+div.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 49;
 }
 div.popover {
   --sv-popover-backcolor: var(--sv-dark);
@@ -305,9 +332,6 @@ div.popover header {
   background: var(--sv-popover-titlecolor);
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
-}
-div.popover section {
-  padding: 0 1rem;
 }
 div.popover::after {
   position: absolute;
@@ -350,7 +374,7 @@ div.popover[data-popper-placement^='left']::after {
 div.popover.show,
 div.tooltip.show {
   display: block;
-  z-index: 200;
+  z-index: 10;
 }
 div.container-primary {
   --sv-class-containercolor: var(--sv-primary);
