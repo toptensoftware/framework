@@ -377,7 +377,6 @@ span.danger:not(.pill), p.danger { color: var(--sv-danger); }
 span.light:not(.pill), p.light { color: var(--sv-light); }
 span.dark:not(.pill), p.dark { color: var(--sv-dark); }
 
-
 .tooltip
 {
     background: var(--sv-popup-backcolor);
@@ -385,8 +384,11 @@ span.dark:not(.pill), p.dark { color: var(--sv-dark); }
     font-weight: bold;
     padding: .2rem 0.4rem;
     border-radius: 4px;
-    display: inline-block;
+    border: 1px solid var(--sv-popup-bordercolor);
+    display: block;
     position: relative;
+    max-width: 200px;
+    text-align: center;
 
     &::after
     {

@@ -399,8 +399,11 @@ p.dark {
   font-weight: bold;
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
-  display: inline-block;
+  border: 1px solid var(--sv-popup-bordercolor);
+  display: block;
   position: relative;
+  max-width: 200px;
+  text-align: center;
 }
 .tooltip::after {
   position: absolute;

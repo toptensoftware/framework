@@ -20,7 +20,7 @@ danger
   --sv-light: #adb5bd;
   --sv-dark: #303030;
   --sv-disabled-color: #808080;
-  --sv-popup-backcolor: black;
+  --sv-popup-backcolor: #000;
   --sv-popup-forecolor: #fff;
   --sv-backcolor-rgb: 34, 34, 34;
   --sv-forecolor-rgb: 255, 255, 255;
