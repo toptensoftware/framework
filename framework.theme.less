@@ -9,11 +9,13 @@
 @sv-danger: #e74c3c;
 @sv-light: #adb5bd;
 @sv-dark: #303030;
-@sv-class-forecolor: white;
+@sv-class-altcolor: white;
 @sv-link-color: #00bc8c;
 @sv-disabled-color: #808080;
 @sv-popup-backcolor: #000;
 @sv-popup-forecolor: #fff;
+@sv-input-backcolor: black;
+@sv-input-forecolor: white;
 
 
 // Mixin helper to generate r, g, b values
@@ -32,13 +34,15 @@
     --sv-info: @sv-info;
     --sv-warning: @sv-warning;
     --sv-danger: @sv-danger;
-    --sv-class-forecolor: @sv-class-forecolor;
+    --sv-class-altcolor: @sv-class-altcolor;
     --sv-link-color: @sv-link-color;
     --sv-light: @sv-light;
     --sv-dark: @sv-dark;
     --sv-disabled-color: @sv-disabled-color;
     --sv-popup-backcolor: @sv-popup-backcolor;
     --sv-popup-forecolor: @sv-popup-forecolor;
+    --sv-input-backcolor: @sv-input-backcolor;
+    --sv-input-forecolor: @sv-input-forecolor;
 
     --sv-backcolor-rgb: .makergb(@sv-backcolor)[@result];
     --sv-forecolor-rgb: .makergb(@sv-forecolor)[@result];
@@ -48,13 +52,15 @@
     --sv-info-rgb: .makergb(@sv-info)[@result];
     --sv-warning-rgb: .makergb(@sv-warning)[@result];
     --sv-danger-rgb: .makergb(@sv-danger)[@result];
-    --sv-class-forecolor-rgb: .makergb(@sv-class-forecolor)[@result];
+    --sv-class-altcolor-rgb: .makergb(@sv-class-altcolor)[@result];
     --sv-link-color-rgb: .makergb(@sv-link-color)[@result];
     --sv-light-rgb: .makergb(@sv-light)[@result];
     --sv-dark-rgb: .makergb(@sv-dark)[@result];
     --sv-disabled-color-rgb: .makergb(@sv-disabled-color)[@result];
     --sv-popup-backcolor-rgb: .makergb(@sv-popup-backcolor)[@result];
     --sv-popup-forecolor-rgb: .makergb(@sv-popup-forecolor)[@result];
+    --sv-input-backcolor-rgb: .makergb(@sv-input-backcolor)[@result];
+    --sv-input-forecolor-rgb: .makergb(@sv-input-forecolor)[@result];
     
     --sv-font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }

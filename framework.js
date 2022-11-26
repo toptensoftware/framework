@@ -30,10 +30,8 @@ function sv_popover_show(target, interaction)
     let didCreatePopover;
 
     // Quit if popover already shown
-    if (target.classList.contains('popover-shown'))
-    {
+    if (target.classList.contains('popover-active'))
         return;
-    }
 
     // Create tooltip popover?
     let tooltipData = target.getAttribute('data-sv-tooltip');
@@ -88,9 +86,13 @@ function sv_popover_show(target, interaction)
         }
     }
 
+    // Fire "will appear" event
+    if (!target.dispatchEvent(new Event('sv-popover-will-appear', { bubbles: true, cancelable: true})))
+        return;
+
     // Show popover
     popover.classList.add('show');
-    target.classList.add('popover-shown');
+    target.classList.add('popover-active');
 
     // Create popper
     let place = getPopoverAttribute('data-sv-popover-placement') || 'bottom';
@@ -108,10 +110,15 @@ function sv_popover_show(target, interaction)
         if (didCreatePopover)
             popover.remove();
         popover.classList.remove('show');
-        target.classList.remove('popover-shown');
+        target.classList.remove('popover-active');
         popper.destroy();
         cancelExclusivePopover[exclusiveGroup] = null;
         popoverStack = popoverStack.filter(x => x.popover != popover);
+
+        // Fire "did disappear" event
+        if (!target.dispatchEvent(new Event('sv-popover-did-disappear', { bubbles: true, cancelable: true})))
+            return;
+
     }
 
     

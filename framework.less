@@ -3,6 +3,7 @@
     box-sizing: border-box;
 }
 
+// Zero out margins, padding etc... and setup font defaults
 body
 {
     background-color: var(--sv-backcolor);
@@ -14,42 +15,122 @@ body
     padding: 0;
 }   
 
-:root
+// Section should be used to wrap content and puts padding
+// and removed top/bottom margin on contained elements
+section
 {
-    --sv-class-backcolor: var(--sv-primary); 
-    --sv-class-backcolor-rgb: var(--sv-primary-rgb);
+    padding: 1rem;
+
+    // Avoid section padding and child margins at top/bottom
+    > :first-child { margin-top: 0; }
+    > :last-child { margin-bottom: 0; }
 }
 
-.primary { --sv-class-backcolor: var(--sv-primary); --sv-class-backcolor-rgb: var(--sv-primary-rgb); }
-.secondary { --sv-class-backcolor: var(--sv-secondary); --sv-class-backcolor-rgb: var(--sv-secondary-rgb); }
-.success { --sv-class-backcolor: var(--sv-success); --sv-class-backcolor-rgb: var(--sv-success-rgb); }
-.info { --sv-class-backcolor: var(--sv-info); --sv-class-backcolor-rgb: var(--sv-info-rgb); }
-.warning { --sv-class-backcolor: var(--sv-warning); --sv-class-backcolor-rgb: var(--sv-warning-rgb); }
-.danger { --sv-class-backcolor: var(--sv-danger); --sv-class-backcolor-rgb: var(--sv-danger-rgb); }
-.light { --sv-class-backcolor: var(--sv-light); --sv-class-backcolor-rgb: var(--sv-light-rgb); }
-.dark { --sv-class-backcolor: var(--sv-dark); --sv-class-backcolor-rgb: var(--sv-dark-rgb); }
 
+// Default colors
+:root
+{
+    // The default class color is 'secondary'
+    --sv-class-color: var(--sv-secondary); 
+    --sv-class-color-rgb: var(--sv-secondary-rgb);
+
+    // The 'hot' color is the color for selected checkboxes and radio buttons
+    // By default its the primary color, but the class colors below override this.
+    --sv-hot-color: var(--sv-primary); 
+    --sv-hot-color-rgb: var(--sv-primary-rgb);
+
+    // Default container color
+    --sv-class-containercolor: var(--sv-secondary);
+
+    // Default popover colors
+    --sv-popover-backcolor: var(--sv-dark);
+    --sv-popover-forecolor: var(--sv-forecolor);
+    --sv-popover-titlecolor: var(--sv-secondary);
+
+    // Default dialog colors
+    --sv-dialog-backcolor: var(--sv-dark);
+    --sv-dialog-forecolor: var(--sv-forecolor);
+    --sv-dialog-inner-bordercolor: var(--sv-secondary);
+}
+
+
+// class colors
+.primary { --sv-class-color: var(--sv-primary); --sv-class-color-rgb: var(--sv-primary-rgb); --sv-hot-color: var(--sv-primary); --sv-hot-color-rgb: var(--sv-primary-rgb); }
+.secondary { --sv-class-color: var(--sv-secondary); --sv-class-color-rgb: var(--sv-secondary-rgb); --sv-hot-color: var(--sv-secondary); --sv-hot-color-rgb: var(--sv-secondary-rgb); }
+.success { --sv-class-color: var(--sv-success); --sv-class-color-rgb: var(--sv-success-rgb); --sv-hot-color: var(--sv-success); --sv-hot-color-rgb: var(--sv-success-rgb); }
+.info { --sv-class-color: var(--sv-info); --sv-class-color-rgb: var(--sv-info-rgb); --sv-hot-color: var(--sv-info); --sv-hot-color-rgb: var(--sv-info-rgb); }
+.warning { --sv-class-color: var(--sv-warning); --sv-class-color-rgb: var(--sv-warning-rgb); --sv-hot-color: var(--sv-warning); --sv-hot-color-rgb: var(--sv-warning-rgb); }
+.danger { --sv-class-color: var(--sv-danger); --sv-class-color-rgb: var(--sv-danger-rgb); --sv-hot-color: var(--sv-danger); --sv-hot-color-rgb: var(--sv-danger-rgb); }
+.light { --sv-class-color: var(--sv-light); --sv-class-color-rgb: var(--sv-light-rgb); --sv-hot-color: var(--sv-light); --sv-hot-color-rgb: var(--sv-light-rgb); }
+.dark { --sv-class-color: var(--sv-dark); --sv-class-color-rgb: var(--sv-dark-rgb); --sv-hot-color: var(--sv-dark); --sv-hot-color-rgb: var(--sv-dark-rgb); }
+
+// text colors
+.text-primary { color: var(--sv-primary); }
+.text-secondary { color: var(--sv-secondary); }
+.text-success { color: var(--sv-success); }
+.text-info { color: var(--sv-info); }
+.text-warning { color: var(--sv-warning); }
+.text-danger { color: var(--sv-danger); }
+.text-light { color: var(--sv-light); }
+.text-dark { color: var(--sv-dark); }
+
+// container colors
+.container-primary { --sv-class-containercolor: var(--sv-primary); --sv-class-containercolor-rgb: var(--sv-primary-rgb); }
+.container-secondary { --sv-class-containercolor: var(--sv-secondary); --sv-class-containercolor-rgb: var(--sv-secondary-rgb); }
+.container-success { --sv-class-containercolor: var(--sv-success); --sv-class-containercolor-rgb: var(--sv-success-rgb); }
+.container-info { --sv-class-containercolor: var(--sv-info); --sv-class-containercolor-rgb: var(--sv-info-rgb); }
+.container-warning { --sv-class-containercolor: var(--sv-warning); --sv-class-containercolor-rgb: var(--sv-warning-rgb); }
+.container-danger { --sv-class-containercolor: var(--sv-danger); --sv-class-containercolor-rgb: var(--sv-danger-rgb); }
+.container-light { --sv-class-containercolor: var(--sv-light); --sv-class-containercolor-rgb: var(--sv-light-rgb); }
+.container-dark { --sv-class-containercolor: var(--sv-dark); --sv-class-containercolor-rgb: var(--sv-dark-rgb); }
+
+// Text input
 input[type="text"]
 {
     padding: .575rem .75rem;
-    border-width: 0;
+    background-color: var(--sv-input-backcolor);
+    color: var(--sv-input-forecolor);
+    border-width: 1px;
     border-radius: 5px;
     border-style: solid;
+    border-color: var(--sv-class-color);
     font-size: 1rem;
     line-height: 1rem;
     outline: none;
+
+    &::selection 
+    {
+        background: var(--sv-primary);
+        color: var(--sv-class-altcolor);
+    }
+      
+
+    &:focus-visible:not(:disabled)
+    {
+        outline: none;
+        box-shadow: ~'0 0 0 0.25rem rgba(var(--sv-class-color-rgb), .5)';
+    }
+
+
 }
 
-.button, button
+// Base style for button looking things
+.button-base-style()
 {
-    background-color: var(--sv-class-backcolor);
-    color: var(--sv-class-forecolor);
+    background-color: var(--sv-class-color);
+    color: var(--sv-class-altcolor);
     padding: .575rem .75rem;
     border-width: 0;
     border-radius: 5px;
     border-style: solid;
     font-size: 1rem;
     line-height: 1rem;
+}
+
+// Button
+.button, button
+{
+    .button-base-style();
 
     &.link 
     { 
@@ -60,17 +141,17 @@ input[type="text"]
     
     &:hover:not(:disabled)
     {
-        background-color: ~'rgba(var(--sv-class-backcolor-rgb), 0.8)';
+        background-color: ~'rgba(var(--sv-class-color-rgb), 0.8)';
     }
 
     &:active:not(:disabled)
     {
-        background-color: ~'rgba(var(--sv-class-backcolor-rgb), 0.6)';
+        background-color: ~'rgba(var(--sv-class-color-rgb), 0.6)';
     }    
-    &:focus-visible:not(:disabled)
+    &:focus-visible
     {
         outline: none;
-        box-shadow: ~'0 0 0 0.20rem rgba(var(--sv-class-backcolor-rgb), .5)';
+        box-shadow: ~'0 0 0 0.20rem rgba(var(--sv-class-color-rgb), .5)';
     }
 
     &:disabled
@@ -80,10 +161,10 @@ input[type="text"]
 
     &.outline
     {
-        color: var(--sv-class-backcolor);
+        color: var(--sv-class-color);
         background-color: rgba(0, 0, 0, 0);
         border-width: 1px;
-        border-color: var(--sv-class-backcolor);
+        border-color: var(--sv-class-color);
         padding-top: ~'calc(0.575rem - 1px)';
         padding-bottom: ~'calc(0.575rem - 1px)';
         padding-left: ~'calc(0.75rem - 1px)';
@@ -91,12 +172,12 @@ input[type="text"]
 
         &:hover:not(:disabled)
         {
-            color: var(--sv-class-forecolor);
-            background-color: var(--sv-class-backcolor);
+            color: var(--sv-class-altcolor);
+            background-color: var(--sv-class-color);
         }
         &:active:not(:disabled)
         {
-            background-color: ~'rgba(var(--sv-class-backcolor-rgb), 0.6)';
+            background-color: ~'rgba(var(--sv-class-color-rgb), 0.6)';
         }    
     }
 
@@ -125,11 +206,19 @@ input[type="text"]
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+// Control group combines <buttons> and <spans> into what looks
+// like a single control.  Used to create button groups and adorned
+// text input fields
 .control-group
 {
     position: relative;
     display: inline-flex;
     vertical-align: middle;
+
+    span
+    {
+        .button-base-style();
+    }
 
     :first-child,
     label:first-of-type
@@ -137,9 +226,16 @@ input[type="text"]
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
     }
-    :not(:first-child):not(label:first-of-type)
+    input[type="checkbox"]:checked + label.outline,
+    button:not(:first-child)
     {
-        border-left-width:0;
+        background-clip: padding-box;
+        border-left-color: rgba(0,0,0,0);
+        border-left-width: 1px;
+    }
+    label:first-of-type
+    {
+        border-left-width:1px;
     }
     :last-child
     {
@@ -166,18 +262,27 @@ input[type="text"]
     input[type="checkbox"] + label.outline:hover
     {
         background-color: rgba(0,0,0,0);
-        color: var(--sv-class-backcolor);
+        color: var(--sv-class-color);
     }
 
     input[type="checkbox"]:checked + label.outline,
     input[type="radio"]:checked + label.outline,
     input[type="radio"]:checked + label.outline:hover
     {
-        background-color: var(--sv-class-backcolor);
-        color: var(--sv-class-forecolor);
+        background-color: var(--sv-class-color);
+        color: var(--sv-class-altcolor);
     }
+
+    input[type="checkbox"]:focus-visible:not(:disabled) + label,
+    input[type="radio"]:focus-visible:not(:disabled) + label
+    {
+        outline: none;
+        box-shadow: ~'0 0 0 0.25rem rgba(var(--sv-class-color-rgb), .5)';
+    }
+
 }
 
+// Standard checkbox/radio button
 input[type="checkbox"],
 input[type="radio"]
 {
@@ -199,8 +304,8 @@ input[type="radio"]
 
     &:checked
     {
-        background-color: var(--sv-class-backcolor);
-        border-color: var(--sv-class-backcolor);
+        background-color: var(--sv-hot-color);
+        border-color: var(--sv-hot-color);
     }
 
     &:disabled
@@ -220,8 +325,18 @@ input[type="radio"]
     {
         color: var(--sv-disabled-color);
     }
+
+    &:focus-visible + label,
+    &:focus-visible + label
+    {
+        outline: none;
+        border-radius: 3px;
+        box-shadow: ~'0 0 0 1px var(--sv-hot-color)';
+    }
+
 }
 
+// Standard checkbox
 input[type="checkbox"]
 {
     border-radius: 3px;
@@ -231,6 +346,7 @@ input[type="checkbox"]
     }
 }
 
+// Standard radio button
 input[type="radio"]
 {
     border-radius: 10px;
@@ -240,6 +356,7 @@ input[type="radio"]
     }
 }
 
+// Switch
 input.switch[type="checkbox"]
 {
     width:30px;
@@ -260,6 +377,7 @@ input.switch[type="checkbox"]
     }
 }
 
+// Mixin to put a close button at the top right
 .close-button-top-right()
 {
     position: absolute;
@@ -276,8 +394,8 @@ input.switch[type="checkbox"]
 // Alerts
 div.alert
 {
-    background-color: var(--sv-class-backcolor);
-    color: var(--sv-class-forecolor);
+    background-color: var(--sv-class-color);
+    color: var(--sv-class-altcolor);
     padding: 0.1rem 1rem;
     border-radius: .5rem;
     position: relative;
@@ -291,8 +409,8 @@ div.alert
 // Pills
 span.pill
 {
-    background-color: var(--sv-class-backcolor);
-    color: var(--sv-class-forecolor);
+    background-color: var(--sv-class-color);
+    color: var(--sv-class-altcolor);
     display:inline-block;
     padding: .15rem .65rem;
     border-radius: 1rem;
@@ -300,32 +418,15 @@ span.pill
     font-weight: 700;
 }
 
-section
-{
-    padding: 1rem;
-
-    // Avoid section padding and child margins at top/bottom
-    > :first-child { margin-top: 0; }
-    > :last-child { margin-bottom: 0; }
-}
-
-
-
 // dialogs
 div.dialog
 {
-    --sv-dialog-backcolor: var(--sv-dark);
-    --sv-dialog-forecolor: var(--sv-forecolor);
-    --sv-class-containercolor: var(--sv-secondary);
-    --sv-dialog-outer-bordercolor: var(--sv-class-containercolor);
-    --sv-dialog-inner-bordercolor: var(--sv-secondary);
-
     max-width:640px;
     margin:0 auto;
     background-color: var(--sv-dialog-backcolor);
     color: var(--sv-dialog-forecolor);
     border-radius: 10px;
-    border: 1px solid var(--sv-dialog-outer-bordercolor);
+    border: 1px solid var(--sv-class-containercolor);
     position: relative;
     header
     {
@@ -349,14 +450,15 @@ div.dialog
         text-align: right;
         border-top: 1px solid var(--sv-dialog-inner-bordercolor);
     }
-
 }
 
+// Hide scroll bar on body when modal is active
 body.modal-active
 {
     overflow: hidden;
 }
 
+// Frame to host a modal
 div.modal-frame
 {
     position:fixed;
@@ -374,6 +476,7 @@ div.modal-frame
     }
 }
 
+// Obstruct background when modal active
 div.modal-backdrop
 {
     position:fixed;
@@ -386,6 +489,7 @@ div.modal-backdrop
     z-index: 49;
 }
 
+// Mixin to put a arrow on a popup
 .popup-arrow(@color)
 {
     &::after
@@ -439,16 +543,11 @@ div.modal-backdrop
 // Popovers
 div.popover
 {
-    --sv-popover-backcolor: var(--sv-dark);
-    --sv-popover-forecolor: var(--sv-forecolor);
-    --sv-class-containercolor: var(--sv-secondary);
-    --sv-popover-bordercolor: var(--sv-class-containercolor);
-    --sv-popover-titlecolor: var(--sv-secondary);
 
     background-color: var(--sv-popover-backcolor);
     color: var(--sv-popover-forecolor);
     border-radius: 7px;
-    border: 1px solid var(--sv-popover-bordercolor);
+    border: 1px solid var(--sv-class-containercolor);
     position: relative;
     max-width: 300px;
     display:none;
@@ -462,9 +561,10 @@ div.popover
         border-top-right-radius: 7px;
     }
 
-    .popup-arrow(var(--sv-popover-bordercolor))
+    .popup-arrow(var(--sv-class-containercolor))
 }
 
+// Show popover/tooltip
 div.popover.show,
 div.tooltip.show
 {
@@ -472,15 +572,24 @@ div.tooltip.show
     z-index: 10;
 }
 
+// Tool tip
+div.tooltip
+{
+    background: var(--sv-popup-backcolor);
+    color: var(--sv-popup-forecolor);
+    padding: .2rem 0.4rem;
+    border-radius: 4px;
+    border: 1px solid var(--sv-popup-bordercolor);
+    display: block;
+    position: relative;
+    max-width: 200px;
+    text-align: center;
+    display:none;
 
-div.container-primary { --sv-class-containercolor: var(--sv-primary); --sv-class-containercolor-rgb: var(--sv-primary-rgb); }
-div.container-secondary { --sv-class-containercolor: var(--sv-secondary); --sv-class-containercolor-rgb: var(--sv-secondary-rgb); }
-div.container-success { --sv-class-containercolor: var(--sv-success); --sv-class-containercolor-rgb: var(--sv-success-rgb); }
-div.container-info { --sv-class-containercolor: var(--sv-info); --sv-class-containercolor-rgb: var(--sv-info-rgb); }
-div.container-warning { --sv-class-containercolor: var(--sv-warning); --sv-class-containercolor-rgb: var(--sv-warning-rgb); }
-div.container-danger { --sv-class-containercolor: var(--sv-danger); --sv-class-containercolor-rgb: var(--sv-danger-rgb); }
-div.container-light { --sv-class-containercolor: var(--sv-light); --sv-class-containercolor-rgb: var(--sv-light-rgb); }
-div.container-dark { --sv-class-containercolor: var(--sv-dark); --sv-class-containercolor-rgb: var(--sv-dark-rgb); }
+    .popup-arrow(var(--sv-popup-backcolor))
+}
+
+
 
 // Links
 a
@@ -504,31 +613,10 @@ h6 { font-size: 1rem; }
 // font sizing
 .small { font-size: 0.8em; }
 .large { font-size: 1.2em; }
+.muted { opacity: 0.5; }
 
-// span and p coloring
-.muted { opacity: 0.5;}
-span.primary:not(.pill), p.primary { color: var(--sv-primary); }
-span.secondary:not(.pill), p.secondary { color: var(--sv-secondary); }
-span.success:not(.pill), p.success { color: var(--sv-success); }
-span.info:not(.pill), p.info { color: var(--sv-info); }
-span.warning:not(.pill), p.warning { color: var(--sv-warning); }
-span.danger:not(.pill), p.danger { color: var(--sv-danger); }
-span.light:not(.pill), p.light { color: var(--sv-light); }
-span.dark:not(.pill), p.dark { color: var(--sv-dark); }
-
-.tooltip
-{
-    background: var(--sv-popup-backcolor);
-    color: var(--sv-popup-forecolor);
-    padding: .2rem 0.4rem;
-    border-radius: 4px;
-    border: 1px solid var(--sv-popup-bordercolor);
-    display: block;
-    position: relative;
-    max-width: 200px;
-    text-align: center;
-    display:none;
-
-    .popup-arrow(var(--sv-popup-backcolor))
-}
+// text alignment
+.left { text-align: left; }
+.center { text-align: center; }
+.right { text-align: right; }
 

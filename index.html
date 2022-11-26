@@ -69,36 +69,37 @@
         
         <h4>Text Input</h4>
         
-        <p><input type="text"></p>
+        <p><input type="text" value='Hello'/></p>
+        <p><input class="warning" type="text" value="bad value" /></p>
         
         <h4>Control Groups</h4>
         
         <p>
-        <div class="control-group">
-            <button>Left</button>
-            <button>Middle</button>
-            <button>Right</button>
-        </div>
-        </p>
-        
-        <p>
             <div class="control-group">
-            <button class="secondary">Left</button>
-            <button class="secondary">Middle</button>
-            <button class="secondary">Right</button>
-        </div>
+                <button>Left</button>
+                <button>Middle</button>
+                <button>Right</button>
+            </div>
+        </p>
+        
+        <p>
+            <div class="control-group primary">
+                <button>Left</button>
+                <button>Middle</button>
+                <button>Right</button>
+            </div>
         </p>
         
         <p>
         <div class="control-group">
-            <button class="secondary">$</button>
-            <input type="text"></button>
-            <button class="secondary">.00</button>
+            <span>$</span>
+            <input class="right" type="text" value="1024"></button>
+            <span class="">.00</span>
         </div>
         </p>
         <h4>Radio Button Group</h4>
         <p>
-        <div class="control-group">
+        <div class="control-group primary">
             <input name="radio" type="radio" id="radio1" checked><label class="outline button" for="radio1">Radio 1</label>
             <input name="radio" type="radio" id="radio2"><label class="outline button" for="radio2">Radio 2</label>
             <input name="radio" type="radio" id="radio3"><label class="outline button" for="radio3">Radio 3</label>
@@ -107,8 +108,8 @@
         
         <h4>Checkbox Button Group</h4>
         <p>
-        <div class="control-group">
-            <input name="checkbox" type="checkbox" id="checkbox1"><label class="outline button" for="checkbox1">Check 1</label>
+        <div class="control-group primary">
+            <input name="checkbox" type="checkbox" id="checkbox1" checked><label class="outline button" for="checkbox1">Check 1</label>
             <input name="checkbox" type="checkbox" id="checkbox2"><label class="outline button" for="checkbox2">Check 2</label>
             <input name="checkbox" type="checkbox" id="checkbox3"><label class="outline button" for="checkbox3">Check 3</label>
         </div>
@@ -124,14 +125,14 @@
         </p>
         
         <p>
-            <input name="checkbox" type="checkbox" id="checkbox4"><label for="checkbox4">Check 1</label>
-            <input name="checkbox" type="checkbox" id="checkbox5"><label for="checkbox5">Check 2</label>
-            <input name="checkbox" type="checkbox" id="checkbox6" disabled><label for="checkbox6">Check 3</label>
+            <input class="primary" name="checkbox" type="checkbox" id="checkbox4"><label for="checkbox4">Check 1</label>
+            <input class="warning" name="checkbox" type="checkbox" id="checkbox5"><label class='warning' for="checkbox5">Check 2</label>
+            <input class="warning" name="checkbox" type="checkbox" id="checkbox6" disabled><label for="checkbox6">Check 3</label>
         </p>
         
         <p>
             <input class="switch" name="checkbox" type="checkbox" id="checkbox7"><label for="checkbox7">Switch 1</label>
-            <input class="switch" name="checkbox" type="checkbox" id="checkbox8"><label for="checkbox8" >Switch 2</label>
+            <input class="switch danger" name="checkbox" type="checkbox" id="checkbox8"><label class="danger" for="checkbox8" >Switch 2</label>
             <input class="switch" name="checkbox" type="checkbox" id="checkbox9" disabled><label for="checkbox9">Switch 3</label>
         </p>
         </form>
@@ -150,7 +151,7 @@
             <button class='dropdown' data-sv-popover="#my-popover3">Anchor Popover</button>
             <button class='dropdown'>
                 <span>Inline Popover</span>
-                <div class="popover  container-warning">
+                <div class="popover container-warning">
                     <header>Inline Popover</header>
                     <section>
                         <p>This popover is just a child element of the button, making the markup simpler.</p> 
@@ -196,7 +197,7 @@
         <button data-sv-modal="#my-modal">Show Modal Dialog</button>
         
         <div class="modal-frame" id="my-modal">
-            <div class="dialog">
+            <div class="dialog container-warning">
                 <header>
                     <h1>Dialog</h1>
                     <button class="close"></button>
@@ -223,8 +224,8 @@
                     </button>
                 </section>
                 <footer>
-                    <button>Save</button>
-                    <button class="close secondary">Cancel</button>
+                    <button class="primary">Save</button>
+                    <button class="close">Cancel</button>
                 </footer>
             </div>
         </div>
@@ -255,7 +256,7 @@
         <p>This is a paragraph with <a href='#'>a link</a>.</p>
         <p>This is a paragraph with <span class="muted">some muted text</span>.</p>
         <p>This is a paragraph with <span class="small muted">(some small muted text)</span>.</p>
-        <p>This is a paragraph with <span class="warning">warning text</span> and <span class="large danger">large danger text</span>.</p>
+        <p>This is a paragraph with <span class="text-warning">warning text</span> and <span class="large text-danger">large danger text</span>.</p>
         
         
     </section>
