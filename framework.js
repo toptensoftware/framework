@@ -1,3 +1,8 @@
+import './framework.theme.less';
+import './framework.less';
+import { createPopper } from '@popperjs/core';
+import * as focusTrap from 'focus-trap';
+
 // ---------------- Popovers ----------------
 
 let popoverStack = [];
@@ -89,7 +94,7 @@ function sv_popover_show(target, interaction)
 
     // Create popper
     let place = getPopoverAttribute('data-sv-popover-placement') || 'bottom';
-    let popper = Popper.createPopper(target, popover, {
+    let popper = createPopper(target, popover, {
         placement: place,
         modifiers: [
             { name: 'offset', options: { offset: [0, 4] }},

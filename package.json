@@ -1,4 +1,17 @@
 {
+  "name": "framework",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "less": "^4.1.3",
+    "vite": "^3.2.3"
+  },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "focus-trap": "^7.1.0"

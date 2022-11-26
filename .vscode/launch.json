@@ -5,13 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
+            "name": "Vue Server",
             "request": "launch",
-            "name": "Launch Program",
+            "runtimeArgs": [
+                "run",
+                "dev"
+            ],
+            "runtimeExecutable": "npm",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\liveless.js"
+            "type": "node",
+            "cwd": "${workspaceFolder}/",
+            "console": "internalConsole"
         }
     ]
 }
