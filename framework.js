@@ -1,4 +1,4 @@
-
+// ---------------- Popovers ----------------
 
 let popoverStack = [];
 let cancelExclusivePopover = {};
@@ -175,6 +175,91 @@ function sv_popover_show(target, interaction)
         cancelExclusivePopover[exclusiveGroup] = close;
 }
 
+
+// ---------------- Modals ----------------
+
+let _currentModal;
+let _focusTrap;
+
+function sv_modal_show(elOrSel)
+{
+    // Get the modal HTML element
+    let modal;
+    if (typeof(elOrSel) == 'string')
+        modal = document.querySelector(elOrSel);
+    else
+        modal = elOrSel
+
+    // Check have element
+    if (!(modal instanceof HTMLElement))
+        return;
+
+    // Fire "will appear" event
+    if (!modal.dispatchEvent(new Event('sv-modal-will-appear', { bubbles: true, cancelable: true})))
+        return;
+
+    // Cancel other interactive states
+    sv_popover_close_all();
+    sv_modal_close();
+
+    // Show modal
+    document.body.classList.add('modal-active');
+    modal.classList.add('modal-active');
+
+    // Add backdrop
+    let backdrop = document.createElement("div");
+    backdrop.classList.add('modal-backdrop');
+    document.body.appendChild(backdrop);
+
+    // Trap focus (if 'focus-trap' script loaded)
+    // See: https://github.com/focus-trap/focus-trap
+    if (focusTrap)
+    {
+        _focusTrap = focusTrap.createFocusTrap(modal, {
+            escapeDeactivates: false,   
+            clickOutsideDeactivates: false,
+            allowOutsideClick: false,
+            returnFocusOnDeactivate: true,
+            preventScroll: true,
+        });
+        _focusTrap.activate();
+    }
+
+    _currentModal = modal;
+}
+
+function sv_modal_close()
+{
+    if (_focusTrap)
+    {
+        _focusTrap.deactivate();
+        _focusTrap = null;
+    }
+
+    if (_currentModal)
+    {
+        // Remove backdrop
+        let backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop)
+            backdrop.remove();
+    
+        // Hide
+        document.body.classList.remove('modal-active');
+        _currentModal.classList.remove('modal-active');
+
+        // Fire "will disappear" event
+        _currentModal.dispatchEvent(new Event('sv-modal-did-disappear', { bubbles: true, cancelable:false }));
+
+    
+        // Clean up
+        _currentModal = null;
+    }
+}
+
+
+
+// ---------------- Event Listeners ----------------
+
 document.body.addEventListener('click', function(event) 
 {
     let target = event.target;
@@ -275,73 +360,3 @@ document.body.addEventListener('keydown', function(event) {
 
 }, true);
 
-
-let _currentModal;
-let _focusTrap;
-
-function sv_modal_show(elOrSel)
-{
-    // Get the modal HTML element
-    let modal;
-    if (typeof(elOrSel) == 'string')
-        modal = document.querySelector(elOrSel);
-    else
-        modal = elOrSel
-
-    // Check have element
-    if (!(modal instanceof HTMLElement))
-        return;
-
-    // Cancel other interactive states
-    sv_popover_close_all();
-    sv_modal_close();
-
-    // Show modal
-    document.body.classList.add('modal-active');
-    modal.classList.add('modal-active');
-
-    // Add backdrop
-    let backdrop = document.createElement("div");
-    backdrop.classList.add('modal-backdrop');
-    document.body.appendChild(backdrop);
-
-    // Trap focus (if 'focus-trap' script loaded)
-    // See: https://github.com/focus-trap/focus-trap
-    if (focusTrap)
-    {
-        _focusTrap = focusTrap.createFocusTrap(modal, {
-            escapeDeactivates: false,   
-            clickOutsideDeactivates: false,
-            allowOutsideClick: false,
-            returnFocusOnDeactivate: true,
-            preventScroll: true,
-        });
-        _focusTrap.activate();
-    }
-
-    _currentModal = modal;
-}
-
-function sv_modal_close()
-{
-    if (_focusTrap)
-    {
-        _focusTrap.deactivate();
-        _focusTrap = null;
-    }
-
-    if (_currentModal)
-    {
-        // Remove backdrop
-        let backdrop = document.querySelector('.modal-backdrop');
-        if (backdrop)
-            backdrop.remove();
-    
-        // Hide
-        document.body.classList.remove('modal-active');
-        _currentModal.classList.remove('modal-active');
-    
-        // Clean up
-        _currentModal = null;
-    }
-}

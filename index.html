@@ -68,23 +68,38 @@
     <button class="dropdown large primary">Large</button>
 </p>
 
+<h4>Text Input</h4>
 
-<h4>Button Groups</h4>
-<div class="button-group">
+<p><input type="text"></p>
+
+<h4>Control Groups</h4>
+
+<p>
+<div class="control-group">
     <button>Left</button>
     <button>Middle</button>
     <button>Right</button>
 </div>
+</p>
 
-<div class="button-group">
+<p>
+    <div class="control-group">
     <button class="secondary">Left</button>
     <button class="secondary">Middle</button>
     <button class="secondary">Right</button>
 </div>
+</p>
 
+<p>
+<div class="control-group">
+    <button class="secondary">$</button>
+    <input type="text"></button>
+    <button class="secondary">.00</button>
+</div>
+</p>
 <h4>Radio Button Group</h4>
 <p>
-<div class="button-group">
+<div class="control-group">
     <input name="radio" type="radio" id="radio1" checked><label class="outline button" for="radio1">Radio 1</label>
     <input name="radio" type="radio" id="radio2"><label class="outline button" for="radio2">Radio 2</label>
     <input name="radio" type="radio" id="radio3"><label class="outline button" for="radio3">Radio 3</label>
@@ -93,7 +108,7 @@
 
 <h4>Checkbox Button Group</h4>
 <p>
-<div class="button-group">
+<div class="control-group">
     <input name="checkbox" type="checkbox" id="checkbox1"><label class="outline button" for="checkbox1">Check 1</label>
     <input name="checkbox" type="checkbox" id="checkbox2"><label class="outline button" for="checkbox2">Check 2</label>
     <input name="checkbox" type="checkbox" id="checkbox3"><label class="outline button" for="checkbox3">Check 3</label>
@@ -249,6 +264,14 @@
 </section>
 
 <script src="framework.js"></script>
+<script>
+    document.getElementById('my-modal').addEventListener('sv-modal-will-appear', function(event){ 
+        alert("Dialog will appear");
+    });
+    document.getElementById('my-modal').addEventListener('sv-modal-did-disappear', function(event){ 
+        alert("Dialog did disappear");
+    });
+</script>
 
 </body>
 </html>
