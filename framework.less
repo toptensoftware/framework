@@ -19,11 +19,8 @@ body
 // and removed top/bottom margin on contained elements
 section
 {
-    padding: 1rem;
+    padding: 0 1rem;
 
-    // Avoid section padding and child margins at top/bottom
-    > :first-child { margin-top: 0; }
-    > :last-child { margin-bottom: 0; }
 }
 
 
@@ -428,7 +425,7 @@ span.pill
 // dialogs
 div.dialog
 {
-    max-width:640px;
+    max-width: 600px;
     margin:0 auto;
     background-color: var(--sv-dialog-backcolor);
     color: var(--sv-dialog-forecolor);
@@ -457,6 +454,10 @@ div.dialog
         text-align: right;
         border-top: 1px solid var(--sv-dialog-inner-bordercolor);
     }
+
+    &.dialog-sm { max-width: 350px; }
+    &.dialog-lg { max-width: 700px; }
+    &.dialog-xl { max-width: 100%; }
 }
 
 // Hide scroll bar on body when modal is active
@@ -471,7 +472,7 @@ div.modal-frame
     position:fixed;
     top:0;
     left:0;
-    width:~"calc(100vw - 4rem)";
+    width:~"calc(100vw)";
     height:100vh;
     display: none;
     padding: 2rem;
