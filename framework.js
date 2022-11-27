@@ -31,7 +31,7 @@ export function sv_popover_show(target, options)
 
     // Quit if popover already shown
     if (target.classList.contains('popover-active'))
-        return;
+        return false;
 
     // Create tooltip popover?
     let tooltipData = target.getAttribute('data-sv-tooltip');
@@ -61,7 +61,7 @@ export function sv_popover_show(target, options)
 
     // Quit if no popover
     if (!popover)
-        return;
+        return false;
 
     // Helper to get popover data attribute from either the popup itself, or
     // the popup's anchor
@@ -88,7 +88,7 @@ export function sv_popover_show(target, options)
 
     // Fire "will appear" event
     if (!target.dispatchEvent(new Event('sv-popover-will-appear', { bubbles: true, cancelable: true})))
-        return;
+        return false;
 
     // Show popover
     popover.classList.add('show');
@@ -189,6 +189,8 @@ export function sv_popover_show(target, options)
 
     if (exclusiveGroup)
         cancelExclusivePopover[exclusiveGroup] = close;
+
+    return true;
 }
 
 
@@ -323,6 +325,7 @@ document.body.addEventListener('click', function(event)
             sv_popover_show(target, { 
                 interaction: 'anywhere',
             });
+            event.preventDefault();
             return true;
         }
 
