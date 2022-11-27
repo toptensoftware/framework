@@ -6,8 +6,8 @@
 // Zero out margins, padding etc... and setup font defaults
 body
 {
-    background-color: var(--sv-backcolor);
-    color: var(--sv-forecolor);
+    background-color: var(--sv-body-backcolor);
+    color: var(--sv-body-forecolor);
     font-family: var(--sv-font-family);
     font-size: 1rem;
     box-sizing: border-box;
@@ -45,8 +45,8 @@ section
     --sv-popover-titlecolor: var(--sv-secondary);
 
     // Default menu colors
-    --sv-menu-backcolor: var(--sv-backcolor);
-    --sv-menu-forecolor: var(--sv-forecolor);
+    --sv-menu-backcolor: var(--sv-body-backcolor);
+    --sv-menu-forecolor: var(--sv-body-forecolor);
 
     // Default dialog colors
     --sv-dialog-backcolor: var(--sv-dark);
@@ -586,7 +586,7 @@ div.modal-backdrop
 // Popovers
 div.popover
 {
-
+    text-align: left;
     background-color: var(--sv-popover-backcolor);
     color: var(--sv-popover-forecolor);
     border-radius: 7px;

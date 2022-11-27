@@ -1,6 +1,8 @@
 // Theme Colors
-@sv-backcolor: #222;
-@sv-forecolor: white;
+@sv-base-backcolor: #222;
+@sv-base-forecolor: white;
+@sv-body-backcolor: #222;
+@sv-body-forecolor: white;
 @sv-primary: #375a7f;
 @sv-secondary: #444;
 @sv-success: #00bc8c;
@@ -27,8 +29,10 @@
 
 :root {
     color-scheme: dark;
-    --sv-backcolor: @sv-backcolor;
-    --sv-forecolor: @sv-forecolor;
+    --sv-base-backcolor: @sv-base-backcolor;
+    --sv-base-forecolor: @sv-base-forecolor;
+    --sv-body-backcolor: @sv-body-backcolor;
+    --sv-body-forecolor: @sv-body-forecolor;
     --sv-primary: @sv-primary;
     --sv-secondary: @sv-secondary;
     --sv-success: @sv-success;
@@ -45,8 +49,10 @@
     --sv-input-backcolor: @sv-input-backcolor;
     --sv-input-forecolor: @sv-input-forecolor;
 
-    --sv-backcolor-rgb: .makergb(@sv-backcolor)[@result];
-    --sv-forecolor-rgb: .makergb(@sv-forecolor)[@result];
+    --sv-base-backcolor-rgb: .makergb(@sv-base-backcolor)[@result];
+    --sv-base-forecolor-rgb: .makergb(@sv-base-forecolor)[@result];
+    --sv-body-backcolor-rgb: .makergb(@sv-body-backcolor)[@result];
+    --sv-body-forecolor-rgb: .makergb(@sv-body-forecolor)[@result];
     --sv-primary-rgb: .makergb(@sv-primary)[@result];
     --sv-secondary-rgb: .makergb(@sv-secondary)[@result];
     --sv-success-rgb: .makergb(@sv-success)[@result];
