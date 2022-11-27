@@ -4,7 +4,7 @@ import { sv_modal_show } from "./framework";
 function showCode(event)
 {
     // Get code lines
-    let code = event.target.nextElementSibling.innerHTML;
+    let code = event.target.previousElementSibling.innerHTML;
     let codeLines = code.split('\n');
 
     // Remove lines that are completely blank
@@ -57,7 +57,9 @@ function showCode(event)
     //alert(code);
 }
 
-for (let b of document.querySelectorAll('div.sample > button'))
+for (let s of document.querySelectorAll('div.sample'))
 {
-    b.addEventListener('click', showCode);
+    let button = document.createElement("button");
+    s.appendChild(button);
+    button.addEventListener('click', showCode);
 }

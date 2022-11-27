@@ -12,7 +12,6 @@
         <h4>Buttons</h4>
 
         <div class="sample">
-            <button></button>
             <p>
                 <button class="primary">Primary</button>
                 <button class="secondary">Secondary</button>
@@ -27,7 +26,6 @@
         </div>
         
         <div class="sample">
-            <button></button>
             <p>
                 <button disabled class="primary">Primary</button>
                 <button disabled class="secondary">Secondary</button>
@@ -42,7 +40,6 @@
         </div>
         
         <div class="sample">
-            <button></button>
             <p>
                 <button class="outline primary">Primary</button>
                 <button class="outline secondary">Secondary</button>
@@ -58,7 +55,6 @@
 
         <h4>Sized Buttons</h4>
         <div class="sample">
-            <button></button>
             <p>
                 <button class="small primary">Small</button>
                 <button class="primary">Medium</button>
@@ -72,7 +68,6 @@
         
         <h4>Dropdown Buttons</h4>
         <div class="sample">
-            <button></button>
             <p>
                 <button class="small primary">Small</button>
                 <button class="dropdown small primary">
@@ -114,19 +109,16 @@
         <h4>Text Input</h4>
         
         <div class="sample">
-            <button></button>
             <p><input type="text" placeholder="Type Here"/></p>
         </div>  
 
         <div class="sample">
-            <button></button>
             <p><input class="warning" type="text" value="bad value" /></p>
         </div>
         
         <h4>Control Groups</h4>
         
         <div class="sample">
-            <button></button>
             <div>
                 <div class="control-group">
                     <button>Left</button>
@@ -137,7 +129,6 @@
         </div>
         
         <div class="sample">
-            <button></button>
             <div>
                 <div class="control-group primary">
                     <button>Left</button>
@@ -148,7 +139,6 @@
         </div>  
         
         <div class="sample">
-            <button></button>
             <div>
                 <div class="control-group">
                     <span>$</span>
@@ -160,7 +150,6 @@
 
         <h4>Radio Button Group</h4>
         <div class="sample">
-            <button></button>
             <div>
                 <div class="control-group primary">
                     <input name="radio" type="radio" id="radio1" checked><label class="outline button" for="radio1">Radio 1</label>
@@ -173,7 +162,6 @@
         <h4>Checkbox Button Group</h4>
 
         <div class="sample">
-            <button></button>
             <div>
                 <div class="control-group primary">
                     <input name="checkbox" type="checkbox" id="checkbox1" checked><label class="outline button" for="checkbox1">Check 1</label>
@@ -186,7 +174,6 @@
         <h4>Form Controls</h4>
         
         <div class="sample">
-            <button></button>
             <div>
                 <input name="radio" type="radio" id="radio4"><label for="radio4">Radio 1</label>
                 <input name="radio" type="radio" id="radio5"><label for="radio5">Radio 2</label>
@@ -195,7 +182,6 @@
         </div>
         
         <div class="sample">
-            <button></button>
             <form>
                 <input class="primary" name="checkbox" type="checkbox" id="checkbox4"><label for="checkbox4">Check 1</label>
                 <input class="warning" name="checkbox" type="checkbox" id="checkbox5"><label class='warning' for="checkbox5">Check 2</label>
@@ -204,7 +190,6 @@
         </div>  
         
         <div class="sample">
-            <button></button>
             <form>
                 <input class="switch" name="checkbox" type="checkbox" id="checkbox7"><label for="checkbox7">Switch 1</label>
                 <input class="switch danger" name="checkbox" type="checkbox" id="checkbox8"><label class="danger" for="checkbox8" >Switch 2</label>
@@ -215,7 +200,6 @@
         <h4>Alert Style Box</h4>
 
         <div class="sample">
-            <button></button>
             <div>
                 <div class="alert warning dismissable" style="margin-right: 40px">
                     <button class="close"></button>
@@ -227,7 +211,6 @@
         <h4>Popovers</h4>
 
         <div class="sample">
-            <button></button>
             <div>
                 <button data-sv-tooltip="Hi, I'm a tooltip"><span>Button with a tooltip</span></button>
                 <button class='dropdown' data-sv-popover="#my-popover1">Non-sticky Popover</button>
@@ -271,7 +254,6 @@
         </div>
 
         <div class="sample">
-            <button></button>
             <p>
                 <button class='dropdown'>
                     <span>Inline Popover</span>
@@ -291,36 +273,39 @@
         <h4>Modal</h4>
         
         <div class="sample">
-            <button></button>
             <div>
                 <button data-sv-modal="#my-modal">Show Modal Dialog</button>
                 
                 <div class="modal-frame" id="my-modal">
-                    <div class="dialog container-warning">
+                    <div class="dialog dialog-sm container-warning">
                         <header>
                             <h1>Dialog</h1>
                             <button class="close"></button>
                         </header>
                         <section>
-                            <p>This is the body of the dialog.</p>
                             <form>
+                                <p>This is the body of the dialog.</p>
                                 <p>
-                                    <input class="switch" name="checkbox" type="checkbox" id="checkbox11" checked><label for="checkbox11">A handy dandy switch</label>
+                                    <input class="switch" name="checkbox" type="checkbox" id="checkbox11" checked>
+                                    <label for="checkbox11">A handy dandy switch</label>
                                 </p>
                                 <p>
-                                    <input class="switch" name="checkbox" type="checkbox" id="checkbox12"><label for="checkbox12">And another one!</label>
+                                    <input class="switch" name="checkbox" type="checkbox" id="checkbox12">
+                                    <label for="checkbox12">And another one!</label>
+                                </p>
+                                
+                                <p>
+                                    <button class="dropdown">
+                                        <span>Popover in a Modal</span>
+                                        <div class="popover">
+                                            <header>Popover in a Modal</header>
+                                            <section>
+                                                <p>Testing that popovers work inside modal dialogs</p> 
+                                            </section>
+                                        </div>
+                                    </button>
                                 </p>
                             </form>
-                            
-                            <button class="dropdown">
-                                <span>Popover in a Modal</span>
-                                <div class="popover">
-                                    <header>Popover in a Modal</header>
-                                    <section>
-                                        <p>Testing that popovers work inside modal dialogs</p> 
-                                    </section>
-                                </div>
-                            </button>
                         </section>
                         <footer>
                             <button class="primary">Save</button>
@@ -334,7 +319,6 @@
         <h4>Pills</h4>
 
         <div class="sample">
-            <button></button>
             <p>
                 <span class="pill primary">Primary</span>
                 <span class="pill secondary">Secondary</span>
@@ -350,7 +334,6 @@
         <hr />
         
         <div class="sample">
-            <button></button>
             <div>
                 <h1>Heading 1</h1>
                 <h2>Heading 2</h2>
@@ -364,7 +347,6 @@
             
           
         <div class="sample">
-            <button></button>
             <div>
                 <p>This is a paragraph with <a href='#'>a link</a>.</p>
                 <p>This is a paragraph with <span class="muted">some muted text</span>.</p>
@@ -377,7 +359,7 @@
     </section>
 
     <div class="modal-frame" id="code-modal">
-        <div class="dialog container-info">
+        <div class="dialog dialog-lg container-info">
             <header>
                 <h1>Code</h1>
                 <button class="close"></button>
