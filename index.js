@@ -63,3 +63,31 @@ for (let s of document.querySelectorAll('div.sample'))
     s.appendChild(button);
     button.addEventListener('click', showCode);
 }
+
+function copyTextToClipboard(text) 
+{
+    var textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+        document.execCommand('copy');
+    } 
+    finally
+    {
+        textArea.remove();
+    }
+}
+
+document.getElementById("copyCode").addEventListener('click', function(){
+
+    let code = document.getElementById('sample-code').innerText;
+
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(code);
+      }
+
+})
+
+
+

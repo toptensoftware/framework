@@ -163,6 +163,16 @@ input[type="text"]
         opacity: 0.5;
     }
 
+    &.transparent
+    {
+        background-color: rgba(0,0,0,0);
+
+        &:focus-visible:not(:active)
+        {
+            background-color: var(--sv-class-color);
+        }
+    }
+
     &.outline
     {
         color: var(--sv-class-color);
@@ -185,14 +195,14 @@ input[type="text"]
         }    
     }
 
-    &.small
+    &.button-sm
     {
         font-size: 0.75rem;
         padding: .24rem .56rem;
         border-radius: 3px;
     }
 
-    &.large
+    &.button-lg
     {
         font-size: 1.2rem;
         padding: .7rem .9rem;
@@ -379,6 +389,18 @@ input.switch[type="checkbox"]
     {
         background-image: none;
     }
+}
+
+fieldset
+{
+    border: none;
+    padding: 0;
+}
+
+legend
+{
+    padding-inline-start: 0px;
+    padding-inline-end: 0px;
 }
 
 // Mixin to put a close button at the top right
@@ -655,8 +677,6 @@ h5 { font-size: 1.25rem; }
 h6 { font-size: 1rem; }
 
 // font sizing
-.small { font-size: 0.8em; }
-.large { font-size: 1.2em; }
 .muted { opacity: 0.5; }
 
 // text alignment

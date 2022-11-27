@@ -53,24 +53,38 @@
             </p>
         </div>        
 
-        <h4>Sized Buttons</h4>
         <div class="sample">
             <p>
-                <button class="small primary">Small</button>
-                <button class="primary">Medium</button>
-                <button class="large primary">Large</button>
-                <button class="outline small primary">Small</button>
-                <button class="outline primary">Medium</button>
-                <button class="outline large primary">Large</button>
+                <button class="transparent primary">Primary</button>
+                <button class="transparent secondary">Secondary</button>
+                <button class="transparent success">Success</button>
+                <button class="transparent info">Info</button>
+                <button class="transparent warning">Warning</button>
+                <button class="transparent danger">Danger</button>
+                <button class="transparent light">Light</button>
+                <button class="transparent dark">Dark</button>
+                <button class="transparent link">Link</button>
+            </p>
+        </div>        
+
+        <h4>Sized Buttons</h4>
+        <div class="sample">
+            <p class="primary">
+                <button class="button-sm">Small</button>
+                <button class="">Medium</button>
+                <button class="button-lg">Large</button>
+                <button class="outline button-sm">Small</button>
+                <button class="outline">Medium</button>
+                <button class="outline button-lg">Large</button>
             </p>
         </div>
         
         
         <h4>Dropdown Buttons</h4>
         <div class="sample">
-            <p>
-                <button class="small primary">Small</button>
-                <button class="dropdown small primary">
+            <p class="primary">
+                <button class="button-sm">Small</button>
+                <button class="button-sm dropdown">
                     <span>Small</span>
                     <div class="menu">
                         <ul>
@@ -80,8 +94,8 @@
                         </ul>
                     </div>
                 </button>
-                <button class="primary">Medium</button>
-                <button class="dropdown primary">
+                <button class="">Medium</button>
+                <button class="dropdown ">
                     <span>Medium</span>
                     <div class="menu">
                         <ul>
@@ -91,8 +105,8 @@
                         </ul>
                     </div>
                 </button>
-                <button class="large primary">Large</button>
-                <button class="dropdown large primary">
+                <button class="button-lg">Large</button>
+                <button class="button-lg dropdown">
                     <span>Large</span>
                     <div class="menu">
                         <ul>
@@ -152,9 +166,14 @@
         <div class="sample">
             <div>
                 <div class="control-group primary">
-                    <input name="radio" type="radio" id="radio1" checked><label class="outline button" for="radio1">Radio 1</label>
-                    <input name="radio" type="radio" id="radio2"><label class="outline button" for="radio2">Radio 2</label>
-                    <input name="radio" type="radio" id="radio3"><label class="outline button" for="radio3">Radio 3</label>
+                    <input type="radio" id="radio1" checked>
+                    <label class="outline button" for="radio1">Radio 1</label>
+                    
+                    <input type="radio" id="radio2">
+                    <label class="outline button" for="radio2">Radio 2</label>
+                    
+                    <input type="radio" id="radio3">
+                    <label class="outline button" for="radio3">Radio 3</label>
                 </div>
             </div>
         </div>
@@ -164,9 +183,14 @@
         <div class="sample">
             <div>
                 <div class="control-group primary">
-                    <input name="checkbox" type="checkbox" id="checkbox1" checked><label class="outline button" for="checkbox1">Check 1</label>
-                    <input name="checkbox" type="checkbox" id="checkbox2"><label class="outline button" for="checkbox2">Check 2</label>
-                    <input name="checkbox" type="checkbox" id="checkbox3"><label class="outline button" for="checkbox3">Check 3</label>
+                    <input type="checkbox" id="checkbox1" checked>
+                    <label class="outline button" for="checkbox1">Check 1</label>
+                    
+                    <input type="checkbox" id="checkbox2">
+                    <label class="outline button" for="checkbox2">Check 2</label>
+                    
+                    <input type="checkbox" id="checkbox3">
+                    <label class="outline button" for="checkbox3">Check 3</label>
                 </div>
             </div>
         </div>
@@ -174,27 +198,63 @@
         <h4>Form Controls</h4>
         
         <div class="sample">
-            <div>
-                <input name="radio" type="radio" id="radio4"><label for="radio4">Radio 1</label>
-                <input name="radio" type="radio" id="radio5"><label for="radio5">Radio 2</label>
-                <input name="radio" type="radio" id="radio6" disabled><label for="radio6">Radio 3</label>
-            </div>
+            <fieldset>
+                <legend>Radio Buttons</legend>
+                <div>
+                    <input name="radio" type="radio" id="radio4">
+                    <label for="radio4">Radio 1</label>
+                </div>
+                
+                <div>
+                    <input name="radio" type="radio" id="radio5">
+                    <label for="radio5">Radio 2</label>
+                </div>
+
+                <div>
+                    <input name="radio" type="radio" id="radio6" disabled>
+                    <label for="radio6">Radio 3</label>
+                </div> 
+            </fieldset>
         </div>
         
         <div class="sample">
-            <form>
-                <input class="primary" name="checkbox" type="checkbox" id="checkbox4"><label for="checkbox4">Check 1</label>
-                <input class="warning" name="checkbox" type="checkbox" id="checkbox5"><label class='warning' for="checkbox5">Check 2</label>
-                <input class="warning" name="checkbox" type="checkbox" id="checkbox6" disabled><label for="checkbox6">Check 3</label>
-            </form>
+            <fieldset>
+                <legend>Checkboxes</legend>
+                <div>
+                    <input type="checkbox" id="checkbox4">
+                    <label for="checkbox4">Normal Checkbox</label>
+                </div>
+
+                <div>
+                    <input class="warning" type="checkbox" id="checkbox5" checked>
+                    <label for="checkbox5">Colored Checkbox</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="checkbox6" disabled>
+                    <label for="checkbox6">Disabled Checkbox</label>
+                </div>
+            </fieldset>
         </div>  
         
         <div class="sample">
-            <form>
-                <input class="switch" name="checkbox" type="checkbox" id="checkbox7"><label for="checkbox7">Switch 1</label>
-                <input class="switch danger" name="checkbox" type="checkbox" id="checkbox8"><label class="danger" for="checkbox8" >Switch 2</label>
-                <input class="switch" name="checkbox" type="checkbox" id="checkbox9" disabled><label for="checkbox9">Switch 3</label>
-            </form>
+            <fieldset>
+                <legend>Switches</legend>
+                <div>
+                    <input class="switch" type="checkbox" id="checkbox7">
+                    <label for="checkbox7">Normal Switch</label>
+                </div>
+
+                <div>
+                    <input class="switch danger" type="checkbox" id="checkbox8" checked>
+                    <label class="danger" for="checkbox8" >Colored Switch</label>
+                </div>
+
+                <div>
+                    <input class="switch" type="checkbox" id="checkbox9" disabled>
+                    <label for="checkbox9">Disabled Switch</label>
+                </div>
+            </fieldset>
         </div>
         
         <h4>Alert Style Box</h4>
@@ -350,8 +410,8 @@
             <div>
                 <p>This is a paragraph with <a href='#'>a link</a>.</p>
                 <p>This is a paragraph with <span class="muted">some muted text</span>.</p>
-                <p>This is a paragraph with <span class="small muted">(some small muted text)</span>.</p>
-                <p>This is a paragraph with <span class="text-warning">warning text</span> and <span class="large text-danger">large danger text</span>.</p>
+                <p>This is a paragraph with <small><span class="muted">(some small muted text)</span></small>.</p>
+                <p>This is a paragraph with <span class="text-warning">warning text</span> and <big><span class="text-danger">large danger text</span></big>.</p>
             </div>
         </div>
         
@@ -368,6 +428,7 @@
                 <pre id="sample-code"></pre>
             </section>
             <footer>
+                <button id="copyCode">Copy</button>
                 <button class="close">Close</button>
             </footer>
         </div>
