@@ -1,0 +1,44 @@
+div.sample
+{
+    position: relative;
+    margin-bottom: 10px;
+
+    & > button
+    {
+        display:none;
+        padding: 5px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        &::after 
+        { 
+            content: "<>"; 
+        }
+    }
+
+    form
+    {
+        padding-top: 10px;
+    }
+}
+
+div.sample:hover
+{
+    & > button
+    {
+        display:block;
+    }
+}
+
+#sample-code
+{
+    max-height: 400px;
+    padding: 10px;
+    overflow: auto;
+    font-size: smaller;
+
+    .tag { color: #f92672; }
+    .attr { color: #a6e22e; }
+    .value { color: #e6db74; }
+    .comment { color: #080; }
+}

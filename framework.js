@@ -8,7 +8,7 @@ import * as focusTrap from 'focus-trap';
 let popoverStack = [];
 let cancelExclusivePopover = {};
 
-function sv_popover_close_all()
+export function sv_popover_close_all()
 {
     for (let i=popoverStack.length-1; i>=0; i--)
     {
@@ -24,7 +24,7 @@ Interactions determine what actions close the pop
 - outside - close when click anywhere outside popover
 - anywhere - close where click inside or outside
 */
-function sv_popover_show(target, interaction)
+export function sv_popover_show(target, options)
 {
     let popover;
     let didCreatePopover;
@@ -56,7 +56,7 @@ function sv_popover_show(target, interaction)
     {
         // Must be a direct child of a button or anchor
         if (target.tagName == 'BUTTON' || target.tagName == 'A')
-            popover = target.querySelector('.popover');
+            popover = target.querySelector('.popover,.menu');
     }
 
     // Quit if no popover
@@ -94,10 +94,14 @@ function sv_popover_show(target, interaction)
     popover.classList.add('show');
     target.classList.add('popover-active');
 
-    // Create popper
-    let place = getPopoverAttribute('data-sv-popover-placement') || 'bottom';
+    // Work out placement
+    let placement = getPopoverAttribute('data-sv-popover-placement');
+    if (!placement && popover.classList.contains('menu'))
+        placement = 'bottom-start';
+
+        // Create popper
     let popper = createPopper(target, popover, {
-        placement: place,
+        placement: placement || 'bottom',
         modifiers: [
             { name: 'offset', options: { offset: [0, 4] }},
         ]
@@ -123,7 +127,7 @@ function sv_popover_show(target, interaction)
 
     
     // Work out actual interaction
-    interaction = getPopoverAttribute('data-sv-popover-interaction') || interaction;
+    let interaction = getPopoverAttribute('data-sv-popover-interaction') || options.interaction || 'anywhere';
     
     let close;
     if (interaction == 'hover')
@@ -193,7 +197,7 @@ function sv_popover_show(target, interaction)
 let _currentModal;
 let _focusTrap;
 
-function sv_modal_show(elOrSel)
+export function sv_modal_show(elOrSel)
 {
     // Get the modal HTML element
     let modal;
@@ -240,7 +244,7 @@ function sv_modal_show(elOrSel)
     _currentModal = modal;
 }
 
-function sv_modal_close()
+export function sv_modal_close()
 {
     if (_focusTrap)
     {
@@ -311,9 +315,14 @@ document.body.addEventListener('click', function(event)
         }
 
         // Click on something with a popover?
-        if (target.getAttribute('data-sv-popover') || target.querySelector(':scope > .popover'))
+        if (target.getAttribute('data-sv-popover') 
+            || target.querySelector(':scope > .popover')
+            || target.querySelector(':scope > .menu')
+        )
         {
-            sv_popover_show(target, 'anywhere');
+            sv_popover_show(target, { 
+                interaction: 'anywhere',
+            });
             return true;
         }
 
@@ -336,13 +345,13 @@ document.body.addEventListener('mouseenter', function(event) {
     if (interaction)
     {
         if (interaction == 'hover')
-            return sv_popover_show(event.target, 'hover');
+            return sv_popover_show(event.target, { interaction: 'hover' });
         return;
     }
 
     // Implicit hover interaction for tool tips
     if (event.target.getAttribute('data-sv-tooltip'))
-        return sv_popover_show(event.target, 'hover');
+        return sv_popover_show(event.target, { interaction: 'hover' });
 
 }, true);
 

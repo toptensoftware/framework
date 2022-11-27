@@ -47,6 +47,10 @@ section
     --sv-popover-forecolor: var(--sv-forecolor);
     --sv-popover-titlecolor: var(--sv-secondary);
 
+    // Default menu colors
+    --sv-menu-backcolor: var(--sv-backcolor);
+    --sv-menu-forecolor: var(--sv-forecolor);
+
     // Default dialog colors
     --sv-dialog-backcolor: var(--sv-dark);
     --sv-dialog-forecolor: var(--sv-forecolor);
@@ -104,14 +108,17 @@ input[type="text"]
         color: var(--sv-class-altcolor);
     }
       
-
     &:focus-visible:not(:disabled)
     {
         outline: none;
         box-shadow: ~'0 0 0 0.25rem rgba(var(--sv-class-color-rgb), .5)';
     }
 
-
+    &::placeholder
+    {
+        color: rgba(var(--sv-input-forecolor-rgb), 0.33);
+    }
+    
 }
 
 // Base style for button looking things
@@ -566,7 +573,8 @@ div.popover
 
 // Show popover/tooltip
 div.popover.show,
-div.tooltip.show
+div.tooltip.show,
+div.menu.show
 {
     display:block;
     z-index: 10;
@@ -579,7 +587,7 @@ div.tooltip
     color: var(--sv-popup-forecolor);
     padding: .2rem 0.4rem;
     border-radius: 4px;
-    border: 1px solid var(--sv-popup-bordercolor);
+    border: 1px solid var(--sv-class-containercolor);
     display: block;
     position: relative;
     max-width: 200px;
@@ -589,6 +597,41 @@ div.tooltip
     .popup-arrow(var(--sv-popup-backcolor))
 }
 
+// Popovers
+div.menu
+{
+    background-color: var(--sv-menu-backcolor);
+    color: var(--sv-menu-forecolor);
+    border-radius: 7px;
+    border: 1px solid var(--sv-class-containercolor);
+    position: relative;
+    display:none;
+    min-width: 120px;
+    text-align: left;
+    
+    ul 
+    { 
+        margin:7px 0;
+        list-style:none;
+        padding: 0;
+        
+        li
+        {
+            a
+            {
+                text-decoration: none;
+                display: block;
+                color: var(--sv-class-altcolor);
+                padding: .375rem .575rem;
+
+                &:hover
+                {
+                    background-color: var(--sv-primary);
+                }
+            }
+        }
+    }
+}
 
 
 // Links
