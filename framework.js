@@ -1,5 +1,3 @@
-import './framework.theme.less';
-import './framework.less';
 import { createPopper } from '@popperjs/core';
 import * as focusTrap from 'focus-trap';
 

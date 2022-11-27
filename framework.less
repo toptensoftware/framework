@@ -98,6 +98,8 @@ input[type="text"]
     font-size: 1rem;
     line-height: 1rem;
     outline: none;
+    padding: .575rem .75rem;
+
 
     &::selection 
     {
@@ -234,6 +236,12 @@ input[type="text"]
         .button-base-style();
     }
 
+    span
+    {
+        border-top: 1px solid var(--sv-class-color);
+        border-bottom: 1px solid var(--sv-class-color);
+    }
+
     :first-child,
     label:first-of-type
     {
@@ -292,6 +300,11 @@ input[type="text"]
     {
         outline: none;
         box-shadow: ~'0 0 0 0.25rem rgba(var(--sv-class-color-rgb), .5)';
+    }
+
+    input[type="text"]
+    {
+        margin: 0;
     }
 
 }

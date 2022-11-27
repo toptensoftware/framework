@@ -1,4 +1,7 @@
-import "./index.less";
+import './framework.theme.less';
+import './framework.less';
+import "./sample.less";
+
 import { sv_modal_show } from "./framework";
 
 function showCode(event)
