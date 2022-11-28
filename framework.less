@@ -629,7 +629,7 @@ div.tooltip
     display:none;
 }
 
-// Popovers
+// Menu
 div.menu
 {
     background-color: var(--sv-menu-backcolor);
@@ -665,6 +665,54 @@ div.menu
     }
 }
 
+// Spinner
+.spinner
+{
+    display:inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border-width: 2px;
+    border-color: var(--sv-class-color);
+    border-style: solid;
+    border-top-color: transparent;
+    animation: spinner .75s linear infinite;
+}
+
+.spinner-xs
+{
+    width: 0.75rem;
+    height: 0.75rem;
+    border-width: 2px;
+}
+
+.spinner-sm
+{
+    width: 1rem;
+    height: 1rem;
+    border-width: 2px;
+}
+
+.spinner-lg
+{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-width: 3.5px;
+}
+
+.spinner-xl
+{
+    width: 4rem;
+    height: 4rem;
+    border-width: 5.3px;
+}
+
+
+@keyframes spinner 
+{
+    to { transform: rotate(360deg); }
+}
+  
 
 // Links
 a
