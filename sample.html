@@ -271,45 +271,46 @@
         <h4>Popovers</h4>
 
         <div class="sample">
-            <div>
+            <p>
                 <button data-sv-tooltip="Hi, I'm a tooltip"><span>Button with a tooltip</span></button>
+            </p>
+            <p>
                 <button class='dropdown' data-sv-popover="#my-popover1">Non-sticky Popover</button>
                 <button class='dropdown' data-sv-popover="#my-popover2">Sticky Popover</button>
                 <button class='dropdown' data-sv-popover="#my-popover3">Anchor Popover</button>
+            </p>
 
-                <!-- Non-Sticky Popover -->
-                <div class="popover" id="my-popover1" data-sv-popover-interaction='anywhere'>
-                    <header>Non-sticky Popover</header>
-                    <section>
-                        <p>The popover will close on any click anywhere</p>
-                    </section>
-                </div>
-                
-                <!-- Sticky Popover -->
-                <div class="popover" id="my-popover2" data-sv-popover-interaction='outside' data-sv-popover-placement="top">
-                    <header>Sticky Popover</header>
-                    <section>
-                        <form>
-                            <p>This popover won't close when clicked inside</p> 
-                            <p>
-                                <input class="switch" name="checkbox" type="checkbox" id="checkbox21" checked><label for="checkbox21">A handy dandy switch</label>
-                            </p>
-                            <p>
-                                <input class="switch" name="checkbox" type="checkbox" id="checkbox22"><label for="checkbox22">And another one!</label>
-                            </p>
-                            <p>Also it's been placed 'top'.</p>
-                        </form>
-                    </section>    
-                </div>    
-                
-                <!-- Anchor Popover -->
-                <div class="popover"  id="my-popover3" data-sv-popover-interaction='anchor'>
-                    <header>Anchor Popover</header>
-                    <section>
-                        <p>The popover will only close when clicking on the button that opened it, or by any action that shows another popup from the same group</p> 
-                    </section>
-                </div>
-        
+            <!-- Non-Sticky Popover -->
+            <div class="popover container-warning" id="my-popover1" data-sv-popover-interaction='anywhere'>
+                <header>Non-sticky Popover</header>
+                <section>
+                    <p>The popover will close on any click anywhere</p>
+                </section>
+            </div>
+            
+            <!-- Sticky Popover -->
+            <div class="popover" id="my-popover2" data-sv-popover-interaction='outside' data-sv-popover-placement="top">
+                <header>Sticky Popover</header>
+                <section>
+                    <form>
+                        <p>This popover won't close when clicked inside</p> 
+                        <p>
+                            <input class="switch" name="checkbox" type="checkbox" id="checkbox21" checked><label for="checkbox21">A handy dandy switch</label>
+                        </p>
+                        <p>
+                            <input class="switch" name="checkbox" type="checkbox" id="checkbox22"><label for="checkbox22">And another one!</label>
+                        </p>
+                        <p>Also it's been placed 'top'.</p>
+                    </form>
+                </section>    
+            </div>    
+            
+            <!-- Anchor Popover -->
+            <div class="popover"  id="my-popover3" data-sv-popover-interaction='anchor'>
+                <header>Anchor Popover</header>
+                <section>
+                    <p>The popover will only close when clicking on the button that opened it, or by any action that shows another popup from the same group</p> 
+                </section>
             </div>
         </div>
 

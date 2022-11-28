@@ -533,53 +533,53 @@ div.modal-backdrop
 }
 
 // Mixin to put a arrow on a popup
-.popup-arrow(@color)
+.popover-arrow
 {
-    &::after
-    {
-        position: absolute;
-        content: "";
-        width: 0;
-        height: 0;
-    }
+    position: absolute;
+    width: 0;
+    height: 0;
+}
 
-    &[data-popper-placement^='top']::after
+.tooltip,
+.popover 
+{
+    &[data-popper-placement^='top'] .popover-arrow
     {
         left: 50%;
-        bottom: 0;
+        bottom: -7px;
         transform: translate(-50%, 99%);
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
-        border-top: 7px solid @color;
+        border-top: 7px solid var(--sv-class-containercolor);
     }
 
-    &[data-popper-placement^='bottom']::after
+    &[data-popper-placement^='bottom'] .popover-arrow
     {
         left: 50%;
-        top: 0;
+        top: -7px;
         transform: translate(-50%, -99%);
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
-        border-bottom: 7px solid @color;
+        border-bottom: 7px solid var(--sv-class-containercolor);
     }
 
-    &[data-popper-placement^='right']::after
+    &[data-popper-placement^='right'] .popover-arrow
     {
         top: 50%;
-        left: 0;
+        left: -7px;
         transform: translate(-99%, -50%);
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
-        border-right: 7px solid @color;
+        border-right: 7px solid var(--sv-class-containercolor);
     }
-    &[data-popper-placement^='left']::after
+    &[data-popper-placement^='left'] .popover-arrow
     {
         top: 50%;
-        right: 0;
+        right: -7px;
         transform: translate(99%, -50%);
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
-        border-left: 7px solid @color;
+        border-left: 7px solid var(--sv-class-containercolor);
     }
 }
 
@@ -603,8 +603,6 @@ div.popover
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
     }
-
-    .popup-arrow(var(--sv-class-containercolor))
 }
 
 // Show popover/tooltip
@@ -629,8 +627,6 @@ div.tooltip
     max-width: 200px;
     text-align: center;
     display:none;
-
-    .popup-arrow(var(--sv-popup-backcolor))
 }
 
 // Popovers

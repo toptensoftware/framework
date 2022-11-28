@@ -96,13 +96,40 @@ export function sv_popover_show(target, options)
     let placement = getPopoverAttribute('data-sv-popover-placement');
     if (!placement && popover.classList.contains('menu'))
         placement = 'bottom-start';
+    if (!placement)
+        placement = 'bottom'
 
-        // Create popper
+    let modifiers = [];
+
+    if (popover.classList.contains('popover'))
+    {
+        let arrow = popover.querySelector('.popover-arrow');
+        if (!arrow)
+        {
+            arrow = document.createElement("div");
+            arrow.classList.add('popover-arrow');
+            popover.appendChild(arrow);
+        }
+        
+        modifiers.push({
+            name: 'offset', 
+            options: { offset: [0, 4] }
+        });
+
+        modifiers.push({
+            name: 'arrow', 
+            options: { 
+                element: arrow,
+                padding: 5
+            }, 
+        });
+
+    }
+
+    // Create popper
     let popper = createPopper(target, popover, {
-        placement: placement || 'bottom',
-        modifiers: [
-            { name: 'offset', options: { offset: [0, 4] }},
-        ]
+        placement,
+        modifiers,
     });
 
     // Helper to close the popup
