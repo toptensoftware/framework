@@ -226,6 +226,21 @@ input[type="text"]
         }
     }
 
+    // Same as above but no left margin so it looks nicer on its own
+    &.dropdown-standalone
+    {
+        &::after 
+        { 
+            content:'';
+            display: inline-block;
+            vertical-align: .1em;
+            border-top: 0.3em solid;
+            border-right: 0.3em solid transparent;
+            border-bottom: 0;
+            border-left: 0.3em solid transparent;        
+        }
+    }
+
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
