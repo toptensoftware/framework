@@ -222,6 +222,62 @@ input[type="text"]
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.check-button
+{
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+
+    input[type="checkbox"]
+    {
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+        pointer-events: none;
+        & + label
+        {
+            margin-right: 0;
+        }
+
+    }
+
+    input[type="checkbox"] + label
+    {
+        .button-base-style();
+        background-color: transparent;
+
+        &:hover
+        {
+            background-color: var(--sv-secondary);
+        }
+    
+        &:active:not(:disabled)
+        {
+            background-color: ~'rgba(var(--sv-secondary-rgb), 0.6)';
+        }    
+    
+        &:focus-visible
+        {
+            outline: none;
+            box-shadow: ~'0 0 0 0.20rem rgba(var(--sv-class-color-rgb), .5)';
+        }    
+    }
+
+
+    input[type="checkbox"]:checked + label
+    {
+        background-color: var(--sv-class-color);
+        color: var(--sv-class-altcolor);
+
+        &:active:not(:disabled)
+        {
+            background-color: ~'rgba(var(--sv-class-color-rgb), 0.6)';
+        }    
+    
+    }
+
+}
+
+
 // Control group combines <buttons> and <spans> into what looks
 // like a single control.  Used to create button groups and adorned
 // text input fields
@@ -324,7 +380,7 @@ input[type="radio"]
     cursor: pointer;
     border: 1px solid white;
     background: white;
-    transform: translateY(3px);
+    transform: translateY(1px);
     margin-right: 5px;
     
     transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
