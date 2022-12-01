@@ -1,0 +1,99 @@
+// Mixin helper to generate r, g, b values
+.makergb(@x) 
+{
+    @result: red(@x), green(@x), blue(@x);
+}
+
+.root-colors()
+{
+    // Base color that match theme "direction" - each either black or white
+    --sv-base-back-color: @sv-base-back-color;
+    --sv-base-fore-color: @sv-base-fore-color;
+
+    // The main body colors
+    --sv-body-back-color: @sv-body-back-color;
+    --sv-body-fore-color: @sv-body-fore-color;
+
+    // Side panel colors (somewhere between body and header
+    --sv-dock-back-color: @sv-dock-back-color;
+    --sv-dock-fore-color: @sv-dock-fore-color;
+
+    // Header colors
+    --sv-header-back-color: @sv-header-back-color;
+    --sv-header-fore-color: @sv-header-fore-color;
+
+    // Class colors
+    --sv-normal: @sv-normal;
+    --sv-primary: @sv-primary;
+    --sv-success: @sv-success;
+    --sv-info: @sv-info;
+    --sv-warning: @sv-warning;
+    --sv-danger: @sv-danger;
+
+    // Contrasting colors to above
+    --sv-normal-contrast: @sv-normal-contrast;
+    --sv-primary-contrast: @sv-primary-contrast;
+    --sv-success-contrast: @sv-success-contrast;
+    --sv-info-contrast: @sv-info-contrast;
+    --sv-warning-contrast: @sv-warning-contrast;
+    --sv-danger-contrast: @sv-danger-contrast;
+
+    // Misc
+    --sv-link-color: @sv-link-color;
+    --sv-disabled-color: @sv-disabled-color;
+    --sv-unchecked-back-color: @sv-unchecked-back-color;
+    --sv-unchecked-fore-color: @sv-unchecked-fore-color;
+    --sv-checked-back-color: @sv-checked-back-color;
+    --sv-checked-fore-color: @sv-checked-fore-color;
+
+    // Frame colors
+    --sv-popover-back-color: @sv-popover-back-color;
+    --sv-popover-fore-color: @sv-popover-fore-color;
+    --sv-popover-border-color: @sv-popover-border-color;
+    --sv-popover-header-color: @sv-popover-header-color;
+    --sv-dialog-back-color: @sv-dialog-back-color;
+    --sv-dialog-fore-color: @sv-dialog-fore-color;
+    --sv-dialog-border-color: @sv-dialog-border-color;
+    --sv-input-back-color: @sv-input-back-color;
+    --sv-input-fore-color: @sv-input-fore-color;
+    --sv-input-border-color: @sv-input-border-color;
+
+
+    // RGB versions of everything above
+    --sv-base-back-color-rgb: .makergb(@sv-base-back-color)[@result];
+    --sv-base-fore-color-rgb: .makergb(@sv-base-fore-color)[@result];
+    --sv-body-back-color-rgb: .makergb(@sv-body-back-color)[@result];
+    --sv-body-fore-color-rgb: .makergb(@sv-body-fore-color)[@result];
+    --sv-dock-back-color-rgb: .makergb(@sv-dock-back-color)[@result];
+    --sv-dock-fore-color-rgb: .makergb(@sv-dock-fore-color)[@result];
+    --sv-header-back-color-rgb: .makergb(@sv-header-back-color)[@result];
+    --sv-header-fore-color-rgb: .makergb(@sv-header-fore-color)[@result];
+    --sv-normal-rgb: .makergb(@sv-normal)[@result];
+    --sv-primary-rgb: .makergb(@sv-primary)[@result];
+    --sv-success-rgb: .makergb(@sv-success)[@result];
+    --sv-info-rgb: .makergb(@sv-info)[@result];
+    --sv-warning-rgb: .makergb(@sv-warning)[@result];
+    --sv-danger-rgb: .makergb(@sv-danger)[@result];
+    --sv-normal-contrast-rgb: .makergb(@sv-normal-contrast)[@result];
+    --sv-primary-contrast-rgb: .makergb(@sv-primary-contrast)[@result];
+    --sv-success-contrast-rgb: .makergb(@sv-success-contrast)[@result];
+    --sv-info-contrast-rgb: .makergb(@sv-info-contrast)[@result];
+    --sv-warning-contrast-rgb: .makergb(@sv-warning-contrast)[@result];
+    --sv-danger-contrast-rgb: .makergb(@sv-danger-contrast)[@result];
+    --sv-link-color-rgb: .makergb(@sv-link-color)[@result];
+    --sv-disabled-color-rgb: .makergb(@sv-disabled-color)[@result];
+    --sv-unchecked-fore-color-rgb: .makergb(@sv-unchecked-fore-color)[@result];
+    --sv-unchecked-back-color-rgb: .makergb(@sv-unchecked-back-color)[@result];
+    --sv-checked-fore-color-rgb: .makergb(@sv-checked-fore-color)[@result];
+    --sv-checked-back-color-rgb: .makergb(@sv-checked-back-color)[@result];
+    --sv-popover-back-color-rgb: .makergb(@sv-popover-back-color)[@result];
+    --sv-popover-fore-color-rgb: .makergb(@sv-popover-fore-color)[@result];
+    --sv-popover-border-color-rgb: .makergb(@sv-popover-border-color)[@result];
+    --sv-popover-header-color-rgb: .makergb(@sv-popover-header-color)[@result];
+    --sv-dialog-back-color-rgb: .makergb(@sv-dialog-back-color)[@result];
+    --sv-dialog-fore-color-rgb: .makergb(@sv-dialog-fore-color)[@result];
+    --sv-dialog-border-color-rgb: .makergb(@sv-dialog-border-color)[@result];
+    --sv-input-back-color-rgb: .makergb(@sv-input-back-color)[@result];
+    --sv-input-fore-color-rgb: .makergb(@sv-input-fore-color)[@result];    
+    --sv-input-border-color-rgb: .makergb(@sv-input-border-color)[@result];    
+}

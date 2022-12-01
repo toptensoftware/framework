@@ -1,0 +1,57 @@
+// Area Colors
+@sv-base-back-color: black;
+@sv-base-fore-color: white;
+@sv-body-back-color: #1e1e1e;
+@sv-body-fore-color: white;
+@sv-dock-back-color: #252526;
+@sv-dock-fore-color: white;
+@sv-header-back-color: #323233;
+@sv-header-fore-color: white;
+
+// Class colors
+@sv-normal: #444;
+@sv-primary: #375a7f;
+@sv-success: #00bc8c;
+@sv-info: #3498db;
+@sv-warning: #f39c12;
+@sv-danger: #e74c3c;
+
+// Class contrast colors
+@sv-normal-contrast: white;
+@sv-primary-contrast: white;
+@sv-success-contrast: white;
+@sv-info-contrast: white;
+@sv-warning-contrast: white;
+@sv-danger-contrast: white;
+
+// Misc 
+@sv-link-color: #00bc8c;
+@sv-disabled-color: #808080;
+
+@sv-unchecked-fore-color: #404040;
+@sv-unchecked-back-color: white;
+@sv-checked-fore-color: @sv-primary;
+@sv-checked-back-color: @sv-primary;
+
+// Frame colors
+@sv-popover-back-color: #303030;
+@sv-popover-fore-color: #fff;
+@sv-popover-border-color: #404040;
+@sv-popover-header-color: #444;
+@sv-dialog-back-color: #000;
+@sv-dialog-fore-color: #fff;
+@sv-dialog-border-color: #404040;
+@sv-input-back-color: black;
+@sv-input-fore-color: white;
+@sv-input-border-color: #404040;
+
+
+@import 'root-colors.less';
+
+:root {
+    color-scheme: dark;
+    --sv-font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+    .root-colors();
+}
+

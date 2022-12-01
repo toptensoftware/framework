@@ -101,7 +101,7 @@ export function sv_popover_show(target, options)
 
     let modifiers = [];
 
-    if (popover.classList.contains('popover'))
+    if (popover.classList.contains('popover') || popover.classList.contains('tooltip'))
     {
         let arrow = popover.querySelector('.popover-arrow');
         if (!arrow)

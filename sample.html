@@ -13,56 +13,48 @@
 
         <div class="sample">
             <p>
+                <button class="normal">Normal</button>
                 <button class="primary">Primary</button>
-                <button class="secondary">Secondary</button>
                 <button class="success">Success</button>
                 <button class="info">Info</button>
                 <button class="warning">Warning</button>
                 <button class="danger">Danger</button>
-                <button class="light">Light</button>
-                <button class="dark">Dark</button>
                 <button class="link">Link</button>
             </p>
         </div>
         
         <div class="sample">
             <p>
+                <button disabled class="normal">Normal</button>
                 <button disabled class="primary">Primary</button>
-                <button disabled class="secondary">Secondary</button>
                 <button disabled class="success">Success</button>
                 <button disabled class="info">Info</button>
                 <button disabled class="warning">Warning</button>
                 <button disabled class="danger">Danger</button>
-                <button disabled class="light">Light</button>
-                <button disabled class="dark">Dark</button>
                 <button disabled class="link">Link</button>
             </p>
         </div>
         
         <div class="sample">
             <p>
+                <button class="outline normal">Normal</button>
                 <button class="outline primary">Primary</button>
-                <button class="outline secondary">Secondary</button>
                 <button class="outline success">Success</button>
                 <button class="outline info">Info</button>
                 <button class="outline warning">Warning</button>
                 <button class="outline danger">Danger</button>
-                <button class="outline light">Light</button>
-                <button class="outline dark">Dark</button>
                 <button class="outline link">Link</button>
             </p>
         </div>        
 
         <div class="sample">
             <p>
+                <button class="transparent normal">Normal</button>
                 <button class="transparent primary">Primary</button>
-                <button class="transparent secondary">Secondary</button>
                 <button class="transparent success">Success</button>
                 <button class="transparent info">Info</button>
                 <button class="transparent warning">Warning</button>
                 <button class="transparent danger">Danger</button>
-                <button class="transparent light">Light</button>
-                <button class="transparent dark">Dark</button>
                 <button class="transparent link">Link</button>
             </p>
         </div>        
@@ -135,9 +127,13 @@
         
         <div class="sample">
             <div>
-                <div class="check-button primary">
-                    <input type="checkbox" id="checkbox-tb" checked>
-                    <label for="checkbox-tb">Check Me</label>
+                <div class="check-button normal">
+                    <input type="checkbox" id="checkbox-tb-normal">
+                    <label for="checkbox-tb-normal">Check Me (Normal)</label>
+                </div>
+                <div class="check-button danger">
+                    <input type="checkbox" id="checkbox-tb-danger">
+                    <label for="checkbox-tb-danger">Check Me (Danger)</label>
                 </div>
             </div>
         </div>
@@ -293,7 +289,7 @@
             </p>
 
             <!-- Non-Sticky Popover -->
-            <div class="popover container-warning" id="my-popover1" data-sv-popover-interaction='anywhere'>
+            <div class="popover popover-danger" id="my-popover1" data-sv-popover-interaction='anywhere'>
                 <header>Non-sticky Popover</header>
                 <section>
                     <p>The popover will close on any click anywhere</p>
@@ -330,7 +326,7 @@
             <p>
                 <button class='dropdown'>
                     <span>Inline Popover</span>
-                    <div class="popover container-warning">
+                    <div class="popover popover-warning">
                         <header>Inline Popover</header>
                         <section>
                             <p>This popover is just a child element of the button, making the markup simpler.</p> 
@@ -343,14 +339,14 @@
         
         
         
-        <h4>Modal</h4>
+        <h4>Modals and Dialogs</h4>
         
         <div class="sample">
             <div>
                 <button data-sv-modal="#my-modal">Show Modal Dialog</button>
                 
                 <div class="modal-frame" id="my-modal">
-                    <div class="dialog dialog-sm container-warning">
+                    <div class="dialog dialog-sm dialog-warning">
                         <header>
                             <h1>Dialog</h1>
                             <button class="close"></button>
@@ -370,7 +366,7 @@
                                 <p>
                                     <button class="dropdown">
                                         <span>Popover in a Modal</span>
-                                        <div class="popover container-secondary">
+                                        <div class="popover popover-normal">
                                             <header>Popover in a Modal</header>
                                             <section>
                                                 <p>Testing that popovers work inside modal dialogs</p> 
@@ -388,19 +384,58 @@
                 </div>
             </div>
         </div>
+
+        <div class="sample">
+            <div>
+                <div class="dialog dialog-sm dialog-warning">
+                    <header>
+                        <h1>Title</h1>
+                        <button class="close"></button>
+                    </header>
+                    <section>
+                        <form>
+                            <p>This is the body of the dialog.</p>
+                        </form>
+                    </section>
+                    <footer>
+                        <button class="primary">Primary</button>
+                        <button class="close">Normal</button>
+                    </footer>
+                </div>
+            </div>
+        </div>
+
+        <div class="sample">
+            <div>
+                <div class="dialog">
+                    <header>
+                        <h1>Title</h1>
+                        <button class="close"></button>
+                    </header>
+                    <section>
+                        <form>
+                            <p>This is the body of the dialog.</p>
+                        </form>
+                    </section>
+                    <footer>
+                        <button class="primary">Primary</button>
+                        <button class="close">Normal</button>
+                    </footer>
+                </div>
+            </div>
+        </div>
+
         
         <h4>Pills</h4>
 
         <div class="sample">
             <p>
+                <span class="pill normal">Normal</span>
                 <span class="pill primary">Primary</span>
-                <span class="pill secondary">Secondary</span>
                 <span class="pill success">Success</span>
                 <span class="pill info">Info</span>
                 <span class="pill warning">Warning</span>
                 <span class="pill danger">Danger</span>
-                <span class="pill light">Light</span>
-                <span class="pill dark">Dark</span>
             </p>
         </div>
 
@@ -408,14 +443,12 @@
 
         <div class="sample">
             <div>
+                <div class="spinner normal"></div>
                 <div class="spinner primary"></div>
-                <div class="spinner secondary"></div>
                 <div class="spinner success"></div>
                 <div class="spinner info"></div>
                 <div class="spinner warning"></div>
                 <div class="spinner danger"></div>
-                <div class="spinner light"></div>
-                <div class="spinner dark"></div>
             </div>
         </div>
     
@@ -458,7 +491,7 @@
     </section>
 
     <div class="modal-frame" id="code-modal">
-        <div class="dialog dialog-lg container-info">
+        <div class="dialog dialog-lg dialog-info">
             <header>
                 <h1>Code</h1>
                 <button class="close"></button>

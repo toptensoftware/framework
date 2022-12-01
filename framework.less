@@ -6,8 +6,8 @@
 // Zero out margins, padding etc... and setup font defaults
 body
 {
-    background-color: var(--sv-body-backcolor);
-    color: var(--sv-body-forecolor);
+    background-color: var(--sv-body-back-color);
+    color: var(--sv-body-fore-color);
     font-family: var(--sv-font-family);
     font-size: 1rem;
     box-sizing: border-box;
@@ -27,70 +27,60 @@ section
 // Default colors
 :root
 {
-    // The default class color is 'secondary'
-    --sv-class-color: var(--sv-secondary); 
-    --sv-class-color-rgb: var(--sv-secondary-rgb);
-
-    // The 'hot' color is the color for selected checkboxes and radio buttons
-    // By default its the primary color, but the class colors below override this.
-    --sv-hot-color: var(--sv-primary); 
-    --sv-hot-color-rgb: var(--sv-primary-rgb);
-
-    // Default container color
-    --sv-class-containercolor: var(--sv-secondary);
-
-    // Default popover colors
-    --sv-popover-backcolor: var(--sv-dark);
-    --sv-popover-forecolor: var(--sv-body-forecolor);
-    --sv-popover-titlecolor: var(--sv-secondary);
-
-    // Default menu colors
-    --sv-menu-backcolor: var(--sv-body-backcolor);
-    --sv-menu-forecolor: var(--sv-body-forecolor);
-
-    // Default dialog colors
-    --sv-dialog-backcolor: var(--sv-dark);
-    --sv-dialog-forecolor: var(--sv-body-forecolor);
-    --sv-dialog-inner-bordercolor: var(--sv-secondary);
+    // The normal class colors
+    --sv-class-color: var(--sv-normal); 
+    --sv-class-color-rgb: var(--sv-normal-rgb);
+    --sv-class-contrast-color: var(--sv-normal-contrast); 
+    --sv-class-contrast-color-rgb: var(--sv-normal-contrast-rgb);
+    --sv-dialog-inner-border-color: var(--sv-dialog-border-color);
 }
 
+.make-class-colors(@x)
+{
+    --sv-class-color: ~"var(--sv-@{x})";
+    --sv-class-color-rgb: ~"var(--sv-@{x}-rgb)";
+    --sv-class-contrast-color: ~"var(--sv-@{x}-contrast)";
+    --sv-class-contrast-color-rgb: ~"var(--sv-@{x}-contrast-rgb)";
+    --sv-checked-fore-color: ~"var(--sv-@{x})";
+    --sv-checked-fore-color-rgb: ~"var(--sv-@{x}-rgb)";
+    --sv-checked-back-color: ~"var(--sv-@{x})";
+    --sv-checked-back-color-rgb: ~"var(--sv-@{x}-rgb)";
+}
 
 // class colors
-.primary { --sv-class-color: var(--sv-primary); --sv-class-color-rgb: var(--sv-primary-rgb); --sv-hot-color: var(--sv-primary); --sv-hot-color-rgb: var(--sv-primary-rgb); }
-.secondary { --sv-class-color: var(--sv-secondary); --sv-class-color-rgb: var(--sv-secondary-rgb); --sv-hot-color: var(--sv-secondary); --sv-hot-color-rgb: var(--sv-secondary-rgb); }
-.success { --sv-class-color: var(--sv-success); --sv-class-color-rgb: var(--sv-success-rgb); --sv-hot-color: var(--sv-success); --sv-hot-color-rgb: var(--sv-success-rgb); }
-.info { --sv-class-color: var(--sv-info); --sv-class-color-rgb: var(--sv-info-rgb); --sv-hot-color: var(--sv-info); --sv-hot-color-rgb: var(--sv-info-rgb); }
-.warning { --sv-class-color: var(--sv-warning); --sv-class-color-rgb: var(--sv-warning-rgb); --sv-hot-color: var(--sv-warning); --sv-hot-color-rgb: var(--sv-warning-rgb); }
-.danger { --sv-class-color: var(--sv-danger); --sv-class-color-rgb: var(--sv-danger-rgb); --sv-hot-color: var(--sv-danger); --sv-hot-color-rgb: var(--sv-danger-rgb); }
-.light { --sv-class-color: var(--sv-light); --sv-class-color-rgb: var(--sv-light-rgb); --sv-hot-color: var(--sv-light); --sv-hot-color-rgb: var(--sv-light-rgb); }
-.dark { --sv-class-color: var(--sv-dark); --sv-class-color-rgb: var(--sv-dark-rgb); --sv-hot-color: var(--sv-dark); --sv-hot-color-rgb: var(--sv-dark-rgb); }
+.primary { .make-class-colors('primary'); };
+.success { .make-class-colors('success'); };
+.info { .make-class-colors('info'); };
+.warning { .make-class-colors('warning'); };
+.danger { .make-class-colors('danger'); };
 
 // text colors
 .text-primary { color: var(--sv-primary); }
-.text-secondary { color: var(--sv-secondary); }
 .text-success { color: var(--sv-success); }
 .text-info { color: var(--sv-info); }
 .text-warning { color: var(--sv-warning); }
 .text-danger { color: var(--sv-danger); }
-.text-light { color: var(--sv-light); }
-.text-dark { color: var(--sv-dark); }
 
-// container colors
-.container-primary { --sv-class-containercolor: var(--sv-primary); --sv-class-containercolor-rgb: var(--sv-primary-rgb); }
-.container-secondary { --sv-class-containercolor: var(--sv-secondary); --sv-class-containercolor-rgb: var(--sv-secondary-rgb); }
-.container-success { --sv-class-containercolor: var(--sv-success); --sv-class-containercolor-rgb: var(--sv-success-rgb); }
-.container-info { --sv-class-containercolor: var(--sv-info); --sv-class-containercolor-rgb: var(--sv-info-rgb); }
-.container-warning { --sv-class-containercolor: var(--sv-warning); --sv-class-containercolor-rgb: var(--sv-warning-rgb); }
-.container-danger { --sv-class-containercolor: var(--sv-danger); --sv-class-containercolor-rgb: var(--sv-danger-rgb); }
-.container-light { --sv-class-containercolor: var(--sv-light); --sv-class-containercolor-rgb: var(--sv-light-rgb); }
-.container-dark { --sv-class-containercolor: var(--sv-dark); --sv-class-containercolor-rgb: var(--sv-dark-rgb); }
+// dialog  colors
+.dialog-primary { --sv-dialog-border-color: var(--sv-primary); }
+.dialog-success { --sv-dialog-border-color: var(--sv-success); }
+.dialog-info { --sv-dialog-border-color: var(--sv-info); }
+.dialog-warning { --sv-dialog-border-color: var(--sv-warning); }
+.dialog-danger { --sv-dialog-border-color: var(--sv-danger); }
+
+// popover  colors
+.popover-primary { --sv-popover-border-color: var(--sv-primary); }
+.popover-success { --sv-popover-border-color: var(--sv-success); }
+.popover-info { --sv-popover-border-color: var(--sv-info); }
+.popover-warning { --sv-popover-border-color: var(--sv-warning); }
+.popover-danger { --sv-popover-border-color: var(--sv-danger); }
 
 // Text input
 input[type="text"]
 {
     padding: .575rem .75rem;
-    background-color: var(--sv-input-backcolor);
-    color: var(--sv-input-forecolor);
+    background-color: var(--sv-input-back-color);
+    color: var(--sv-input-fore-color);
     border-width: 1px;
     border-radius: 5px;
     border-style: solid;
@@ -104,7 +94,7 @@ input[type="text"]
     &::selection 
     {
         background: var(--sv-primary);
-        color: var(--sv-class-altcolor);
+        color: var(--sv-class-contrast-color);
     }
       
     &:focus-visible:not(:disabled)
@@ -115,7 +105,7 @@ input[type="text"]
 
     &::placeholder
     {
-        color: rgba(var(--sv-input-forecolor-rgb), 0.33);
+        color: rgba(var(--sv-input-fore-color-rgb), 0.33);
     }
     
 }
@@ -124,7 +114,7 @@ input[type="text"]
 .button-base-style()
 {
     background-color: var(--sv-class-color);
-    color: var(--sv-class-altcolor);
+    color: var(--sv-class-contrast-color);
     padding: .575rem .75rem;
     border-width: 0;
     border-radius: 5px;
@@ -148,6 +138,7 @@ input[type="text"]
     &:hover:not(:disabled)
     {
         background-color: ~'rgba(var(--sv-class-color-rgb), 0.8)';
+        color: var(--sv-class-contrast-color);
     }
 
     &:active:not(:disabled)
@@ -168,9 +159,11 @@ input[type="text"]
     &.transparent
     {
         background-color: rgba(0,0,0,0);
+        color: var(--sv-body-fore-color);
 
         &:focus-visible:not(:active)
         {
+            color: var(--sv-class-contrast-color);
             background-color: var(--sv-class-color);
         }
     }
@@ -188,7 +181,7 @@ input[type="text"]
 
         &:hover:not(:disabled)
         {
-            color: var(--sv-class-altcolor);
+            color: var(--sv-class-contrast-color);
             background-color: var(--sv-class-color);
         }
         &:active:not(:disabled)
@@ -266,15 +259,17 @@ input[type="text"]
     {
         .button-base-style();
         background-color: transparent;
-
+        color: var(--sv-body-fore-color);
+        
         &:hover
         {
-            background-color: var(--sv-secondary);
+            background-color: var(--sv-class-color);
+            color: var(--sv-class-contrast);
         }
     
         &:active:not(:disabled)
         {
-            background-color: ~'rgba(var(--sv-secondary-rgb), 0.6)';
+            background-color: ~'rgba(var(--sv-class-color-rgb), 0.6)';
         }    
     
         &:focus-visible
@@ -288,7 +283,7 @@ input[type="text"]
     input[type="checkbox"]:checked + label
     {
         background-color: var(--sv-class-color);
-        color: var(--sv-class-altcolor);
+        color: var(--sv-class-contrast-color);
 
         &:active:not(:disabled)
         {
@@ -370,7 +365,7 @@ input[type="text"]
     input[type="radio"]:checked + label.outline:hover
     {
         background-color: var(--sv-class-color);
-        color: var(--sv-class-altcolor);
+        color: var(--sv-class-contrast-color);
     }
 
     input[type="checkbox"]:focus-visible:not(:disabled) + label,
@@ -400,8 +395,8 @@ input[type="radio"]
     position: relative;
     margin: 0;
     cursor: pointer;
-    border: 1px solid white;
-    background: white;
+    border: 1px solid var(--sv-unchecked-fore-color);
+    background: var(--sv-unchecked-back-color);
     transform: translateY(1px);
     margin-right: 5px;
     
@@ -409,8 +404,8 @@ input[type="radio"]
 
     &:checked
     {
-        background-color: var(--sv-hot-color);
-        border-color: var(--sv-hot-color);
+        background-color: var(--sv-checked-back-color);
+        border-color: var(--sv-checked-fore-color);
     }
 
     &:disabled
@@ -512,7 +507,7 @@ legend
 div.alert
 {
     background-color: var(--sv-class-color);
-    color: var(--sv-class-altcolor);
+    color: var(--sv-class-contrast-color);
     padding: 0.1rem 1rem;
     border-radius: .5rem;
     position: relative;
@@ -527,7 +522,7 @@ div.alert
 span.pill
 {
     background-color: var(--sv-class-color);
-    color: var(--sv-class-altcolor);
+    color: var(--sv-class-contrast-color);
     display:inline-block;
     padding: .15rem .65rem;
     border-radius: 1rem;
@@ -540,15 +535,15 @@ div.dialog
 {
     max-width: 600px;
     margin:0 auto;
-    background-color: var(--sv-dialog-backcolor);
-    color: var(--sv-dialog-forecolor);
+    background-color: var(--sv-dialog-back-color);
+    color: var(--sv-dialog-fore-color);
     border-radius: 10px;
-    border: 1px solid var(--sv-class-containercolor);
+    border: 1px solid var(--sv-dialog-border-color);
     position: relative;
     header
     {
         padding: 0.14rem 1rem;
-        border-bottom: 1px solid var(--sv-dialog-inner-bordercolor);
+        border-bottom: 1px solid var(--sv-dialog-inner-border-color);
 
         h1
         {
@@ -565,7 +560,7 @@ div.dialog
     {
         padding: 0.5rem 1rem;
         text-align: right;
-        border-top: 1px solid var(--sv-dialog-inner-bordercolor);
+        border-top: 1px solid var(--sv-dialog-inner-border-color);
     }
 
     &.dialog-sm { max-width: 350px; }
@@ -610,7 +605,6 @@ div.modal-backdrop
     z-index: 49;
 }
 
-// Mixin to put a arrow on a popup
 .popover-arrow
 {
     position: absolute;
@@ -628,7 +622,7 @@ div.modal-backdrop
         transform: translate(-50%, 99%);
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
-        border-top: 7px solid var(--sv-class-containercolor);
+        border-top: 7px solid var(--sv-popover-border-color);
     }
 
     &[data-popper-placement^='bottom'] .popover-arrow
@@ -638,7 +632,7 @@ div.modal-backdrop
         transform: translate(-50%, -99%);
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
-        border-bottom: 7px solid var(--sv-class-containercolor);
+        border-bottom: 7px solid var(--sv-popover-border-color);
     }
 
     &[data-popper-placement^='right'] .popover-arrow
@@ -648,7 +642,7 @@ div.modal-backdrop
         transform: translate(-99%, -50%);
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
-        border-right: 7px solid var(--sv-class-containercolor);
+        border-right: 7px solid var(--sv-popover-border-color);
     }
     &[data-popper-placement^='left'] .popover-arrow
     {
@@ -657,7 +651,7 @@ div.modal-backdrop
         transform: translate(99%, -50%);
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
-        border-left: 7px solid var(--sv-class-containercolor);
+        border-left: 7px solid var(--sv-popover-border-color);
     }
 }
 
@@ -665,10 +659,10 @@ div.modal-backdrop
 div.popover
 {
     text-align: left;
-    background-color: var(--sv-popover-backcolor);
-    color: var(--sv-popover-forecolor);
+    background-color: var(--sv-popover-back-color);
+    color: var(--sv-popover-fore-color);
     border-radius: 7px;
-    border: 1px solid var(--sv-class-containercolor);
+    border: 1px solid var(--sv-popover-border-color);
     position: relative;
     max-width: 300px;
     display:none;
@@ -677,7 +671,7 @@ div.popover
         padding: 0.5rem 1rem;
         font-size: 1.1rem;
         font-weight: bold;
-        background: var(--sv-popover-titlecolor);
+        background: var(--sv-popover-header-color);
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
     }
@@ -695,11 +689,11 @@ div.menu.show
 // Tool tip
 div.tooltip
 {
-    background: var(--sv-popup-backcolor);
-    color: var(--sv-popup-forecolor);
+    background: var(--sv-popover-back-color);
+    color: var(--sv-popover-fore-color);
     padding: .2rem 0.4rem;
     border-radius: 4px;
-    border: 1px solid var(--sv-class-containercolor);
+    border: 1px solid var(--sv-popover-border-color);
     display: block;
     position: relative;
     max-width: 200px;
@@ -710,10 +704,11 @@ div.tooltip
 // Menu
 div.menu
 {
-    background-color: var(--sv-menu-backcolor);
-    color: var(--sv-menu-forecolor);
+    background-color: var(--sv-popover-back-color);
+    color: var(--sv-popover-fore-color);
     border-radius: 7px;
-    border: 1px solid var(--sv-class-containercolor);
+    border: 1px solid var(--sv-popover-border-color);
+    color: var(--sv-popover-fore-color);
     position: relative;
     display:none;
     min-width: 120px;
@@ -731,12 +726,13 @@ div.menu
             {
                 text-decoration: none;
                 display: block;
-                color: var(--sv-class-altcolor);
                 padding: .375rem .575rem;
+                color: var(--sv-popover-fore-color);
 
                 &:hover
                 {
                     background-color: var(--sv-primary);
+                    color: var(--sv-primary-contrast);
                 }
             }
         }
