@@ -815,3 +815,31 @@ h6 { font-size: 1rem; }
 .center { text-align: center; }
 .right { text-align: right; }
 
+.item
+{
+    border: 1px solid transparent;
+    &:hover
+    {
+        background: rgba(var(--sv-base-fore-color-rgb), 0.05);
+    }
+    &.selected
+    {
+        background: rgba(var(--sv-base-fore-color-rgb), 0.10);
+    }
+    &.selected:hover
+    {
+        background: rgba(var(--sv-base-fore-color-rgb), 0.15);
+    }
+}
+
+.focus.item,
+:focus .item
+{
+    border-color: var(--sv-link-color);
+    background: rgba(var(--sv-link-color-rgb), 0.15);
+
+    &:hover
+    {
+        background: rgba(var(--sv-link-color-rgb), 0.25);
+    }
+}
