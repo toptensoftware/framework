@@ -1,4 +1,4 @@
-import './framework.dark.less';
+import './framework.auto.less';
 import './framework.less';
 import "./sample.less";
 

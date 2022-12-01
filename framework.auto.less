@@ -1,0 +1,23 @@
+
+@import 'root-colors.less';
+
+.dark()
+{
+    @import "framework.dark.less";
+}
+
+.light()
+{
+    @import "framework.light.less";
+}
+
+@media (prefers-color-scheme: dark)
+{
+    .dark();
+}
+
+@media (prefers-color-scheme: light)
+{
+    .light();
+}
+
