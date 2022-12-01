@@ -170,7 +170,7 @@ input[type="text"]
 
     &.outline
     {
-        color: var(--sv-class-color);
+        color: var(--sv-body-fore-color);
         background-color: rgba(0, 0, 0, 0);
         border-width: 1px;
         border-color: var(--sv-class-color);
@@ -182,11 +182,11 @@ input[type="text"]
         &:hover:not(:disabled)
         {
             color: var(--sv-class-contrast-color);
-            background-color: var(--sv-class-color);
+            background-color: ~'rgba(var(--sv-class-color-rgb), 0.5)'
         }
         &:active:not(:disabled)
         {
-            background-color: ~'rgba(var(--sv-class-color-rgb), 0.6)';
+            background-color: ~'rgba(var(--sv-class-color-rgb), 0.3)';
         }    
     }
 
@@ -287,7 +287,7 @@ input[type="text"]
 
         &:active:not(:disabled)
         {
-            background-color: ~'rgba(var(--sv-class-color-rgb), 0.6)';
+            background-color: ~'rgba(var(--sv-class-color-rgb), 0.3)';
         }    
     
     }
@@ -352,12 +352,6 @@ input[type="text"]
         {
             margin-right: 0;
         }
-    }
-
-    input[type="checkbox"] + label.outline:hover
-    {
-        background-color: rgba(0,0,0,0);
-        color: var(--sv-class-color);
     }
 
     input[type="checkbox"]:checked + label.outline,
