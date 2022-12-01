@@ -351,6 +351,7 @@ document.body.addEventListener('click', function(event)
                 interaction: 'anywhere',
             });
             event.preventDefault();
+            event.stopPropagation();
             return true;
         }
 
