@@ -95,14 +95,14 @@ document.getElementById("copyCode").addEventListener('click', function(){
 
 document.getElementById('toggle-theme').addEventListener('click', function toggleTheme()
 {
-    if (document.body.classList.contains('dark'))
+    if (document.documentElement.classList.contains('dark'))
     {
-        document.body.classList.remove('dark');
-        document.body.classList.add('light');
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
     }
     else
     {
-        document.body.classList.add('dark');
-        document.body.classList.remove('light');
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
     }
 });

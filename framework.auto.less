@@ -1,10 +1,12 @@
 
 @import "framework.core.light.less";
 
-body.light
+
+:root.light
 {
     .mixin-light();
 }
+
 
 @media (prefers-color-scheme: light)
 {
@@ -18,17 +20,17 @@ body.light
 
 @import "framework.core.dark.less";
 
-body.dark
+:root.dark
 {
     .mixin-dark();
 }
+
 
 @media (prefers-color-scheme: dark)
 {
     :root {
         .mixin-dark();
-    }
-    
+    }   
 }
 
 
