@@ -1,23 +1,34 @@
 
-@import 'root-colors.less';
+@import "framework.core.light.less";
 
-.dark()
+body.light
 {
-    @import "framework.dark.less";
-}
-
-.light()
-{
-    @import "framework.light.less";
-}
-
-@media (prefers-color-scheme: dark)
-{
-    .dark();
+    .mixin-light();
 }
 
 @media (prefers-color-scheme: light)
 {
-    .light();
+    :root { 
+        .mixin-light(); 
+    }
 }
+
+
+
+
+@import "framework.core.dark.less";
+
+body.dark
+{
+    .mixin-dark();
+}
+
+@media (prefers-color-scheme: dark)
+{
+    :root {
+        .mixin-dark();
+    }
+    
+}
+
 
