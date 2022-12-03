@@ -579,24 +579,12 @@ div.modal-frame
     display: none;
     padding: 2rem;
     z-index:50;
+    background:rgba(0,0,0,0.5);
 
     &.modal-active
     {
         display:block;
     }
-}
-
-// Obstruct background when modal active
-div.modal-backdrop
-{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
-    background-color:black;
-    opacity: 0.5;
-    z-index: 49;
 }
 
 .popover-arrow
