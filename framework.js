@@ -249,11 +249,6 @@ export function sv_modal_show(elOrSel)
     document.body.classList.add('modal-active');
     modal.classList.add('modal-active');
 
-    // Add backdrop
-    let backdrop = document.createElement("div");
-    backdrop.classList.add('modal-backdrop');
-    document.body.appendChild(backdrop);
-
     // Trap focus (if 'focus-trap' script loaded)
     // See: https://github.com/focus-trap/focus-trap
     if (focusTrap)
@@ -281,11 +276,6 @@ export function sv_modal_close()
 
     if (_currentModal)
     {
-        // Remove backdrop
-        let backdrop = document.querySelector('.modal-backdrop');
-        if (backdrop)
-            backdrop.remove();
-    
         // Hide
         document.body.classList.remove('modal-active');
         _currentModal.classList.remove('modal-active');
