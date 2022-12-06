@@ -406,28 +406,64 @@ document.body.addEventListener('keydown', function(event) {
 
 // Support for checkbox labels based on this https://stackoverflow.com/a/48359043/77002
 
+
+function findControl(el)
+{
+    while (el)
+    {
+        switch (el.tagName)
+        {
+            case 'LABEL':
+            case 'INPUT':
+            case 'BUTTON':
+            case 'A':
+                // Definite control
+                return el;
+                
+            case 'FORM':
+            case 'SECTION':
+            case 'P':
+            case 'FIELDSET':
+            case 'LI':
+                // A couple of early break outs
+                return null;
+
+            default:
+                el = el.parentElement;
+                break;
+        }
+    }
+    return el;
+}
+
 function isNoStealLabel(el)
 {
+    if (el == null)
+        return false;
     return el.tagName == 'LABEL' && el.control?.classList.contains('no-steal-focus');
 }
 
 function isNoStealControl(el)
 {
+    if (el == null)
+        return false;
     return el.classList.contains('no-steal-focus');
 }
 
 document.body.addEventListener('click', function(event) 
 {
-    if (isNoStealLabel(event.target))
+    let control = findControl(event.target);
+    if (isNoStealLabel(control))
     {
         event.preventDefault();
-        event.target.control?.click();
+        control.control?.click();
     }
 });
 
 document.body.addEventListener('mousedown', function(event)
 {
-    if (isNoStealControl(event.target) || isNoStealLabel(event.target))
+    let control = findControl(event.target);
+    if (isNoStealControl(control) || isNoStealLabel(control))
     {
         event.preventDefault();
     }
