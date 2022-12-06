@@ -400,3 +400,35 @@ document.body.addEventListener('keydown', function(event) {
 
 }, true);
 
+
+
+// ---------------- no-steal-focus ----------------
+
+// Support for checkbox labels based on this https://stackoverflow.com/a/48359043/77002
+
+function isNoStealLabel(el)
+{
+    return el.tagName == 'LABEL' && el.control?.classList.contains('no-steal-focus');
+}
+
+function isNoStealControl(el)
+{
+    return el.classList.contains('no-steal-focus');
+}
+
+document.body.addEventListener('click', function(event) 
+{
+    if (isNoStealLabel(event.target))
+    {
+        event.preventDefault();
+        event.target.control?.click();
+    }
+});
+
+document.body.addEventListener('mousedown', function(event)
+{
+    if (isNoStealControl(event.target) || isNoStealLabel(event.target))
+    {
+        event.preventDefault();
+    }
+})
