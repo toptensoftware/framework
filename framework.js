@@ -32,11 +32,9 @@ export function fw_popover_show(target, options)
         return false;
 
     // Create tooltip popover?
-    let trapFocus = true;
     let tooltipData = target.getAttribute('data-fw-tooltip');
     if (tooltipData)
     {
-        trapFocus = false;
         popover = document.createElement("div");
         popover.classList.add('tooltip');
         popover.innerText = tooltipData;
@@ -62,6 +60,12 @@ export function fw_popover_show(target, options)
     // Quit if no popover
     if (!popover)
         return false;
+
+    let kind = 'popover';
+    if (popover.classList.contains('tooltip'))
+        kind = 'tooltip';
+    else if (popover.classList.contains('menu'))
+        kind = 'menu';
 
     // Helper to get popover data attribute from either the popup itself, or
     // the popup's anchor
@@ -96,14 +100,14 @@ export function fw_popover_show(target, options)
 
     // Work out placement
     let placement = getPopoverAttribute('data-fw-popover-placement');
-    if (!placement && popover.classList.contains('menu'))
+    if (!placement && kind == 'menu')
         placement = 'bottom-start';
     if (!placement)
         placement = 'bottom'
 
     let modifiers = [];
 
-    if (popover.classList.contains('popover') || popover.classList.contains('tooltip'))
+    if (kind == 'popover' || kind == 'tooltip')
     {
         let arrow = popover.querySelector('.popover-arrow');
         if (!arrow)
@@ -136,7 +140,7 @@ export function fw_popover_show(target, options)
 
     // Trap focus?
     let focusTrap = null;
-    if (trapFocus)
+    if (kind != 'tooltip')
     {
         focusTrap = createFocusTrap(popover, {
             escapeDeactivates: false,   
@@ -146,6 +150,31 @@ export function fw_popover_show(target, options)
             preventScroll: true,
         });
         focusTrap.activate();
+    }
+
+    // Arrow keys?
+    if (kind == 'menu')
+    {
+        popover.addEventListener('keydown', onkeydown);
+    }
+
+    function onkeydown(event)
+    {
+        switch (event.code)
+        {
+            case 'ArrowUp':
+            case 'ArrowDown':
+                let allAnchors = [...popover.querySelectorAll('a')];
+                let indexCurrent = allAnchors.indexOf(document.activeElement);
+                let nextIndex = indexCurrent + (event.code == 'ArrowUp' ? -1 : 1);
+                if (nextIndex < 0)
+                    nextIndex = allAnchors.length - 1;
+                if (nextIndex >= allAnchors.length)
+                    nextIndex = 0;
+                allAnchors[nextIndex].focus();
+                event.preventDefault();
+                break;
+        }
     }
 
     // Helper to close the popup
@@ -160,6 +189,9 @@ export function fw_popover_show(target, options)
         cancelExclusivePopover[exclusiveGroup] = null;
         popoverStack = popoverStack.filter(x => x.popover != popover);
 
+        if (kind == 'menu')
+            popover.removeEventListener('keydown', onkeydown);
+
         if (focusTrap)
         {
             focusTrap.deactivate();
@@ -169,7 +201,6 @@ export function fw_popover_show(target, options)
         // Fire "did disappear" event
         if (!target.dispatchEvent(new Event('fw-popover-did-disappear', { bubbles: true, cancelable: true})))
             return;
-
     }
 
     
