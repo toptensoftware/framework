@@ -1,12 +1,12 @@
 import { createPopper } from '@popperjs/core';
-import * as focusTrap from 'focus-trap';
+import { createFocusTrap } from 'focus-trap';
 
 // ---------------- Popovers ----------------
 
 let popoverStack = [];
 let cancelExclusivePopover = {};
 
-export function sv_popover_close_all()
+export function fw_popover_close_all()
 {
     for (let i=popoverStack.length-1; i>=0; i--)
     {
@@ -22,7 +22,7 @@ Interactions determine what actions close the pop
 - outside - close when click anywhere outside popover
 - anywhere - close where click inside or outside
 */
-export function sv_popover_show(target, options)
+export function fw_popover_show(target, options)
 {
     let popover;
     let didCreatePopover;
@@ -32,9 +32,11 @@ export function sv_popover_show(target, options)
         return false;
 
     // Create tooltip popover?
+    let trapFocus = true;
     let tooltipData = target.getAttribute('data-fw-tooltip');
     if (tooltipData)
     {
+        trapFocus = false;
         popover = document.createElement("div");
         popover.classList.add('tooltip');
         popover.innerText = tooltipData;
@@ -132,6 +134,20 @@ export function sv_popover_show(target, options)
         modifiers,
     });
 
+    // Trap focus?
+    let focusTrap = null;
+    if (trapFocus)
+    {
+        focusTrap = createFocusTrap(popover, {
+            escapeDeactivates: false,   
+            clickOutsideDeactivates: false,
+            allowOutsideClick: false,
+            returnFocusOnDeactivate: true,
+            preventScroll: true,
+        });
+        focusTrap.activate();
+    }
+
     // Helper to close the popup
     function close_helper()
     {
@@ -143,6 +159,12 @@ export function sv_popover_show(target, options)
         popper.destroy();
         cancelExclusivePopover[exclusiveGroup] = null;
         popoverStack = popoverStack.filter(x => x.popover != popover);
+
+        if (focusTrap)
+        {
+            focusTrap.deactivate();
+            focusTrap = null;
+        }
 
         // Fire "did disappear" event
         if (!target.dispatchEvent(new Event('fw-popover-did-disappear', { bubbles: true, cancelable: true})))
@@ -222,9 +244,9 @@ export function sv_popover_show(target, options)
 // ---------------- Modals ----------------
 
 let _currentModal;
-let _focusTrap;
+let modalFocusTrap;
 
-export function sv_modal_show(elOrSel)
+export function fw_modal_show(elOrSel)
 {
     // Get the modal HTML element
     let modal;
@@ -242,36 +264,31 @@ export function sv_modal_show(elOrSel)
         return;
 
     // Cancel other interactive states
-    sv_popover_close_all();
-    sv_modal_close();
+    fw_popover_close_all();
+    fw_modal_close();
 
     // Show modal
     document.body.classList.add('modal-active');
     modal.classList.add('modal-active');
 
-    // Trap focus (if 'focus-trap' script loaded)
-    // See: https://github.com/focus-trap/focus-trap
-    if (focusTrap)
-    {
-        _focusTrap = focusTrap.createFocusTrap(modal, {
-            escapeDeactivates: false,   
-            clickOutsideDeactivates: false,
-            allowOutsideClick: false,
-            returnFocusOnDeactivate: true,
-            preventScroll: true,
-        });
-        _focusTrap.activate();
-    }
+    modalFocusTrap = createFocusTrap(modal, {
+        escapeDeactivates: false,   
+        clickOutsideDeactivates: false,
+        allowOutsideClick: false,
+        returnFocusOnDeactivate: true,
+        preventScroll: true,
+    });
+    modalFocusTrap.activate();
 
     _currentModal = modal;
 }
 
-export function sv_modal_close()
+export function fw_modal_close()
 {
-    if (_focusTrap)
+    if (modalFocusTrap)
     {
-        _focusTrap.deactivate();
-        _focusTrap = null;
+        modalFocusTrap.deactivate();
+        modalFocusTrap = null;
     }
 
     if (_currentModal)
@@ -320,7 +337,7 @@ document.body.addEventListener('click', function(event)
             let modal = target.closest('.modal-frame');
             if (modal && _currentModal)
             {
-                sv_modal_close();
+                fw_modal_close();
                 event.preventDefault();
                 return true;
             }
@@ -337,7 +354,7 @@ document.body.addEventListener('click', function(event)
             || target.querySelector(':scope > .menu')
         )
         {
-            sv_popover_show(target, { 
+            fw_popover_show(target, { 
                 interaction: 'anywhere',
             });
             event.preventDefault();
@@ -349,7 +366,7 @@ document.body.addEventListener('click', function(event)
         let modal = target.getAttribute('data-fw-modal');
         if (modal)
         {
-            sv_modal_show(modal);
+            fw_modal_show(modal);
             return true;
         }
 
@@ -364,13 +381,13 @@ document.body.addEventListener('mouseenter', function(event) {
     if (interaction)
     {
         if (interaction == 'hover')
-            return sv_popover_show(event.target, { interaction: 'hover' });
+            return fw_popover_show(event.target, { interaction: 'hover' });
         return;
     }
 
     // Implicit hover interaction for tool tips
     if (event.target.getAttribute('data-fw-tooltip'))
-        return sv_popover_show(event.target, { interaction: 'hover' });
+        return fw_popover_show(event.target, { interaction: 'hover' });
 
 }, true);
 
@@ -391,7 +408,7 @@ document.body.addEventListener('keydown', function(event) {
         // Cancel modal
         if (_currentModal)
         {
-            sv_modal_close();
+            fw_modal_close();
             event.stopPropagation();
             event.preventDefault();
             return false;
@@ -452,6 +469,7 @@ function isNoStealLabel(el)
         return false;
     return el.tagName == 'LABEL' && isNoStealControl(el.control);
 }
+
 
 document.body.addEventListener('click', function(event) 
 {

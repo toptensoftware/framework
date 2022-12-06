@@ -2,7 +2,7 @@ import './framework.auto.less';
 import './framework.less';
 import "./sample.less";
 
-import { sv_modal_show } from "./framework";
+import { fw_modal_show } from "./framework";
 
 function showCode(event)
 {
@@ -55,7 +55,7 @@ function showCode(event)
         
 
     document.getElementById('sample-code').innerHTML = code;
-    sv_modal_show("#code-modal");
+    fw_modal_show("#code-modal");
     
     //alert(code);
 }

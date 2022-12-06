@@ -1529,8 +1529,8 @@ document.body.addEventListener("keydown", function(t) {
   }
 }, !0);
 export {
-  _e as sv_modal_close,
-  Ea as sv_modal_show,
-  wa as sv_popover_close_all,
-  He as sv_popover_show
+  _e as fw_modal_close,
+  Ea as fw_modal_show,
+  wa as fw_popover_close_all,
+  He as fw_popover_show
 };
