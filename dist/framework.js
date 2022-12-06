@@ -1433,20 +1433,20 @@ function He(t, e) {
   let r, a;
   if (t.classList.contains("popover-active"))
     return !1;
-  let n = t.getAttribute("data-sv-tooltip");
+  let n = t.getAttribute("data-fw-tooltip");
   n && (r = document.createElement("div"), r.classList.add("tooltip"), r.innerText = n, a = !0, document.body.appendChild(r));
-  let i = t.getAttribute("data-sv-popover");
+  let i = t.getAttribute("data-fw-popover");
   if (i && (r = document.querySelector(i)), r || (t.tagName == "BUTTON" || t.tagName == "A") && (r = t.querySelector(".popover,.menu")), !r)
     return !1;
   function o(d) {
     let T = r.getAttribute(d);
     return T == null && (T = t.getAttribute(d)), T;
   }
-  let s = o("data-sv-popover-group") || "default";
-  if (s && fe[s] && (fe[s](), delete fe[s]), !t.dispatchEvent(new Event("sv-popover-will-appear", { bubbles: !0, cancelable: !0 })))
+  let s = o("data-fw-popover-group") || "default";
+  if (s && fe[s] && (fe[s](), delete fe[s]), !t.dispatchEvent(new Event("fw-popover-will-appear", { bubbles: !0, cancelable: !0 })))
     return !1;
   r.classList.add("show"), t.classList.add("popover-active");
-  let c = o("data-sv-popover-placement");
+  let c = o("data-fw-popover-placement");
   !c && r.classList.contains("menu") && (c = "bottom-start");
   let p = Jr(t, r, {
     placement: c || "bottom",
@@ -1455,9 +1455,9 @@ function He(t, e) {
     ]
   });
   function l() {
-    a && r.remove(), r.classList.remove("show"), t.classList.remove("popover-active"), p.destroy(), fe[s] = null, re = re.filter((d) => d.popover != r), t.dispatchEvent(new Event("sv-popover-did-disappear", { bubbles: !0, cancelable: !0 }));
+    a && r.remove(), r.classList.remove("show"), t.classList.remove("popover-active"), p.destroy(), fe[s] = null, re = re.filter((d) => d.popover != r), t.dispatchEvent(new Event("fw-popover-did-disappear", { bubbles: !0, cancelable: !0 }));
   }
-  let g = o("data-sv-popover-interaction") || e.interaction || "anywhere", h;
+  let g = o("data-fw-popover-interaction") || e.interaction || "anywhere", h;
   return g == "hover" && (h = function(d) {
     l(), t.removeEventListener("mouseleave", h);
   }, t.addEventListener("mouseleave", h)), g == "anchor" && (h = function(d) {
@@ -1475,7 +1475,7 @@ function He(t, e) {
 let Z, ve;
 function Ea(t) {
   let e;
-  if (typeof t == "string" ? e = document.querySelector(t) : e = t, !(e instanceof HTMLElement) || !e.dispatchEvent(new Event("sv-modal-will-appear", { bubbles: !0, cancelable: !0 })))
+  if (typeof t == "string" ? e = document.querySelector(t) : e = t, !(e instanceof HTMLElement) || !e.dispatchEvent(new Event("fw-modal-will-appear", { bubbles: !0, cancelable: !0 })))
     return;
   wa(), _e(), document.body.classList.add("modal-active"), e.classList.add("modal-active");
   let r = document.createElement("div");
@@ -1490,7 +1490,7 @@ function Ea(t) {
 function _e() {
   if (ve && (ve.deactivate(), ve = null), Z) {
     let t = document.querySelector(".modal-backdrop");
-    t && t.remove(), document.body.classList.remove("modal-active"), Z.classList.remove("modal-active"), Z.dispatchEvent(new Event("sv-modal-did-disappear", { bubbles: !0, cancelable: !1 })), Z = null;
+    t && t.remove(), document.body.classList.remove("modal-active"), Z.classList.remove("modal-active"), Z.dispatchEvent(new Event("fw-modal-did-disappear", { bubbles: !0, cancelable: !1 })), Z = null;
   }
 }
 document.body.addEventListener("click", function(t) {
@@ -1504,19 +1504,19 @@ document.body.addEventListener("click", function(t) {
       let i = e.closest(".dismissable");
       return i && i.remove(), !0;
     }
-    if (e.getAttribute("data-sv-popover") || e.querySelector(":scope > .popover") || e.querySelector(":scope > .menu"))
+    if (e.getAttribute("data-fw-popover") || e.querySelector(":scope > .popover") || e.querySelector(":scope > .menu"))
       return He(e, {
         interaction: "anywhere"
       }), t.preventDefault(), !0;
-    let a = e.getAttribute("data-sv-modal");
+    let a = e.getAttribute("data-fw-modal");
     return a ? (Ea(a), !0) : !1;
   }
 });
 document.body.addEventListener("mouseenter", function(t) {
-  let e = t.target.getAttribute("data-sv-popover-interaction");
+  let e = t.target.getAttribute("data-fw-popover-interaction");
   if (e)
     return e == "hover" ? He(t.target, { interaction: "hover" }) : void 0;
-  if (t.target.getAttribute("data-sv-tooltip"))
+  if (t.target.getAttribute("data-fw-tooltip"))
     return He(t.target, { interaction: "hover" });
 }, !0);
 document.body.addEventListener("keydown", function(t) {

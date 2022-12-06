@@ -32,7 +32,7 @@ export function sv_popover_show(target, options)
         return false;
 
     // Create tooltip popover?
-    let tooltipData = target.getAttribute('data-sv-tooltip');
+    let tooltipData = target.getAttribute('data-fw-tooltip');
     if (tooltipData)
     {
         popover = document.createElement("div");
@@ -43,7 +43,7 @@ export function sv_popover_show(target, options)
     }
 
     // Explicit element?
-    let popoverEl = target.getAttribute('data-sv-popover');
+    let popoverEl = target.getAttribute('data-fw-popover');
     if (popoverEl)
     {
         popover = document.querySelector(popoverEl);
@@ -74,7 +74,7 @@ export function sv_popover_show(target, options)
     }
 
     // Exclusive?
-    let exclusiveGroup = getPopoverAttribute('data-sv-popover-group') || 'default';
+    let exclusiveGroup = getPopoverAttribute('data-fw-popover-group') || 'default';
     if (exclusiveGroup)
     {
         if (cancelExclusivePopover[exclusiveGroup])
@@ -85,7 +85,7 @@ export function sv_popover_show(target, options)
     }
 
     // Fire "will appear" event
-    if (!target.dispatchEvent(new Event('sv-popover-will-appear', { bubbles: true, cancelable: true})))
+    if (!target.dispatchEvent(new Event('fw-popover-will-appear', { bubbles: true, cancelable: true})))
         return false;
 
     // Show popover
@@ -93,7 +93,7 @@ export function sv_popover_show(target, options)
     target.classList.add('popover-active');
 
     // Work out placement
-    let placement = getPopoverAttribute('data-sv-popover-placement');
+    let placement = getPopoverAttribute('data-fw-popover-placement');
     if (!placement && popover.classList.contains('menu'))
         placement = 'bottom-start';
     if (!placement)
@@ -145,14 +145,14 @@ export function sv_popover_show(target, options)
         popoverStack = popoverStack.filter(x => x.popover != popover);
 
         // Fire "did disappear" event
-        if (!target.dispatchEvent(new Event('sv-popover-did-disappear', { bubbles: true, cancelable: true})))
+        if (!target.dispatchEvent(new Event('fw-popover-did-disappear', { bubbles: true, cancelable: true})))
             return;
 
     }
 
     
     // Work out actual interaction
-    let interaction = getPopoverAttribute('data-sv-popover-interaction') || options.interaction || 'anywhere';
+    let interaction = getPopoverAttribute('data-fw-popover-interaction') || options.interaction || 'anywhere';
     
     let close;
     if (interaction == 'hover')
@@ -238,7 +238,7 @@ export function sv_modal_show(elOrSel)
         return;
 
     // Fire "will appear" event
-    if (!modal.dispatchEvent(new Event('sv-modal-will-appear', { bubbles: true, cancelable: true})))
+    if (!modal.dispatchEvent(new Event('fw-modal-will-appear', { bubbles: true, cancelable: true})))
         return;
 
     // Cancel other interactive states
@@ -281,7 +281,7 @@ export function sv_modal_close()
         _currentModal.classList.remove('modal-active');
 
         // Fire "will disappear" event
-        _currentModal.dispatchEvent(new Event('sv-modal-did-disappear', { bubbles: true, cancelable:false }));
+        _currentModal.dispatchEvent(new Event('fw-modal-did-disappear', { bubbles: true, cancelable:false }));
 
     
         // Clean up
@@ -332,7 +332,7 @@ document.body.addEventListener('click', function(event)
         }
 
         // Click on something with a popover?
-        if (target.getAttribute('data-sv-popover') 
+        if (target.getAttribute('data-fw-popover') 
             || target.querySelector(':scope > .popover')
             || target.querySelector(':scope > .menu')
         )
@@ -346,7 +346,7 @@ document.body.addEventListener('click', function(event)
         }
 
         // Click on modal?
-        let modal = target.getAttribute('data-sv-modal');
+        let modal = target.getAttribute('data-fw-modal');
         if (modal)
         {
             sv_modal_show(modal);
@@ -360,7 +360,7 @@ document.body.addEventListener('click', function(event)
 document.body.addEventListener('mouseenter', function(event) {
 
     // Explicit hover interaction
-    let interaction = event.target.getAttribute('data-sv-popover-interaction');
+    let interaction = event.target.getAttribute('data-fw-popover-interaction');
     if (interaction)
     {
         if (interaction == 'hover')
@@ -369,7 +369,7 @@ document.body.addEventListener('mouseenter', function(event) {
     }
 
     // Implicit hover interaction for tool tips
-    if (event.target.getAttribute('data-sv-tooltip'))
+    if (event.target.getAttribute('data-fw-tooltip'))
         return sv_popover_show(event.target, { interaction: 'hover' });
 
 }, true);

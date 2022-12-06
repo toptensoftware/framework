@@ -139,15 +139,6 @@
             </div>
         </div>
 
-        <h4>Items</h4>
-        <div class="sample">
-            <div>
-                <div class="item">Unselected Item</div>
-                <div class="item selected">Selected Item</div>
-                <div class="item focus">Focused Item</div>
-            </div>
-        </div>
-        
         <h4>Control Groups</h4>
         
         <div class="sample">
@@ -290,16 +281,16 @@
 
         <div class="sample">
             <p>
-                <button data-sv-tooltip="Hi, I'm a tooltip"><span>Button with a tooltip</span></button>
+                <button data-fw-tooltip="Hi, I'm a tooltip"><span>Button with a tooltip</span></button>
             </p>
             <p>
-                <button class='dropdown' data-sv-popover="#my-popover1">Non-sticky Popover</button>
-                <button class='dropdown' data-sv-popover="#my-popover2">Sticky Popover</button>
-                <button class='dropdown' data-sv-popover="#my-popover3">Anchor Popover</button>
+                <button class='dropdown' data-fw-popover="#my-popover1">Non-sticky Popover</button>
+                <button class='dropdown' data-fw-popover="#my-popover2">Sticky Popover</button>
+                <button class='dropdown' data-fw-popover="#my-popover3">Anchor Popover</button>
             </p>
 
             <!-- Non-Sticky Popover -->
-            <div class="popover popover-danger" id="my-popover1" data-sv-popover-interaction='anywhere'>
+            <div class="popover popover-danger" id="my-popover1" data-fw-popover-interaction='anywhere'>
                 <header>Non-sticky Popover</header>
                 <section>
                     <p>The popover will close on any click anywhere</p>
@@ -307,7 +298,7 @@
             </div>
             
             <!-- Sticky Popover -->
-            <div class="popover" id="my-popover2" data-sv-popover-interaction='outside' data-sv-popover-placement="top">
+            <div class="popover" id="my-popover2" data-fw-popover-interaction='outside' data-fw-popover-placement="top">
                 <header>Sticky Popover</header>
                 <section>
                     <form>
@@ -324,7 +315,7 @@
             </div>    
             
             <!-- Anchor Popover -->
-            <div class="popover"  id="my-popover3" data-sv-popover-interaction='anchor'>
+            <div class="popover"  id="my-popover3" data-fw-popover-interaction='anchor'>
                 <header>Anchor Popover</header>
                 <section>
                     <p>The popover will only close when clicking on the button that opened it, or by any action that shows another popup from the same group</p> 
@@ -353,7 +344,7 @@
         
         <div class="sample">
             <div>
-                <button data-sv-modal="#my-modal">Show Modal Dialog</button>
+                <button data-fw-modal="#my-modal">Show Modal Dialog</button>
                 
                 <div class="modal-frame" id="my-modal">
                     <div class="dialog dialog-sm dialog-warning">
