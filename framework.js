@@ -436,18 +436,21 @@ function findControl(el)
     return el;
 }
 
-function isNoStealLabel(el)
-{
-    if (el == null)
-        return false;
-    return el.tagName == 'LABEL' && el.control?.classList.contains('no-steal-focus');
-}
-
 function isNoStealControl(el)
 {
     if (el == null)
         return false;
-    return el.classList.contains('no-steal-focus');
+    let elClosest = el.closest('.no-steal-focus,.steal-focus');
+    if (!elClosest)
+        return false;
+    return elClosest.classList.contains('no-steal-focus');
+}
+
+function isNoStealLabel(el)
+{
+    if (el == null)
+        return false;
+    return el.tagName == 'LABEL' && isNoStealControl(el.control);
 }
 
 document.body.addEventListener('click', function(event) 

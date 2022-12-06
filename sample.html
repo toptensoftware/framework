@@ -100,7 +100,7 @@
                     </div>
                 </button>
                 <button class="button-lg">Large</button>
-                <button class="button-lg dropdown no-steal-focus">
+                <button class="button-lg dropdown">
                     <span>Large</span>
                     <div class="menu">
                         <ul>
@@ -123,14 +123,33 @@
             <p><input class="warning" type="text" value="bad value" /></p>
         </div>
 
+
+        <h4>No Steal Focus</h4>
+        <div class="sample">
+            <div>
+                <div class="no-steal-focus">
+                    <button><span>Button in No Steal</span></button>
+                    <div class="check-button normal">
+                        <input type="checkbox" id="checkbox-ns1">
+                        <label for="checkbox-ns1"><span>Check Button in No Steal</span></label>
+                    </div>
+                </div>
+
+                <button class="no-steal-focus"><span>Button</span></button>
+                <div class="check-button normal">
+                    <input type="checkbox" id="checkbox-ns2" class="no-steal-focus">
+                    <label for="checkbox-ns2"><span>Check Button</span></label>
+                </div>
+            </div>
+        </div>
+
         <h4>Toolbar Controls</h4>
         
         <div class="sample">
             <div>
-                <button class="no-steal-focus"><span>No Steal Focus Button</span></button>
                 <div class="check-button normal">
-                    <input type="checkbox" id="checkbox-tb-normal" class="no-steal-focus">
-                    <label for="checkbox-tb-normal"><span>Check Me (No Steal Focus)</span></label>
+                    <input type="checkbox" id="checkbox-tb-normal">
+                    <label for="checkbox-tb-normal"><span>Check Me (Normal)</span></label>
                 </div>
                 <div class="check-button danger">
                     <input type="checkbox" id="checkbox-tb-danger">
