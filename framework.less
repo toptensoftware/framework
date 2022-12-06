@@ -438,9 +438,9 @@ input[type="radio"]
     &:focus-visible + label,
     &:focus-visible + label
     {
-        outline: none;
-        border-radius: 3px;
-        box-shadow: ~'0 0 0 1px var(--fw-hot-color)';
+        outline: solid 0.25rem rgba(var(--fw-body-fore-color-rgb), 0.5);
+        outline-offset: 1px;
+        border-radius: 2px;
     }
 
 }
@@ -725,7 +725,10 @@ div.menu
                 display: block;
                 padding: .375rem .575rem;
                 color: var(--fw-popover-fore-color);
+                outline: none;
 
+                &:focus,
+                &:focus-visible,
                 &:hover
                 {
                     background-color: var(--fw-primary);
