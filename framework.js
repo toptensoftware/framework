@@ -142,14 +142,21 @@ export function fw_popover_show(target, options)
     let focusTrap = null;
     if (kind != 'tooltip')
     {
-        focusTrap = createFocusTrap(popover, {
-            escapeDeactivates: false,   
-            clickOutsideDeactivates: false,
-            allowOutsideClick: false,
-            returnFocusOnDeactivate: true,
-            preventScroll: true,
-        });
-        focusTrap.activate();
+        try
+        {
+            focusTrap = createFocusTrap(popover, {
+                escapeDeactivates: true,   
+                clickOutsideDeactivates: true,
+                allowOutsideClick: false,
+                returnFocusOnDeactivate: true,
+                preventScroll: true,
+            });
+            focusTrap.activate();
+        }
+        catch
+        {
+            focusTrap = null;
+        }
     }
 
     // Arrow keys?
