@@ -322,7 +322,8 @@ document.body.addEventListener('click', function(event)
 
         if (target.classList.contains('popover') 
             || target.classList.contains('modal-frame')
-            || target.classList.contains('dialog'))
+            || target.classList.contains('dialog')
+            || target.classList.contains('menu'))
         {
             break;
         }
