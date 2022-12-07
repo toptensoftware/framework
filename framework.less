@@ -130,8 +130,25 @@ input[type="text"]
     line-height: 1rem;
 }
 
+.button-outline-style()
+{
+    display:inline-block;
+    background-color: transparent;
+    color: var(--fw-body-fore-color);
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: var(--fw-class-color);
+    padding-top: ~'calc(0.575rem - 1px)';
+    padding-bottom: ~'calc(0.575rem - 1px)';
+    padding-left: ~'calc(0.75rem - 1px)';
+    padding-right: ~'calc(0.75rem - 1px)';
+    border-style: solid;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+
 // Button
-.button, button
+button
 {
     .button-base-style();
 
@@ -177,14 +194,7 @@ input[type="text"]
 
     &.outline
     {
-        color: var(--fw-body-fore-color);
-        background-color: rgba(0, 0, 0, 0);
-        border-width: 1px;
-        border-color: var(--fw-class-color);
-        padding-top: ~'calc(0.575rem - 1px)';
-        padding-bottom: ~'calc(0.575rem - 1px)';
-        padding-left: ~'calc(0.75rem - 1px)';
-        padding-right: ~'calc(0.75rem - 1px)';
+        .button-outline-style();
 
         &:hover:not(:disabled)
         {
@@ -244,68 +254,83 @@ input[type="text"]
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.check-button
+// .button classed radio and checkbox, typically used inside a .control-group
+input.button[type='radio'],
+input.button[type='checkbox']
 {
-    position: relative;
-    display: inline-block;
-    vertical-align: baseline;
-
-    input[type="checkbox"]
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+    & + label
     {
-        position: absolute;
-        clip: rect(0, 0, 0, 0);
-        pointer-events: none;
-        transform: none;
-        & + label
-        {
-            margin-right: 0;
-        }
+        margin-right: 0;
+        .button-outline-style();
 
-    }
-
-    input[type="checkbox"] + label
-    {
-        .button-base-style();
-        background-color: transparent;
-        color: var(--fw-body-fore-color);
-        
         &:hover
         {
-            background-color: rgba(var(--fw-normal-contrast-rgb), 0.05);
-            color: var(--fw-normal-contrast);
+            background-color: rgba(var(--fw-class-color-rgb), 0.3);
         }
-    
-        &:active:not(:disabled)
+    }
+
+    & + label.no-border
+    {
+        padding: .575rem .75rem;
+        border: none;
+
+        &:hover
         {
-            background-color: ~'rgba(var(--fw-class-color-rgb), 0.6)';
-        }    
+            background-color: rgba(var(--fw-normal-contrast-rgb), 0.1);
+        }
+    }
+
+
+    &:checked
+    {
+        & + label
+        {
+            background-color: var(--fw-class-color);
+            color: var(--fw-class-contrast-color);
+
+            &:hover
+            {
+                background-color: rgba(var(--fw-class-color-rgb), 0.8);
+            }
+        }
+
+    }
+
+    &:active
+    {
+        & + label
+        {
+            &:hover
+            {
+                background-color: rgba(var(--fw-class-color-rgb), 0.2);
+            }
+        }
+
+    }
     
-        &:focus-visible
+    &:active:checked
+    {
+        & + label
+        {
+            &:hover
+            {
+                background-color: rgba(var(--fw-class-color-rgb), 0.4);
+            }
+        }
+    }
+
+    &:focus-visible 
+    {
+        & + label
         {
             outline: none;
-            box-shadow: ~'0 0 0 0.20rem rgba(var(--fw-class-color-rgb), .5)';
-        }    
+            box-shadow: ~'0 0 0 0.25rem rgba(var(--fw-class-color-rgb), .5)';
+        }
     }
 
-
-    input[type="checkbox"]:checked + label
-    {
-        background-color: var(--fw-class-color);
-        color: var(--fw-class-contrast-color);
-
-    
-    }
-
-    input[type="checkbox"]:active + label
-    {
-        background-color: ~'rgba(var(--fw-class-color-rgb), 0.3)';
-    }
-
-    input[type="checkbox"]:focus-visible + label
-    {
-        outline: none;
-        box-shadow: ~'0 0 0 0.25rem rgba(var(--fw-class-color-rgb), .5)';
-    }
 
 }
 
@@ -330,58 +355,22 @@ input[type="text"]
         border-bottom: 1px solid var(--fw-class-color);
     }
 
-    :first-child,
-    label:first-of-type
-    {
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-    }
-    input[type="checkbox"]:checked + label.outline,
-    button:not(:first-child)
-    {
-        background-clip: padding-box;
-        border-left-color: rgba(0,0,0,0);
-        border-left-width: 1px;
-    }
-    label:first-of-type
-    {
-        border-left-width:1px;
-    }
-    :last-child
+    :not(:first-child),
+    label:not(:first-of-type),
+    input.button[type='radio'] + label:not(:first-of-type),
+    input.button[type='checkbox'] + label:not(:first-of-type)
     {
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px;
     }
-    :not(:first-child):not(:last-child):not(label:first-of-type)
-    {
-        border-radius: 0px;
-    }
 
-    input[type="checkbox"],
-    input[type="radio"]
+    :not(:last-child),
+    label:not(:last-of-type),
+    input.button[type='radio'] + label:not(:last-of-type),
+    input.button[type='checkbox'] + label:not(:last-of-type)
     {
-        position: absolute;
-        clip: rect(0, 0, 0, 0);
-        pointer-events: none;
-        & + label
-        {
-            margin-right: 0;
-        }
-    }
-
-    input[type="checkbox"]:checked + label.outline,
-    input[type="radio"]:checked + label.outline,
-    input[type="radio"]:checked + label.outline:hover
-    {
-        background-color: var(--fw-class-color);
-        color: var(--fw-class-contrast-color);
-    }
-
-    input[type="checkbox"]:focus-visible:not(:disabled) + label,
-    input[type="radio"]:focus-visible:not(:disabled) + label
-    {
-        outline: none;
-        box-shadow: ~'0 0 0 0.25rem rgba(var(--fw-class-color-rgb), .5)';
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
     }
 
     input[type="text"]
@@ -390,6 +379,7 @@ input[type="text"]
     }
 
 }
+
 
 // Standard checkbox/radio button
 input[type="checkbox"],
@@ -400,7 +390,6 @@ input[type="radio"]
     display: inline-block;
     height: 1rem;
     width: 1rem;
-
     position: relative;
     margin: 0;
     cursor: pointer;
@@ -710,6 +699,13 @@ div.menu
     display:none;
     min-width: 120px;
     text-align: left;
+
+    hr
+    {
+        background-color: var(--fw-popover-border-color);
+        border: none;
+        height: 1px;
+    }
     
     ul 
     { 
@@ -726,6 +722,26 @@ div.menu
                 padding: .375rem .575rem;
                 color: var(--fw-popover-fore-color);
                 outline: none;
+                padding-left: 10px;
+                &::before
+                {
+                    content:'';
+                    display: inline-block;
+                    width: 0.7em;
+                    height: 0.3em;
+                    margin-left: 0.25em;
+                    vertical-align: .1em;
+                    border: none;
+                }
+
+                &.checked::before
+                {
+                    border-top: none;
+                    border-right: none;
+                    border-bottom: 2px solid var(--fw-popover-fore-color);
+                    border-left: 2px solid var(--fw-popover-fore-color);   
+                    transform: translateX(-0.4em) translateY(-0.2em) rotate(-50deg);
+                }
 
                 &:focus-visible,
                 &:hover

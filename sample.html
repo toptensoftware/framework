@@ -129,32 +129,26 @@
             <div>
                 <div class="no-steal-focus">
                     <button><span>Button in No Steal</span></button>
-                    <div class="check-button normal">
-                        <input type="checkbox" id="checkbox-ns1">
-                        <label for="checkbox-ns1"><span>Check Button in No Steal</span></label>
-                    </div>
+
+                    <input type="checkbox" class="button" id="checkbox-ns1">
+                    <label for="checkbox-ns1"><span>Check Button in No Steal</span></label>
+
+                    <button class="button dropdown">
+                        <span>Dropdown in No Steal</span>
+                        <div class="menu">
+                            <ul>
+                                <li><a href="#" class="checked">Apples</a></li>
+                                <li><a href="#">Pears</a></li>
+                                <hr />
+                                <li><a href="#">Bananas</a></li>
+                            </ul>
+                        </div>
+                    </button>
                 </div>
 
                 <button class="no-steal-focus"><span>Button</span></button>
-                <div class="check-button normal">
-                    <input type="checkbox" id="checkbox-ns2" class="no-steal-focus">
-                    <label for="checkbox-ns2"><span>Check Button</span></label>
-                </div>
-            </div>
-        </div>
-
-        <h4>Toolbar Controls</h4>
-        
-        <div class="sample">
-            <div>
-                <div class="check-button normal">
-                    <input type="checkbox" id="checkbox-tb-normal">
-                    <label for="checkbox-tb-normal"><span>Check Me (Normal)</span></label>
-                </div>
-                <div class="check-button danger">
-                    <input type="checkbox" id="checkbox-tb-danger">
-                    <label for="checkbox-tb-danger">Check Me (Danger)</label>
-                </div>
+                <input type="checkbox" id="checkbox-ns2" class="button no-steal-focus">
+                <label for="checkbox-ns2"><span>Check Button</span></label>
             </div>
         </div>
 
@@ -190,38 +184,83 @@
             </div>
         </div>
 
-        <h4>Radio Button Group</h4>
+        <h4>Button Style Radio</h4>
         <div class="sample">
             <div>
-                <div class="control-group">
-                    <input type="radio" name="radgroup" id="radio1" checked>
-                    <label class="outline button" for="radio1">Radio 1</label>
+                <div class="control-group primary">
+                    <input type="radio" class="button" name="radgroup" id="radio1" checked>
+                    <label for="radio1">Radio 1</label>
                     
-                    <input type="radio" name="radgroup" id="radio2">
-                    <label class="outline button" for="radio2">Radio 2</label>
+                    <input type="radio" class="button" name="radgroup" id="radio2">
+                    <label for="radio2">Radio 2</label>
                     
-                    <input type="radio" name="radgroup" id="radio3">
-                    <label class="outline button" for="radio3">Radio 3</label>
+                    <input type="radio" class="button" name="radgroup" id="radio3">
+                    <label class="danger" for="radio3">Radio 3</label>
+                </div>
+            </div>
+        </div>
+        <div class="sample">
+            <div>
+                <div class="primary">
+                    <input type="radio" class="button" name="radgroup2" id="radio1a" checked>
+                    <label for="radio1a">Radio 1</label>
+                    
+                    <input type="radio" class="button" name="radgroup2" id="radio2a">
+                    <label for="radio2a">Radio 2</label>
+                    
+                    <input type="radio" class="button" name="radgroup2" id="radio3a">
+                    <label class="danger" for="radio3a">Radio 3</label>
                 </div>
             </div>
         </div>
         
-        <h4>Checkbox Button Group</h4>
+        <h4>Button Style Checkbox</h4>
 
         <div class="sample">
             <div>
                 <div class="control-group primary">
-                    <input type="checkbox" id="checkbox1" checked>
-                    <label class="outline button" for="checkbox1">Check 1</label>
+                    <input type="checkbox" class="button" id="checkbox1">
+                    <label for="checkbox1">Check 1</label>
                     
-                    <input type="checkbox" id="checkbox2">
-                    <label class="outline button" for="checkbox2">Check 2</label>
+                    <input type="checkbox" class="button" id="checkbox2">
+                    <label for="checkbox2">Check 2</label>
                     
-                    <input type="checkbox" id="checkbox3">
-                    <label class="outline button" for="checkbox3">Check 3</label>
+                    <input type="checkbox" class="button" id="checkbox3">
+                    <label class="danger" for="checkbox3">Check 3</label>
                 </div>
             </div>
         </div>
+        
+        <div class="sample">
+            <div>
+                <div class="primary">
+                    <input type="checkbox" class="button" id="checkbox1a">
+                    <label for="checkbox1a">Check 1</label>
+                    
+                    <input type="checkbox" class="button" id="checkbox2a">
+                    <label for="checkbox2a">Check 2</label>
+                    
+                    <input type="checkbox" class="button " id="checkbox3a">
+                    <label class="danger" for="checkbox3a">Check 3</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sample">
+            <div>
+                <div class="primary">
+                    <input type="checkbox" class="button" id="checkbox1b">
+                    <label class="no-border" for="checkbox1b">Check 1</label>
+                    
+                    <input type="checkbox" class="button" id="checkbox2b">
+                    <label class="no-border" for="checkbox2b">Check 2</label>
+                    
+                    <input type="checkbox" class="button " id="checkbox3b">
+                    <label class="no-border danger" for="checkbox3b">Check 3</label>
+                </div>
+            </div>
+        </div>
+        
         
         <h4>Form Controls</h4>
         
@@ -229,18 +268,15 @@
             <fieldset>
                 <legend>Radio Buttons</legend>
                 <div>
-                    <input name="radio" type="radio" id="radio4">
-                    <label for="radio4">Radio 1</label>
+                    <input name="radio" type="radio" id="radio4"><label for="radio4">Radio 1</label>
                 </div>
                 
                 <div>
-                    <input name="radio" type="radio" id="radio5">
-                    <label for="radio5">Radio 2</label>
+                    <input name="radio" type="radio" id="radio5"><label for="radio5">Radio 2</label>
                 </div>
 
                 <div>
-                    <input name="radio" type="radio" id="radio6" disabled>
-                    <label for="radio6">Radio 3</label>
+                    <input name="radio" type="radio" id="radio6" disabled><label for="radio6">Radio 3</label>
                 </div> 
             </fieldset>
         </div>
@@ -249,18 +285,15 @@
             <fieldset>
                 <legend>Checkboxes</legend>
                 <div>
-                    <input type="checkbox" id="checkbox4">
-                    <label for="checkbox4">Normal Checkbox</label>
+                    <input type="checkbox" id="checkbox4"><label for="checkbox4">Normal Checkbox</label>
                 </div>
 
                 <div>
-                    <input class="warning" type="checkbox" id="checkbox5" checked>
-                    <label for="checkbox5">Colored Checkbox</label>
+                    <input class="warning" type="checkbox" id="checkbox5" checked><label for="checkbox5">Colored Checkbox</label>
                 </div>
 
                 <div>
-                    <input type="checkbox" id="checkbox6" disabled>
-                    <label for="checkbox6">Disabled Checkbox</label>
+                    <input type="checkbox" id="checkbox6" disabled><label for="checkbox6">Disabled Checkbox</label>
                 </div>
             </fieldset>
         </div>  
@@ -269,18 +302,15 @@
             <fieldset>
                 <legend>Switches</legend>
                 <div>
-                    <input class="switch" type="checkbox" id="checkbox7">
-                    <label for="checkbox7">Normal Switch</label>
+                    <input class="switch" type="checkbox" id="checkbox7"><label for="checkbox7">Normal Switch</label>
                 </div>
 
                 <div>
-                    <input class="switch danger" type="checkbox" id="checkbox8" checked>
-                    <label class="danger" for="checkbox8" >Colored Switch</label>
+                    <input class="switch danger" type="checkbox" id="checkbox8" checked><label class="danger" for="checkbox8" >Colored Switch</label>
                 </div>
 
                 <div>
-                    <input class="switch" type="checkbox" id="checkbox9" disabled>
-                    <label for="checkbox9">Disabled Switch</label>
+                    <input class="switch" type="checkbox" id="checkbox9" disabled><label for="checkbox9">Disabled Switch</label>
                 </div>
             </fieldset>
         </div>

@@ -139,6 +139,8 @@ export function fw_popover_show(target, options)
     });
 
     // Trap focus?
+    let oldFocus = document.activeElement;
+    /*
     let focusTrap = null;
     if (kind != 'tooltip')
     {
@@ -158,11 +160,12 @@ export function fw_popover_show(target, options)
             focusTrap = null;
         }
     }
+    */
 
     // Arrow keys?
     if (kind == 'menu')
     {
-        popover.addEventListener('keydown', onkeydown);
+        document.body.addEventListener('keydown', onkeydown);
     }
 
     function onkeydown(event)
@@ -180,6 +183,7 @@ export function fw_popover_show(target, options)
                     nextIndex = 0;
                 allAnchors[nextIndex].focus();
                 event.preventDefault();
+                event.stopPropagation();
                 break;
         }
     }
@@ -197,12 +201,13 @@ export function fw_popover_show(target, options)
         popoverStack = popoverStack.filter(x => x.popover != popover);
 
         if (kind == 'menu')
-            popover.removeEventListener('keydown', onkeydown);
-
-        if (focusTrap)
         {
-            focusTrap.deactivate();
-            focusTrap = null;
+            document.body.removeEventListener('keydown', onkeydown);
+        }
+
+        if ((document.activeElement.tagName == 'BODY' || popover.contains(document.activeElement)) && oldFocus.isConnected)
+        {
+            oldFocus.focus();
         }
 
         // Fire "did disappear" event
