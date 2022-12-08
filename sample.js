@@ -2,7 +2,7 @@ import './framework.auto.less';
 import './framework.less';
 import "./sample.less";
 
-import { fw_modal_show } from "./framework";
+import { fw_modal_show, fw_bind_keys } from "./framework";
 
 function showCode(event)
 {
@@ -106,3 +106,5 @@ document.getElementById('toggle-theme').addEventListener('click', function toggl
         document.documentElement.classList.remove('light');
     }
 });
+
+
