@@ -202,7 +202,7 @@ export function fw_popover_show(target, options)
 
         if (kind == 'menu')
         {
-            document.body.removeEventListener('keydown', onkeydown);
+            document.body.removeEventListener('keydown', onkeydown, true);
         }
 
         if ((document.activeElement.tagName == 'BODY' || popover.contains(document.activeElement)) && oldFocus.isConnected)
