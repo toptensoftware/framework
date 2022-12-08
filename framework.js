@@ -185,6 +185,17 @@ export function fw_popover_show(target, options)
                 event.preventDefault();
                 event.stopPropagation();
                 break;
+
+            case 'Enter':
+                let el = document.activeElement;
+                if (popover.contains(el))
+                {
+                    el.click();
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                break;
+
         }
     }
 
