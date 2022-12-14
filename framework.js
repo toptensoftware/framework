@@ -165,7 +165,7 @@ export function fw_popover_show(target, options)
     // Arrow keys?
     if (kind == 'menu')
     {
-        document.body.addEventListener('keydown', onkeydown);
+        document.body.addEventListener('keydown', onkeydown, true);
     }
 
     function onkeydown(event)
@@ -185,6 +185,17 @@ export function fw_popover_show(target, options)
                 event.preventDefault();
                 event.stopPropagation();
                 break;
+
+            case 'Enter':
+                let el = document.activeElement;
+                if (popover.contains(el))
+                {
+                    el.click();
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                break;
+
         }
     }
 
@@ -202,7 +213,7 @@ export function fw_popover_show(target, options)
 
         if (kind == 'menu')
         {
-            document.body.removeEventListener('keydown', onkeydown);
+            document.body.removeEventListener('keydown', onkeydown, true);
         }
 
         if ((document.activeElement.tagName == 'BODY' || popover.contains(document.activeElement)) && oldFocus.isConnected)
@@ -533,3 +544,110 @@ document.body.addEventListener('mousedown', function(event)
         event.preventDefault();
     }
 })
+
+
+
+// ---------------- keybindings ----------------
+
+// Check if an element is an data input type field
+function isInputElement(el)
+{
+    if (el.tagName == "INPUT")
+    {
+        switch (el.getAttribute('type'))
+        {
+            case "button":
+            case "checkbox":
+            case "hidden":
+            case "radio":
+            case "reset":
+                return false;
+        }
+
+        return true;
+    }
+
+    return false;
+}
+
+export function fw_bind_keys(elContext, keys)
+{
+    if (typeof(elContext) == "string")
+        elContext = document.querySelector(elContext);
+
+    if (!elContext)
+        return;
+
+    for (let keyname of Object.keys(keys))
+    {
+        let action = keys[keyname];
+        if (typeof(action) === 'function')
+        {
+            keys[keyname] = { handler: action }
+        }
+        if (typeof(action) === 'string')
+        {
+            keys[keyname] = { selector: action }
+        }
+    }
+
+    elContext.addEventListener("keydown", handler);
+
+    function handler(event)
+    {
+        // Ignore modifier keys
+        if (event.key == "Shift" || event.key == "Control" || event.key == "Alt" || event.key == "Meta")
+            return;
+
+        // Work out name of key
+        let modifiers = "";
+        if (event.ctrlKey)
+            modifiers += "Ctrl+";
+        if (event.shiftKey)
+            modifiers += "Shift+";
+        if (event.altKey)
+            modifiers += "Alt+";
+        let keyname = modifiers + event.key;
+
+        // Look up binding
+        let action = keys[keyname];
+        if (!action)
+        {
+            let code = event.code;
+            if (code.startsWith('Key'))
+                code = code.substring(3);
+            if (code.startsWith('Digit'))
+                code = code.substring(5);
+            keyname = modifiers + code;
+            action = keys[keyname]
+        }
+
+        if (action)
+        {
+            console.log("Detected", keyname);
+            if (action.handler)
+            {
+                action.handler(event);
+            }
+            if (action.selector)
+            {
+                let elAction = elContext.querySelector(action.selector);
+                if (action.focus !== false)
+                    elAction.focus();
+
+                if (action.click || (action.click !== false && !isInputElement(elAction)))
+                    elAction.click();
+            }
+
+            if (action.preventDefault !== false)
+                event.preventDefault();
+                
+            if (action.stopPropagation !== false)
+                event.stopPropagation();
+        }
+    }
+
+    return function() { 
+        elContext.removeEventListener("keydown", handler);
+    }
+}

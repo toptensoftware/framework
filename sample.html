@@ -475,6 +475,25 @@
             </div>
         </div>
 
+        <h4>KeyBindings</h4>
+        <div class="sample">
+            <div>
+                <div id="keycontext1">
+                    <p><input id="input1" type="text" placeholder="Ctrl+1"/></p>
+                    <p><input id="input2" type="text" placeholder="Ctrl+2"/></p>
+                    <p><input id="input3" type="button" placeholder="Ctrl+3" onclick="alert('button click')" value="Ctrl+3"/></p>
+                    <script>
+                        fw_bind_keys("#keycontext1", {
+                            "Ctrl+1": "#input1",
+                            "Ctrl+2": "#input2",
+                            "Ctrl+3": { selector: "#input3", focus: false }
+                        })                        
+                    </script>
+                </div>
+            </div>
+        </div>
+            
+
         
         <h4>Pills</h4>
 
