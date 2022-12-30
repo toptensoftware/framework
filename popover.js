@@ -320,7 +320,7 @@ export function popoverShow(target, options)
 export function popoverInitDeclarative()
 {
     // Declarative show on hover popovers
-    declarativeAddEventListener('hover', function(el, event) {
+    declarativeAddEventListener('mouseenter', function(el, event) {
 
         // Explicit hover interaction
         let interaction = el.dataset.fwPopoverInteraction;
