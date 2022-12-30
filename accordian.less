@@ -1,0 +1,82 @@
+.accordian
+{
+    overflow-y: hidden;
+}
+
+.accordian.resizing
+{
+    cursor:ns-resize;
+}
+
+.accordian-section
+{
+    position: relative;
+    .accordian-content
+    {
+        display:none;
+    }
+
+    &.resizing
+    {
+        &::before
+        {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            width: 100%;
+            height: 4px;
+            background-color: #808080;
+        }
+    }
+}
+
+.accordian-section.expanded
+{
+    min-height: 100px;
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .accordian-content
+    {
+        display:block;
+    }
+}
+
+.accordian-header
+{
+    touch-action: none;
+    user-select: none;
+
+    span
+    {
+        pointer-events: none;        
+    }
+}
+
+.accordian:not(.resizing)
+{
+    .accordian-header
+    {
+        cursor: pointer;
+    }
+}
+
+.accordian-content
+{
+    overflow-y: auto;
+    height: 100%;
+    flex-grow: 1;
+    touch-action: pan-y;
+}
+
+
+.content
+{
+    position: absolute;
+    left: 420px;
+    top: 10px;
+    width: 400px;
+}

@@ -1,8 +1,15 @@
 import './framework.auto.less';
 import './framework.less';
-import "./sample.less";
+import './accordian.less';
+import './sample.less';
+import * as fw from './index.js';
 
-import { fw_modal_show, fw_bind_keys } from "./framework";
+fw.bindKeys("#keycontext1", {
+    "Ctrl+1": "#input1",
+    "Ctrl+2": "#input2",
+    "Ctrl+3": { selector: "#input3", focus: false }
+})                        
+
 
 function showCode(event)
 {
@@ -55,7 +62,7 @@ function showCode(event)
         
 
     document.getElementById('sample-code').innerHTML = code;
-    fw_modal_show("#code-modal");
+    fw.modalShow("#code-modal");
     
     //alert(code);
 }

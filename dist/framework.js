@@ -1529,7 +1529,7 @@ document.body.addEventListener("keydown", function(t) {
   }
 }, !0);
 export {
-  _e as fw_modal_close,
+  _e as modalClose,
   Ea as fw_modal_show,
   wa as fw_popover_close_all,
   He as fw_popover_show

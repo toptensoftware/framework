@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Framework Sandbox</title>
+    <script type="module" src="/index.js"></script>
 </head>
 <body>
     <section>
@@ -483,11 +484,13 @@
                     <p><input id="input2" type="text" placeholder="Ctrl+2"/></p>
                     <p><input id="input3" type="button" placeholder="Ctrl+3" onclick="alert('button click')" value="Ctrl+3"/></p>
                     <script>
-                        fw_bind_keys("#keycontext1", {
+                        /*
+                        fw.bindKeys("#keycontext1", {
                             "Ctrl+1": "#input1",
                             "Ctrl+2": "#input2",
                             "Ctrl+3": { selector: "#input3", focus: false }
-                        })                        
+                        })
+                        */                        
                     </script>
                 </div>
             </div>
@@ -576,7 +579,6 @@
     </div>
 
 
-    <script type="module" src="/framework.js"></script>
     <script type="module" src="/sample.js"></script>
 
 </body>

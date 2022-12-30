@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "./framework.js",
+  "main": "./index.js",
   "scripts": {
     "dev": "vite --host --port 3000",
     "build": "vite build",
@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
+    "@toptensoftware/jslib": "github:toptensoftware/jslib",
     "focus-trap": "^7.1.0"
   }
 }
