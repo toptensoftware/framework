@@ -3,13 +3,19 @@
     box-sizing: border-box;
 }
 
+.text-reset()
+{
+    font-family: var(--fw-font-family);
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
 // Zero out margins, padding etc... and setup font defaults
 body
 {
+    .text-reset();
     background-color: var(--fw-body-back-color);
     color: var(--fw-body-fore-color);
-    font-family: var(--fw-font-family);
-    font-size: 1rem;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -533,6 +539,7 @@ span.pill
 // dialogs
 div.dialog
 {
+    .text-reset();
     max-width: 600px;
     margin:0 auto;
     background-color: var(--fw-dialog-back-color);
@@ -577,6 +584,7 @@ body.modal-active
 // Frame to host a modal
 div.modal-frame
 {
+    .text-reset();
     position:fixed;
     top:0;
     left:0;
@@ -586,6 +594,7 @@ div.modal-frame
     padding: 2rem;
     z-index:50;
     background:rgba(0,0,0,0.5);
+    white-space: initial;
 
     &.modal-active
     {
@@ -646,7 +655,9 @@ div.modal-frame
 // Popovers
 div.popover
 {
+    .text-reset();
     text-align: left;
+    white-space: initial;
     background-color: var(--fw-popover-back-color);
     color: var(--fw-popover-fore-color);
     border-radius: 7px;
@@ -677,6 +688,7 @@ div.menu.show
 // Tool tip
 div.tooltip
 {
+    .text-reset();
     background: var(--fw-popover-back-color);
     color: var(--fw-popover-fore-color);
     padding: .2rem 0.4rem;

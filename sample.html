@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Framework Sandbox</title>
+    <script type="module" src="/index.js"></script>
 </head>
 <body>
     <section>
@@ -182,6 +183,25 @@
                     <span class="">.00</span>
                 </div>
             </div>
+        </div>
+
+        <h4>Multi-button</h4>
+
+        <p>Tab to group, arrow within group</p>
+        <div class="sample">
+            <div>
+                <div id="multi-button">
+                    <button>A</button>
+                    <button>B</button>
+                    <button>C</button>
+                    <button>D</button>
+                </div>
+                <script>
+                    /*
+                    fw.multiButton(document.getElementById('multi-button'));
+                    */                        
+                </script>
+        </div>
         </div>
 
         <h4>Button Style Radio</h4>
@@ -483,17 +503,66 @@
                     <p><input id="input2" type="text" placeholder="Ctrl+2"/></p>
                     <p><input id="input3" type="button" placeholder="Ctrl+3" onclick="alert('button click')" value="Ctrl+3"/></p>
                     <script>
-                        fw_bind_keys("#keycontext1", {
+                        /*
+                        fw.bindKeys("#keycontext1", {
                             "Ctrl+1": "#input1",
                             "Ctrl+2": "#input2",
                             "Ctrl+3": { selector: "#input3", focus: false }
-                        })                        
+                        })
+                        */                        
                     </script>
                 </div>
             </div>
         </div>
-            
 
+        <h4>Accordian Panel</h4>
+
+        <div class="sample">
+            <div>
+                <div id="accordian" class="accordian">
+                    <div class="accordian-section expanded">
+                        <div class="accordian-header">
+                            Section 1
+                        </div>
+                        <div class="accordian-content">
+                            <p>Body 1</p>
+                            <p>Body 2</p>
+                            <p>Body 3</p>
+                            <p>Body 4</p>
+                            <p>Body 5</p>
+                            <p>Body 6</p>
+                            <p>Body 7</p>
+                            <p>Body 8</p>
+                        </div>
+                    </div>
+                    <div class="accordian-section">
+                        <div class="accordian-header">
+                            <span>Section 2</span>
+                        </div>
+                        <div class="accordian-content">
+                            <p>Body 1</p>
+                            <p>Body 2</p>
+                            <p>Body 3</p>
+                        </div>
+                    </div>
+                    <div class="accordian-section expanded">
+                        <div class="accordian-header">
+                            Section 3
+                        </div>
+                        <div class="accordian-content">
+                            <p>Body 1</p>
+                            <p>Body 2</p>
+                            <p>Body 3</p>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    /*
+                    fw.accordian(document.getElementById("accordian"));
+                    */                        
+                </script>
+            </div>
+        </div>
         
         <h4>Pills</h4>
 
@@ -576,7 +645,6 @@
     </div>
 
 
-    <script type="module" src="/framework.js"></script>
     <script type="module" src="/sample.js"></script>
 
 </body>
