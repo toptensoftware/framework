@@ -319,24 +319,22 @@ export function popoverShow(target, options)
 
 export function popoverInitDeclarative()
 {
-    // Declarative show on hover popovers
-    declarativeAddEventListener('mouseenter', function(el, event) {
+    document.body.addEventListener('mouseenter', function(event) {
 
         // Explicit hover interaction
-        let interaction = el.dataset.fwPopoverInteraction;
+        let interaction = event.target.dataset.fwPopoverInteraction;
         if (interaction)
         {
             if (interaction == 'hover')
-                return popoverShow(el, { interaction: 'hover' });
+                return popoverShow(event.target, { interaction: 'hover' });
             return;
         }
-
+    
         // Implicit hover interaction for tool tips
-        if (el.dataset.fwTooltip)
-            return popoverShow(el, { interaction: 'hover' });
-
-        return false;
-    });
+        if (event.target.dataset.fwTooltip)
+            return popoverShow(event.target, { interaction: 'hover' });
+    
+    }, true);
 
     declarativeAddEventListener('click', function(el, event) {
 

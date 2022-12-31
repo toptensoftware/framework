@@ -10,6 +10,9 @@ fw.bindKeys("#keycontext1", {
     "Ctrl+3": { selector: "#input3", focus: false }
 })                        
 
+fw.multiButton(document.getElementById('multi-button'));
+
+fw.accordian(document.getElementById("accordian"));
 
 function showCode(event)
 {
