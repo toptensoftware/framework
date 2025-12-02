@@ -820,11 +820,13 @@ div.menu
 // Links
 a
 {
-    color: var(--fw-link-color);
+    color: var(--stylish-link-color);
+    text-decoration: none;
 
     &:hover
     {
-        color: rgba(var(--fw-link-color-rgb), 0.8);
+        text-decoration: inherit;
+        color: rgb(from var(--stylish-link-color) r g b / 80%);
     }
 }
 
